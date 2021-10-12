@@ -8,10 +8,12 @@
 # Setup -------------------------------------------------------------------
 rm(list=ls())
 
-
 library(readxl)
 library(dplyr)
 library(readr)
+
+raw_data_dir_path <- file.path("./database/Bases Raw/")
+level_n_labels_path <- file.path("./database/levels_and_labels.xlsx")
 
 # User defined Function ---------------------------------------------------
 
@@ -43,6 +45,19 @@ RenameColumns <- function(x){
 }
 
 
+# Carrega banco de dados de Levels and labels -----------------------------
+LL_Estados <- read_excel(level_n_labels_path,
+                  sheet = "Estados")
+                  
+LL_Medida <- read_excel(level_n_labels_path,
+                  sheet = "Unidade_Medida")
+
+LL_Produto <- read_excel(level_n_labels_path,
+                  sheet = "Produto")
+
+LL_Regiao <- read_excel(level_n_labels_path,
+                         sheet = "Regiao")
+
 
 # Carrega banco de dados --------------------------------------------------
 
@@ -56,7 +71,8 @@ RenameColumns <- function(x){
 
 for(i in 1:6){
   # carrega o banco de dados
-  tbl <- read_excel(sprintf("C:/Users/bruno.tebaldi/OneDrive - NOVA FUTURA CTVM LTDA/Gas %d.xlsx", i), 
+  
+  tbl <- read_excel(file.path(raw_data_dir_path, sprintf("Gas %d.xlsx", i)), 
                     na = "-")
   
   # Ajusta o nome das colunas
@@ -71,61 +87,45 @@ for(i in 1:6){
 }
 
 
-rm(list = setdiff(ls(), "full_tbl"))
+# rm(list = setdiff(ls(), "full_tbl"))
+rm(list = "tbl")
+
 
 
 # Padronizacao da unidade de medida ---------------------------------------
 
-levels = unique(full_tbl$UNI_MEDIDA)
-labels = c("BRL_L", "BRL_13KG", "BRL_M3", "BRL_13KG", "BRL_M3")
+levels = LL_Medida$levels
+labels = LL_Medida$labels
 
 full_tbl$UNI_MEDIDA <- factor(full_tbl$UNI_MEDIDA, labels = labels, levels = levels)
 
 
 # Padronizacao do produto -------------------------------------------------
 
-levels = unique(full_tbl$PRODUTO)
-labels = c("ETANOL_HIDRATADO",
-           "OLEO_DIESEL",
-           "GASOLINA_COMUM",
-           "GLP",
-           "GNV",
-           "OLEO_DIESEL_S10",
-           "GASOLINA_ADITIVADA",
-           "OLEO_DIESEL",
-           "OLEO_DIESEL_S10")
+levels = LL_Produto$levels
+labels = LL_Produto$labels
 
 full_tbl$PRODUTO <- factor(full_tbl$PRODUTO, labels = labels, levels = levels)
 
+any(is.na(full_tbl$PRODUTO))
 
 # Padronizacao da regiao --------------------------------------------------
 
-levels = unique(full_tbl$REGIAO)
-labels = c("NORTE", "NORDESTE", "SUDESTE", "CENTRO OESTE", "SUL")
+# levels = unique(full_tbl$REGIAO)
+# labels = c("NORTE", "NORDESTE", "SUDESTE", "CENTRO OESTE", "SUL")
+
+levels = LL_Regiao$levels
+labels = LL_Regiao$labels
+
 
 full_tbl$REGIAO <- factor(full_tbl$REGIAO, labels = labels, levels = levels)
 
 # Padronizacao do Estado --------------------------------------------------
 
-levels = unique(full_tbl$ESTADO)
-labels = levels
+levels = LL_Estados$levels
+labels = LL_Estados$labels
 
 full_tbl$ESTADO <- factor(full_tbl$ESTADO, labels = labels, levels = levels)
-
-
-# Padronizacao do Municipio -----------------------------------------------
-
-# levels = unique(full_tbl$MUNICIPIO)
-# 
-# write.csv(levels, file = "joe.csv")
-# 
-# full_tbl %>% filter(MUNICIPIO %in% c("ASSIS", "ASSIS CHATEAUBRIAND"))
-# 
-# 
-# sort(levels)
-# labels = levels
-# 
-# full_tbl$MUNICIPIO <- factor(full_tbl$MUNICIPIO, labels = labels, levels = levels)
 
 
 # Padronizacao de datas ---------------------------------------------------
@@ -135,4 +135,4 @@ full_tbl$DATA_FINAL <- as.Date(full_tbl$DATA_FINAL)
 
 # Salva o banco de dados --------------------------------------------------
 
-saveRDS(full_tbl, "./database/Gasolina2.rds")
+saveRDS(full_tbl, "./database/Gasolina.rds")
