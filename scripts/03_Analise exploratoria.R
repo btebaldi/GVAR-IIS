@@ -63,7 +63,8 @@ for (col in colnames(tbl.Meso2)) {
 
 tbl.Meso3 <- tbl.Meso %>% 
   select(DATA_INICIAL, DATA_FINAL, ID_Meso, PRODUTO, PRECO_MEDIO_REVENDA) %>% 
-  dplyr::filter(PRODUTO %in% c("GASOLINA_COMUM", "GASOLINA_ADITIVADA", "ETANOL_HIDRATADO", "OLEO_DIESEL", "OLEO_DIESEL_S10")) %>%
+  # dplyr::filter(PRODUTO %in% c("GASOLINA_COMUM", "GASOLINA_ADITIVADA", "ETANOL_HIDRATADO", "OLEO_DIESEL", "OLEO_DIESEL_S10")) %>%
+  dplyr::filter(PRODUTO %in% c("GASOLINA_COMUM", "GASOLINA_ADITIVADA", "GLP", "GNV", "ETANOL_HIDRATADO", "OLEO_DIESEL", "OLEO_DIESEL_S10")) %>%
   arrange(PRODUTO, ID_Meso) %>% 
   pivot_wider(id_cols = c("DATA_INICIAL", "DATA_FINAL"),
               names_from = c("ID_Meso", "PRODUTO"),
@@ -107,15 +108,6 @@ ggplot() +
   facet_wrap(.~PRODUTO)
 
 
-
-
-ETANOL_HIDRATADO
-OLEO_DIESEL
-GASOLINA_COMUM
-GLP
-GNV
-OLEO_DIESEL_S10
-GASOLINA_ADITIVADA
 
 
 
