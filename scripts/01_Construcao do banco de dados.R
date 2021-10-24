@@ -3,6 +3,10 @@
 #' Data: 2021-09-24
 #' 
 #' Construção do banco de dados de gasolina para a tese
+#' 
+#' https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/serie-historica-do-levantamento-de-precos
+#' 
+#' https://www.gov.br/anp/pt-br/assuntos/royalties-e-outras-participacoes/royalties
 
 
 # Setup -------------------------------------------------------------------

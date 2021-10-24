@@ -7,23 +7,24 @@ library(dplyr)
 library(readxl)
 library(tidyr)
 
+# Configuracao de labels and levels
 level_n_labels_path <- file.path("./database/levels_and_labels.xlsx")
 
 # Carrega banco de dados  -------------------------------------------------
 
+# Carrega banco de dados de historico de gasolina
 Gas <- readRDS("./database/Gasolina.rds")
 
+# Carrega o banco de dados dos municipios
 Cadastro_de_municipios <- read_excel("database/Cadastro de municipios.xlsx", 
                                      sheet = "Mapeamento")
 
-
+# Carrega levels and labels
 LL_Estados <- read_excel(level_n_labels_path, sheet = "Estados")
 LL_Regiao <- read_excel(level_n_labels_path, sheet = "Regiao")
 
-
 Cadastro_de_municipios$REGIAO <- factor(Cadastro_de_municipios$REGIAO, labels = LL_Regiao$labels, levels = LL_Regiao$levels)
 Cadastro_de_municipios$ESTADO <- factor(Cadastro_de_municipios$ESTADO, labels = LL_Estados$labels, levels = LL_Estados$levels)
-
 
 
 Gas <- Gas %>% inner_join(Cadastro_de_municipios, by = c("REGIAO", "ESTADO", "MUNICIPIO"))
