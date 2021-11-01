@@ -15,7 +15,6 @@ library(ggplot2)
 tbl.estado <- readr::read_rds("./database/Gasolina_estado.rds")
 tbl.Meso <- readr::read_rds("./database/Gasolina_meso.rds")
 
-tbl.estado$PRODUTO
 
 # Analise exploratoria dos dados ------------------------------------------
 
