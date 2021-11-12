@@ -121,8 +121,5 @@ plot(is.na(t(data.matrix(b[2,c(-1, -2)]))))
 
 
 
-Vie
-
-
 
 
