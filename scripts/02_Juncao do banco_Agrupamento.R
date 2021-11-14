@@ -39,13 +39,14 @@ tbl.Agrupamento <- Gas %>%
          DATA_FINAL,
          REGIAO,
          Agrupamento,
+         OxCode,
          PRODUTO,
          NUM_PESQUISADOS,
          PRECO_MEDIO_REVENDA,
          DESVIO_PADRAO_REVENDA,
          PRECO_MINIMO_REVENDA,
          PRECO_MAXIMO_REVENDA) %>% 
-  group_by(DATA_INICIAL, DATA_FINAL, REGIAO, Agrupamento, PRODUTO) %>% 
+  group_by(DATA_INICIAL, DATA_FINAL, REGIAO, Agrupamento, OxCode,  PRODUTO) %>% 
   summarise( NUM_PESQUISADOS = sum(NUM_PESQUISADOS, na.rm = TRUE),
              PRECO_MEDIO_REVENDA = mean(PRECO_MEDIO_REVENDA, na.rm = TRUE),
              DESVIO_PADRAO_REVENDA = (sum(DESVIO_PADRAO_REVENDA^2, na.rm = TRUE))^0.5,
