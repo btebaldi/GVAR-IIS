@@ -9,6 +9,7 @@
 
 rm(list = ls())
 
+library(readr)
 library(dplyr)
 library(tidyr)
 library(dlm)
@@ -24,11 +25,11 @@ fn <- function(params){
 
 # Data Load ---------------------------------------------------------------
 
-db_com_buraco <- readRDS("./database/db_com_buraco.rds")
+db_com_buraco <- readRDS("./database/db_Ox_com_buraco.rds")
 
 colnames(db_com_buraco)
 
-i = "R_1101_ETANOL_HIDRATADO"
+# i = "R_1101_ETANOL_HIDRATADO"
 for (i in colnames(db_com_buraco)) {
   
   # se for a coluna de data inicial ou data final
@@ -66,8 +67,10 @@ for (col in colnames(db_com_buraco)) {
   }
 }
 
-saveRDS(object = db_com_buraco, file = "./database/db_sem_buraco.rds")
+saveRDS(object = db_com_buraco, file = "./database/db_Ox_sem_buraco.rds")
 
+
+readr::write_csv(x = db_com_buraco, file = "./export/database for ox/db_Ox_sem_buraco.csv")
 
 
 

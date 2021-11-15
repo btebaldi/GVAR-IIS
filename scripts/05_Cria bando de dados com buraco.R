@@ -21,12 +21,12 @@ colnames(Gas_agrupo)
 db_com_buraco <- Gas_agrupo %>% 
   filter(PRODUTO %in% c("ETANOL_HIDRATADO", "OLEO_DIESEL", "GASOLINA_COMUM")) %>% 
   pivot_wider(id_cols = c("DATA_INICIAL", "DATA_FINAL"),
-              names_from = c("Agrupamento", "PRODUTO"),
+              names_from = c("OxCode", "PRODUTO"),
               values_from = "PRECO_MEDIO_REVENDA",
               names_prefix = "R_")
 
 
 saveRDS(object = db_com_buraco,
-        file = "./database/db_com_buraco.rds")
+        file = "./database/db_Ox_com_buraco.rds")
 
 

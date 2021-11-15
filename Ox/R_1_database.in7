@@ -1,0 +1,8 @@
+pcgive 700
+data R_1_database.bn7
+>R1_ETANOL_HIDRATADO    1  1  891  1  1 32 R_1_database 14-11-2021 22:09:28
+>star_ETANOL_HIDRATADO    1  1  891  1  1 7192 R_1_database 14-11-2021 22:09:28
+>R1_OLEO_DIESEL    1  1  891  1  1 14352 R_1_database 14-11-2021 22:09:28
+>star_OLEO_DIESEL    1  1  891  1  1 21512 R_1_database 14-11-2021 22:09:28
+>R1_GASOLINA_COMUM    1  1  891  1  1 28672 R_1_database 14-11-2021 22:09:28
+>star_GASOLINA_COMUM    1  1  891  1  1 35832 R_1_database 14-11-2021 22:09:28
