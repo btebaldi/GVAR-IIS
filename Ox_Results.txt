@@ -1,0 +1,671 @@
+             Regiao 1
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   29.400 [0.0006]**
+Bootstrap test             : 29.400 [0.1608]  
+             Regiao 2
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   34.472 [0.0000]**
+Bootstrap test             : 34.472 [0.0101]* 
+             Regiao 3
+RANK ESTIMADO NORMAL: 1
+RANK ESTIMADO NORMAL_BARLET: 1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   2.0903 [0.5539]  
+Bootstrap test             : 2.0903 [0.7588]  
+             Regiao 4
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   14.876 [0.0212]* 
+Bootstrap test             : 14.876 [0.3970]  
+             Regiao 5
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   5.4299 [0.1429]  
+Bootstrap test             : 5.4299 [0.4121]  
+             Regiao 6
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   32.454 [0.0002]**
+Bootstrap test             : 32.454 [0.1307]  
+             Regiao 7
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   22.022 [0.0012]**
+Bootstrap test             : 22.022 [0.2060]  
+             Regiao 8
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   21.024 [0.0125]* 
+Bootstrap test             : 21.024 [0.2864]  
+             Regiao 9
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   20.275 [0.0163]* 
+Bootstrap test             : 20.275 [0.3015]  
+             Regiao 10
+RANK ESTIMADO NORMAL: 1
+RANK ESTIMADO NORMAL_BARLET: 1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   2.7805 [0.4267]  
+Bootstrap test             : 2.7805 [0.6382]  
+             Regiao 11
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   22.951 [0.0008]**
+Bootstrap test             : 22.951 [0.0352]* 
+             Regiao 12
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   8.3926 [0.2107]  
+Bootstrap test             : 8.3926 [0.4673]  
+             Regiao 13
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   6.7109 [0.3484]  
+Bootstrap test             : 6.7109 [0.7085]  
+             Regiao 14
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   81.124 [0.0000]**
+Bootstrap test             : 81.124 [0.0000]**
+             Regiao 15
+RANK ESTIMADO NORMAL: 1
+RANK ESTIMADO NORMAL_BARLET: 1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   11.156 [0.0109]* 
+Bootstrap test             : 11.156 [0.0754]  
+             Regiao 16
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   53.533 [0.0000]**
+Bootstrap test             : 53.533 [0.0000]**
+             Regiao 17
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   48.056 [0.0000]**
+Bootstrap test             : 48.056 [0.0050]**
+             Regiao 18
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   41.169 [0.0000]**
+Bootstrap test             : 41.169 [0.0302]* 
+             Regiao 19
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   29.344 [0.0006]**
+Bootstrap test             : 29.344 [0.0854]  
+             Regiao 20
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   23.511 [0.0006]**
+Bootstrap test             : 23.511 [0.0553]  
+             Regiao 21
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   56.604 [0.0000]**
+Bootstrap test             : 56.604 [0.0050]**
+             Regiao 22
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   37.194 [0.0000]**
+Bootstrap test             : 37.194 [0.0553]  
+             Regiao 23
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   30.021 [0.0000]**
+Bootstrap test             : 30.021 [0.0201]* 
+             Regiao 24
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   9.2087 [0.4182]  
+Bootstrap test             : 9.2087 [0.8342]  
+             Regiao 25
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   6.3363 [0.3866]  
+Bootstrap test             : 6.3363 [0.7387]  
+             Regiao 26
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   36.504 [0.0000]**
+Bootstrap test             : 36.504 [0.0050]**
+             Regiao 27
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   35.806 [0.0000]**
+Bootstrap test             : 35.806 [0.0101]* 
+             Regiao 28
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   26.372 [0.0002]**
+Bootstrap test             : 26.372 [0.0151]* 
+             Regiao 29
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   16.773 [0.0102]* 
+Bootstrap test             : 16.773 [0.3317]  
+             Regiao 30
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   15.264 [0.0183]* 
+Bootstrap test             : 15.264 [0.3417]  
+             Regiao 31
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   15.973 [0.0139]* 
+Bootstrap test             : 15.973 [0.3367]  
+             Regiao 32
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   30.542 [0.0004]**
+Bootstrap test             : 30.542 [0.0804]  
+             Regiao 33
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   38.874 [0.0000]**
+Bootstrap test             : 38.874 [0.0704]  
+             Regiao 34
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   20.353 [0.0024]**
+Bootstrap test             : 20.353 [0.2764]  
+             Regiao 35
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   12.975 [0.0434]* 
+Bootstrap test             : 12.975 [0.3116]  
+             Regiao 36
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   14.889 [0.0211]* 
+Bootstrap test             : 14.889 [0.2060]  
+             Regiao 37
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   33.331 [0.0000]**
+Bootstrap test             : 33.331 [0.0201]* 
+             Regiao 38
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   20.249 [0.0025]**
+Bootstrap test             : 20.249 [0.1809]  
+             Regiao 39
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   16.632 [0.0548]  
+Bootstrap test             : 16.632 [0.5578]  
+             Regiao 40
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   15.567 [0.0163]* 
+Bootstrap test             : 15.567 [0.4221]  
+             Regiao 41
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   48.326 [0.0000]**
+Bootstrap test             : 48.326 [0.0151]* 
+             Regiao 42
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   7.4023 [0.2852]  
+Bootstrap test             : 7.4023 [0.6935]  
+             Regiao 43
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   45.785 [0.0000]**
+Bootstrap test             : 45.785 [0.0402]* 
+             Regiao 44
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   26.605 [0.0002]**
+Bootstrap test             : 26.605 [0.0905]  
+             Regiao 45
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   28.459 [0.0008]**
+Bootstrap test             : 28.459 [0.1005]  
+             Regiao 46
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   13.551 [0.0351]* 
+Bootstrap test             : 13.551 [0.3920]  
+             Regiao 47
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   8.9130 [0.4453]  
+Bootstrap test             : 8.9130 [0.8995]  
+             Regiao 48
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   36.992 [0.0000]**
+Bootstrap test             : 36.992 [0.0251]* 
+             Regiao 49
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   21.608 [0.0014]**
+Bootstrap test             : 21.608 [0.1960]  
+             Regiao 50
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   15.310 [0.0828]  
+Bootstrap test             : 15.310 [0.7437]  
+             Regiao 51
+RANK ESTIMADO NORMAL: 1
+RANK ESTIMADO NORMAL_BARLET: 1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   19.296 [0.0002]**
+Bootstrap test             : 19.296 [0.0352]* 
+             Regiao 52
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   37.948 [0.0000]**
+Bootstrap test             : 37.948 [0.0302]* 
+             Regiao 53
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   51.578 [0.0000]**
+Bootstrap test             : 51.578 [0.0000]**
+             Regiao 54
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   26.551 [0.0002]**
+Bootstrap test             : 26.551 [0.0704]  
+             Regiao 55
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   9.0680 [0.4310]  
+Bootstrap test             : 9.0680 [0.8040]  
+             Regiao 56
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   24.476 [0.0036]**
+Bootstrap test             : 24.476 [0.1960]  
+             Regiao 57
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   52.965 [0.0000]**
+Bootstrap test             : 52.965 [0.0251]* 
+             Regiao 58
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   8.4479 [0.2071]  
+Bootstrap test             : 8.4479 [0.7990]  
+             Regiao 59
+RANK ESTIMADO NORMAL: 1
+RANK ESTIMADO NORMAL_BARLET: 1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =  0.34860 [0.9506]  
+Bootstrap test             : 0.34860 [1.0000]  
+             Regiao 60
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   20.326 [0.0160]* 
+Bootstrap test             : 20.326 [0.5025]  
+             Regiao 61
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   28.523 [0.0001]**
+Bootstrap test             : 28.523 [0.1307]  
+             Regiao 62
+RANK ESTIMADO NORMAL: 1
+RANK ESTIMADO NORMAL_BARLET: 0
+RANK ZERO DETECTADO, MUDANDO PARA RANK=1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   8.4911 [0.0369]* 
+Bootstrap test             : 8.4911 [0.3417]  
+             Regiao 63
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   32.480 [0.0002]**
+Bootstrap test             : 32.480 [0.1256]  
+             Regiao 64
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   24.482 [0.0004]**
+Bootstrap test             : 24.482 [0.0553]  
+             Regiao 65
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   18.979 [0.0254]* 
+Bootstrap test             : 18.979 [0.3668]  
+             Regiao 66
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   14.398 [0.1089]  
+Bootstrap test             : 14.398 [0.5879]  
+             Regiao 67
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   19.498 [0.0213]* 
+Bootstrap test             : 19.498 [0.4221]  
+             Regiao 68
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   11.917 [0.2180]  
+Bootstrap test             : 11.917 [0.7236]  
+             Regiao 69
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   10.604 [0.1014]  
+Bootstrap test             : 10.604 [0.4573]  
+             Regiao 70
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   9.0613 [0.1702]  
+Bootstrap test             : 9.0613 [0.6030]  
+             Regiao 71
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   9.8135 [0.1327]  
+Bootstrap test             : 9.8135 [0.6281]  
+             Regiao 72
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   61.022 [0.0000]**
+Bootstrap test             : 61.022 [0.0201]* 
+             Regiao 73
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   44.737 [0.0000]**
+Bootstrap test             : 44.737 [0.0302]* 
+             Regiao 74
+RANK ESTIMADO NORMAL: 1
+RANK ESTIMADO NORMAL_BARLET: 1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   20.507 [0.0001]**
+Bootstrap test             : 20.507 [0.0754]  
+             Regiao 75
+RANK ESTIMADO NORMAL: 1
+RANK ESTIMADO NORMAL_BARLET: 1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   14.550 [0.0022]**
+Bootstrap test             : 14.550 [0.1256]  
+             Regiao 76
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   33.046 [0.0001]**
+Bootstrap test             : 33.046 [0.1759]  
+             Regiao 77
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   11.537 [0.2407]  
+Bootstrap test             : 11.537 [0.8442]  
+             Regiao 78
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   22.038 [0.0088]**
+Bootstrap test             : 22.038 [0.3166]  
+             Regiao 79
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   26.912 [0.0014]**
+Bootstrap test             : 26.912 [0.1910]  
+             Regiao 80
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   41.786 [0.0000]**
+Bootstrap test             : 41.786 [0.0251]* 
+             Regiao 81
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   12.662 [0.0487]* 
+Bootstrap test             : 12.662 [0.3869]  
+             Regiao 82
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   17.544 [0.0075]**
+Bootstrap test             : 17.544 [0.2462]  
+             Regiao 83
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   26.307 [0.0002]**
+Bootstrap test             : 26.307 [0.0352]* 
+             Regiao 84
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   11.969 [0.2151]  
+Bootstrap test             : 11.969 [0.6985]  
+             Regiao 85
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   13.718 [0.1327]  
+Bootstrap test             : 13.718 [0.6884]  
+             Regiao 86
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   22.354 [0.0078]**
+Bootstrap test             : 22.354 [0.1558]  
+             Regiao 87
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   27.449 [0.0012]**
+Bootstrap test             : 27.449 [0.1357]  
+             Regiao 88
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   40.277 [0.0000]**
+Bootstrap test             : 40.277 [0.0151]* 
+             Regiao 89
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   24.224 [0.0040]**
+Bootstrap test             : 24.224 [0.1809]  
+             Regiao 90
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   5.0543 [0.5369]  
+Bootstrap test             : 5.0543 [0.8643]  
+             Regiao 91
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   34.347 [0.0001]**
+Bootstrap test             : 34.347 [0.0452]* 
+             Regiao 92
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   5.7743 [0.4489]  
+Bootstrap test             : 5.7743 [0.8040]  
+             Regiao 93
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   38.427 [0.0000]**
+Bootstrap test             : 38.427 [0.0201]* 
+             Regiao 94
+RANK ESTIMADO NORMAL: 4
+RANK ESTIMADO NORMAL_BARLET: 4
+RANK ESTIMADO BOOSTRAP: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   104.82 [0.0000]**
+Bootstrap test             : 104.82 [0.0000]**
+             Regiao 95
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK ESTIMADO BOOSTRAP: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   66.361 [0.0000]**
+Bootstrap test             : 66.361 [0.0000]**
+             Regiao 96
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   40.659 [0.0000]**
+Bootstrap test             : 40.659 [0.0251]* 
+             Regiao 97
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK ESTIMADO BOOSTRAP: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   23.718 [0.0048]**
+Bootstrap test             : 23.718 [0.2211]  
+             Regiao 98
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK ESTIMADO BOOSTRAP: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   12.505 [0.0516]  
+Bootstrap test             : 12.505 [0.4271]  
+             Regiao 99
+RANK ESTIMADO NORMAL: 1
+RANK ESTIMADO NORMAL_BARLET: 1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   3.1700 [0.3662]  
+Bootstrap test             : 3.1700 [0.6231]  
+             Regiao 100
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   10.527 [0.0146]* 
+Bootstrap test             : 10.527 [0.2563]  
+             Regiao 101
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   8.8848 [0.1802]  
+Bootstrap test             : 8.8848 [0.5980]  
+             Regiao 102
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   13.534 [0.0353]* 
+Bootstrap test             : 13.534 [0.3869]  
+             Regiao 103
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(6)  =   16.290 [0.0123]* 
+Bootstrap test             : 16.290 [0.1910]  
+             Regiao 104
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   27.893 [0.0010]**
+Bootstrap test             : 27.893 [0.1055]  
+             Regiao 105
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK ESTIMADO BOOSTRAP: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   29.891 [0.0005]**
+Bootstrap test             : 29.891 [0.0503]  
+             Regiao 106
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   31.774 [0.0002]**
+Bootstrap test             : 31.774 [0.0653]  
+             Regiao 107
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK ESTIMADO BOOSTRAP: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   33.402 [0.0001]**
+Bootstrap test             : 33.402 [0.0251]* 
+             Regiao 108
+RANK ESTIMADO NORMAL: 3
+RANK ESTIMADO NORMAL_BARLET: 3
+RANK ESTIMADO BOOSTRAP: 3
+RANK TOTAL: 3
+Test of restrictions on alpha:           Chi^2(9)  =   14.656 [0.1008]  
+Bootstrap test             : 14.656 [0.6432]  
+             Regiao 109
+RANK ESTIMADO NORMAL: 1
+RANK ESTIMADO NORMAL_BARLET: 1
+RANK ESTIMADO BOOSTRAP: 0
+RANK ZERO DETECTADO, MUDANDO PARA RANK=1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   7.5671 [0.0559]  
+Bootstrap test             : 7.5671 [0.3367]  
+             Regiao 110
+RANK ESTIMADO NORMAL: 2
+RANK ESTIMADO NORMAL_BARLET: 2
+RANK ESTIMADO BOOSTRAP: 1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(3)  =   8.4380 [0.0378]* 
+Bootstrap test             : 8.4380 [0.3869]  

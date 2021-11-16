@@ -13,7 +13,7 @@ aVarDependenteNames = {"ETANOL_HIDRATADO", "OLEO_DIESEL", "GASOLINA_COMUM"};
 
 // ISSO PODE SER ALTERADO!!
 decl iQtdLags, iQtdRegioes;
-iQtdLags = 13;
+iQtdLags = 5;
 iQtdRegioes = 110;
 
 // Configuracao dos diretorios

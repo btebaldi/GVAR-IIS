@@ -35,11 +35,17 @@ GetRegionNames(const iQtdRegioes, const sVarPrefix, const sVarPosfix) {
 *
 * @return    
 */
-EstimateRank(const mRankMatrix){
+EstimateRank(const mRankMatrix, const col){
+
+    println("RANK TABLE");
+    println(mRankMatrix);
+
 	decl iRank;
     for(decl irow = 0; irow < rows(mRankMatrix); irow++) {
-		iRank = mRankMatrix[0][irow][1];
-		if(mRankMatrix[0][irow][6] > 0.05){
+        iRank = mRankMatrix[irow][1];
+        // println("myiRank: ", iRank);
+        // println("myValue: ", mRankMatrix[irow][col]);
+		if(mRankMatrix[irow][col] > 0.01){
 			break;
 		} else {
 			iRank = iRank + 1;
@@ -47,6 +53,27 @@ EstimateRank(const mRankMatrix){
 	}
     return(iRank);
 }
+
+
+// EstimateRank2(const mRankMatrix, const col){
+
+//     println("RANK TABLE");
+//     println(mRankMatrix);
+
+// 	decl iRank;
+//     for(decl irow = 0; irow < rows(mRankMatrix); irow++) {
+// 		// iRank = mRankMatrix[0][irow][1];
+//         iRank = mRankMatrix[irow][1];
+//         println("myiRank: ", iRank);
+//         println("myValue: ", mRankMatrix[irow][col]);
+// 		if(mRankMatrix[irow][col] > 0.05){
+// 			break;
+// 		} else {
+// 			iRank = iRank + 1;
+// 		}
+// 	}
+//     return(iRank);
+// }
 
 
 //GetBetaEstimative(const mBeta, const iRank){
@@ -89,16 +116,21 @@ main() {
     println("Carregando matrix de pessos W");
     decl mW;
 
-    mW = loadmat(sprint(txMatPathW_Matrix, "CONN.mat"));
+    mW = loadmat(sprint(txMatPathW_Matrix, "PIB_PC_1.mat"));
 
     println("*** Iniciando estimacao dos modelos *** \n");
     
     // iCont : Contador da regiao atual
     decl iCont;
 
-    for (iCont = 1; iCont <= 1; ++iCont) {
+    for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
         // FOR DEBUG ONLY
+        // zero cointegracao:  13,52,77, 99, 114, 115
+		// if( any(<12,16> .== iCont)){
+		// println("SKIP: Regiao ", iCont);
+        //      continue;
+        // }
        
 		// print Headder
         println("\n\n*****************************************");
@@ -142,7 +174,7 @@ main() {
         for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
             // Adiciona a variavel em primeira Diferenca
             mData =	modelDatabase.GetVar(sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
-            modelDatabase.Append(diff(mData), sprint("D_R", iCont, "_", aVarDependenteNames[iContador]));
+            modelDatabase.Append(diff(mData), sprint("D_R_", iCont, "_", aVarDependenteNames[iContador]));
 
             // Adiciona a variavel Star em primeira diferenca
             mData =	modelDatabase.GetVar(sprint("star_", aVarDependenteNames[iContador]));
@@ -150,7 +182,7 @@ main() {
         }
         println("\tConcluido construcao da variavel Delta para a regiao ", iCont);
 
-// modelDatabase.SaveIn7(sprint("DEBUG_", iCont, "_Fulldatabase"));  
+        // modelDatabase.SaveIn7(sprint("DEBUG_", iCont, "_Fulldatabase"));  
 
         println("\tIniciando determinacao do vetor de cointegracao (beta) a regiao ", iCont);
         // Inicio um objeto do CATS (Cointegration)
@@ -159,23 +191,23 @@ main() {
 		// modelCats.Resample(12, 1995, 1);
 
         for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
-            // Adiciona a variavel em primeira Diferenca
+            /* Adiciona a variavel em primeira Diferenca */
             mData =	modelDatabase.GetVar(sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
-            modelCats.Append(mData, sprint("R", iCont, "_", aVarDependenteNames[iContador]));
+            modelCats.Append(mData, sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
         }
 
         for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
-            // Adiciona a variavel Star em primeira diferenca
+            // Adiciona a variavel Star em primeira diferenca*/
             mData =	modelDatabase.GetVar(sprint("star_", aVarDependenteNames[iContador]));
             modelCats.Append(mData, sprint("star", "_", aVarDependenteNames[iContador]));
         }
 
-        modelCats.SaveIn7(sprint("R_", iCont, "_database"));
+        // modelCats.SaveIn7(sprint("R_", iCont, "_database"));
 
     	// Adiciona as variaveis X como exogenas
         for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
-            println("append: ",sprint("R", iCont, "_", aVarDependenteNames[iContador]));
-            modelCats.Select("Y", {sprint("R", iCont, "_", aVarDependenteNames[iContador]), 0, 0});
+            println("append: ",sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
+            modelCats.Select("Y", {sprint("R_", iCont, "_", aVarDependenteNames[iContador]), 0, 0});
         }
         for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
             println("append: ",sprint("star", "_", aVarDependenteNames[iContador]));
@@ -206,49 +238,66 @@ main() {
         // Estima o modelo.
         modelCats.Estimate();
 
-// modelCats.PrintI1Rank();
-        // Estima vetores do cointegração por bootstrap
-       	mRankMatrix = modelCats.BootstrapRankTest();
-
         // Escolhe o Rank 
-        iRank = EstimateRank(mRankMatrix);
-        println(EstimateRank(mRankMatrix));
+        mRankMatrix = modelCats.I1RankTable();
+        iRank = EstimateRank(mRankMatrix, 6);
+        println("RANK ESTIMADO NORMAL: ", iRank);
+        iRank = EstimateRank(mRankMatrix, 7);
+        println("RANK ESTIMADO NORMAL_BARLET: ", iRank);
 
-// if(iRank == 0){
-// println("RANK ZERO DETECTADO, MUDANDO PARA RANK=1");
-// continue;
-// 		iRank=1;
-// }
+        // modelCats.PrintI1Rank();
+        // Estima vetores do cointegração por bootstrap
+       	// if(any(<94, 95, 97, 98, 105, 107, 108, 109, 110> .== iCont)){
+            mRankMatrix = modelCats.BootstrapRankTest();
+            iRank = EstimateRank(mRankMatrix[0], 7);
+            println("RANK ESTIMADO BOOSTRAP: ", iRank);
+        // }
+
+        if(iRank == 0){
+            println("RANK ZERO DETECTADO, MUDANDO PARA RANK=1");
+            iRank=1;
+        }
 
         mBeta = modelCats.GetBeta();
         // println(mRankMatrix);
 
         // Se o rank for maior que dois Automaticamente teremos de modelar as variaveis no modelo dominante
-//         if(iRank > 2){
-//              salva a estimacao do beta PARA AS REGIOES COM MAIS DE 3VETORES DE COINTEGRACAO
-//             modelCats.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Dominant3_CoInt_R", iCont, ".mat")), mBeta, iRank);
-//         } else {
-// 			 Restima o modelo com os dados de cointegracao.
-// println("RANK TOTAL: ",iRank);
-//             modelCats.I1Rank(iRank);
-//             modelCats.Estimate();
-//             modelCats.BootstrapRankTest();
+        if(iRank > 6){
+            //  salva a estimacao do beta PARA AS REGIOES COM MAIS DE 3 VETORES DE COINTEGRACAO
+            modelCats.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Dominant3_CoInt_R", iCont, ".mat")), mBeta, iRank);
+        } else {
+			//  Restima o modelo com os dados de cointegracao.
+            println("RANK TOTAL: ",iRank);
+            modelCats.I1Rank(iRank);
+            modelCats.Estimate();
+            //modelCats.BootstrapRankTest();
 
-//             modelCats.SetPrint(TRUE);
+            modelCats.SetPrint(TRUE);
+            
             // Estima a exogeniedade fraca
-// 			modelCats.Restrict({"[beta]","[alpha]","* * 0 0","* * 0 0"});
-//         	modelCats.BootstrapRestrictions();
-// println("TESTE REGIAO ", iCont, " (hail mary)");
-// 			modelCats.Restrict({"[beta]","* * * *","0 0 * *","[alpha]","* * 0 0","0 0 * *"});
-//         	modelCats.BootstrapRestrictions();
-            // println("a", a[0]);
-            // println("a", a[1]);
-            // println("a", a[2]);
-            // println("a", a[3]);
+            println("TESTE A EXOGENIEDADE FRACA: Regiao ", iCont);
+			if(iRank == 1){
+                modelCats.Restrict({"[beta]","[alpha]","* * * 0 0 0"});
+            } else if(iRank == 2){
+                modelCats.Restrict({"[beta]","[alpha]","* * * 0 0 0", "* * * 0 0 0"});
+            } else if(iRank == 3) {
+                modelCats.Restrict({"[beta]","[alpha]","* * * 0 0 0", "* * * 0 0 0", "* * * 0 0 0"});
+            } else if(iRank == 4) {
+                modelCats.Restrict({"[beta]","[alpha]","* * * 0 0 0", "* * * 0 0 0", "* * * 0 0 0", "* * * 0 0 0"});
+            } else if(iRank == 5) {
+                modelCats.Restrict({"[beta]","[alpha]","* * * 0 0 0", "* * * 0 0 0", "* * * 0 0 0", "* * * 0 0 0", "* * * 0 0 0"});
+            } else {
+                println("DEU MERDA!");
+            }
+        	modelCats.BootstrapRestrictions();
+
+            // println("TESTE A SEPARABILIDADE ", iCont, " (hail mary)");
+			// modelCats.Restrict({"[beta]","* * * *", "0 0 * *","[alpha]","* * 0 0","0 0 * *"});
+        	// modelCats.BootstrapRestrictions();
             // println("a", modelCats.GetAlpha());
 
-//             modelCats.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Weak2_CoInt_R", iCont, ".mat")), mBeta, iRank);
-//         }
+            modelCats.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Weak2_CoInt_R", iCont, ".mat")), mBeta, iRank);
+        }
 
         // Guarda o valor do Beta
         // mBeta = model.GetBeta();
@@ -257,7 +306,7 @@ main() {
         delete modelDatabase;
 
         // Apago variaveis que nao serao mais utilizadas
-        // delete mData, mBeta, asX;
+        delete mData, mBeta;
     } // for (iCont = 1; iCont <= iQtdRegioes; ++iCont)
 
     delete mW;
