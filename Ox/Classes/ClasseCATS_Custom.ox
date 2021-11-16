@@ -12,7 +12,7 @@ class GVAR_CATS : CATS
 GVAR_CATS::GVAR_CATS()
 {
 	CATS();
-	print("Comecando com a rotina!");
+	println("Inicializando a Classe GVAR_CATS!");
 }
 
 GVAR_CATS::GetBetaEstimative(const mBeta, const iRank){

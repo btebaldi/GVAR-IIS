@@ -45,7 +45,7 @@ head(Mapeamento)
 
 #  Seleciona os agrupamentos unicos.
 Mapeamento <- Mapeamento %>% 
-  select(ID_Meso, Agrupamento, OxCode) %>% distinct()
+  select(ID_Meso, OxCode) %>% distinct()
 
 
 # Carrega o cadastro de municipios
@@ -130,9 +130,9 @@ for (col in 1:ncol(W.mat)) {
     Destino <- Mapeamento %>% filter(OxCode == Agrupamento_destino) %>% pull(ID_Meso)
     
     # Busca informacoes de destino 
-    Destino_pop <- tbl %>% filter(Agrupamento == Agrupamento_destino) %>% pull(POP)
-    Destino_pib <- tbl %>% filter(Agrupamento == Agrupamento_destino) %>% pull(PIB)
-    Destino_pib_pc <- tbl %>% filter(Agrupamento == Agrupamento_destino) %>% pull(PIB_PC)
+    Destino_pop <- tbl %>% filter(OxCode == Agrupamento_destino) %>% pull(POP)
+    Destino_pib <- tbl %>% filter(OxCode == Agrupamento_destino) %>% pull(PIB)
+    Destino_pib_pc <- tbl %>% filter(OxCode == Agrupamento_destino) %>% pull(PIB_PC)
     
     
     if(Agrupamento_origem == Agrupamento_destino){
