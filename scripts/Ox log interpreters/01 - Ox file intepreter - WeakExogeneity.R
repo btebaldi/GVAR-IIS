@@ -214,7 +214,11 @@ cat(sprintf("Total de 1S: %d\nTotal de 2S: %d", ncount - ncount_2S, ncount_2S))
           ExoTest_Boot_Info = if_else(ExoTest_Boot >= 0.01, TRUE, FALSE, missing = NA),
           Overall = ExoTest_Info | ExoTest_Boot_Info)
 
+<<<<<<< HEAD
  tbl.results %>% count(Overall)
+=======
+
+>>>>>>> dd8986fc4f57c0ebe0dc6bfade05493a146e5f6c
 # readr::write_excel_csv(x=tbl.results,
 #                        file = sprintf("%s on %s.txt", stringr::str_match(fileName,  stringr::regex(".*(?=\\.\\w{3})")), Sys.Date()))
 
