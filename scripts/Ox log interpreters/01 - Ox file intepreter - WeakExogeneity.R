@@ -14,12 +14,12 @@ library(dplyr)
 getwd()
 # Variaveis internas ------------------------------------------------------
 
-fileName = "2021-11-15 - WeakExogenity_v1.txt"
-fileName = "temp.txt"
-filepath = file.path(".", "scripts", "Ox log interpreters", fileName)
+fileName = "2021-11-20 - output weakexogenity_l8.txt"
+
+filepath = file.path(".", "Ox", "output", fileName)
 
 if(!file.exists(filepath)) {
-    stop("Arquivo nao existe")
+  stop("Arquivo nao existe")
 }
 
 ReadCon  <- file(description = filepath, open = "r")
@@ -35,7 +35,10 @@ tbl.results <- tibble(region = 1:110,
                       rank = as.integer(NA),
                       ExoTest = as.numeric(NA),
                       ExoTest_Boot = as.numeric(NA),
-                      Zero_Rank = FALSE)
+                      Zero_Rank = FALSE, 
+                      Auto1 = as.numeric(NA),
+                      Auto2 = as.numeric(NA))
+
 
 
 while ( TRUE ) {
@@ -52,41 +55,44 @@ while ( TRUE ) {
   ExoTest_Boot <- NA    # Alpha Beta Test
   zerorank <- NA        # rank zero detectado
   WriteInfo <- FALSE
-    
+  
+  Auto1 <- NA
+  Auto2 <- NA
+  
   #  Faz leitura da linha
   line = readLines(ReadCon, n = 1)
-    
+  
   # Se a linha tem tamanho zero entao para o processamento
   if ( length(line) == 0 ) {
     break
   }
   
-    # verifica e o comeco do processamento
+  # verifica e o comeco do processamento
   if(stringr::str_detect(line, stringr::regex("-* Ox at .* on .* -*"))){
-    writeLines( text = line, con = WriteCon)
+    # writeLines( text = line, con = WriteCon)
     print(line)
   }
   
   # verifica a regiao que foi skiped
-#   if(stringr::str_detect(line, stringr::regex(pattern2))){
-#     writeLines( text = line, con = WriteCon)
-#     writeLines( text = "No data", con = WriteCon)
-#     writeLines( text = "No data", con = WriteCon)
-#     writeLines( text = "No data", con = WriteCon)
-    
-#     region_number <- stringr::str_match(line,  stringr::regex("(?<=SKIP: Regiao )\\d*"))
-#     WriteInfo <- TRUE
-    
-#     print(line)
-#     print("No data")
-#     print("No data")
-#   }
+  #   if(stringr::str_detect(line, stringr::regex(pattern2))){
+  #     # writeLines( text = line, con = WriteCon)
+  #     # writeLines( text = "No data", con = WriteCon)
+  #     # writeLines( text = "No data", con = WriteCon)
+  #     # writeLines( text = "No data", con = WriteCon)
+  
+  #     region_number <- stringr::str_match(line,  stringr::regex("(?<=SKIP: Regiao )\\d*"))
+  #     WriteInfo <- TRUE
+  
+  #     print(line)
+  #     print("No data")
+  #     print("No data")
+  #   }
   
   
   # verifica a regiao que foi detectado rank zero
   if(stringr::str_detect(line, stringr::regex("RANK ZERO DETECTADO"))){
-    writeLines(text = line, con = WriteCon)
-
+    # writeLines(text = line, con = WriteCon)
+    
     zerorank <- 1
     WriteInfo <- TRUE
     
@@ -96,7 +102,7 @@ while ( TRUE ) {
   
   # verifica a regiao atual
   if(stringr::str_detect(line, stringr::regex("             Regiao "))){
-    writeLines( text = line, con = WriteCon)
+    # writeLines( text = line, con = WriteCon)
     
     region_number <- stringr::str_match(line,  stringr::regex("(?<=             Regiao )\\d*"))
     WriteInfo <- TRUE
@@ -107,36 +113,36 @@ while ( TRUE ) {
   
   
   if(stringr::str_detect(line, stringr::regex("RANK ESTIMADO NORMAL: "))){
-    writeLines(text = line, con = WriteCon)
+    # writeLines(text = line, con = WriteCon)
     
     rank_normal <- stringr::str_match(line,  stringr::regex("(?<=RANK ESTIMADO NORMAL: )\\d"))
     WriteInfo <- TRUE
-    print(line)
+    # print(line)
     # stop()
   }
   
   if(stringr::str_detect(line, stringr::regex("RANK ESTIMADO NORMAL_BARLET: "))){
-    writeLines(text = line, con = WriteCon)
+    # writeLines(text = line, con = WriteCon)
     
     rank_barlet <- stringr::str_match(line,  stringr::regex("(?<=RANK ESTIMADO NORMAL_BARLET: )\\d"))
     WriteInfo <- TRUE
-    print(line)
+    # print(line)
     # stop()
   }
   
   if(stringr::str_detect(line, stringr::regex("RANK ESTIMADO BOOSTRAP: "))){
-    writeLines(text = line, con = WriteCon)
+    # writeLines(text = line, con = WriteCon)
     
     rank_boot <- stringr::str_match(line,  stringr::regex("(?<=RANK ESTIMADO BOOSTRAP: )\\d"))
     WriteInfo <- TRUE
-    print(line)
+    # print(line)
     # stop()
   }  
   
   
   # verifica o Rank
   if(stringr::str_detect(line, stringr::regex("RANK TOTAL: "))){
-    writeLines(text = line, con = WriteCon)
+    # writeLines(text = line, con = WriteCon)
     
     rank <- stringr::str_match(line,  stringr::regex("(?<=RANK TOTAL: )\\d"))
     WriteInfo <- TRUE
@@ -146,10 +152,10 @@ while ( TRUE ) {
   
   # Verifica a restrição em alpha e beta
   if(stringr::str_detect(line, stringr::regex("Test of restrictions on alpha( and beta)?:"))){
-    writeLines( text = line, con = WriteCon)
+    # writeLines( text = line, con = WriteCon)
     ExoTest <- stringr::str_match(line,  stringr::regex("(?<=\\[).*(?=\\])"))
     WriteInfo <- TRUE
-    print(line)
+    # print(line)
     
     # Detecta se o teste passou ou nao.
     if(stringr::str_detect(line, stringr::regex("Test of restrictions on alpha:\\s*.*\\[.*\\]\\*{2}"))) {
@@ -160,12 +166,30 @@ while ( TRUE ) {
   
   # Verifica a restrição em alpha (2020-11-18: A principio tera dois testes por regiao)
   if(stringr::str_detect(line, stringr::regex("Bootstrap test\\s+:"))){
-    writeLines(text = line, con = WriteCon)
+    # writeLines(text = line, con = WriteCon)
     ExoTest_Boot <- stringr::str_match(line,  stringr::regex("(?<=\\[).*(?=\\])"))
     WriteInfo <- TRUE
-    print(line)
+    # print(line)
     
   }
+  
+  # Verifica autocorrelacao
+  if(stringr::str_detect(line, stringr::regex("LM\\(1\\):\\s+Chi\\^2\\(36\\)"))){
+    # # writeLines(text = line, con = WriteCon)
+    Auto1 <- stringr::str_match(line,  stringr::regex("(?<=\\[).*(?=\\])"))
+    WriteInfo <- TRUE
+    # print(line)
+  }
+  
+  if(stringr::str_detect(line, stringr::regex("LM\\(2\\):\\s+Chi\\^2\\(36\\)"))){
+    # # writeLines(text = line, con = WriteCon)
+    Auto2 <- stringr::str_match(line,  stringr::regex("(?<=\\[).*(?=\\])"))
+    WriteInfo <- TRUE
+    # print(line)
+  }
+  
+  
+  
   
   if(WriteInfo)
   {
@@ -195,9 +219,17 @@ while ( TRUE ) {
       tbl.results$ExoTest_Boot[selctVector] <- as.numeric(ExoTest_Boot)  
       # stop()
     }
-
+    
     if(!is.na(zerorank)){
       tbl.results$Zero_Rank[selctVector] <- TRUE  
+    }
+    
+    if(!is.na(Auto1)){
+      tbl.results$Auto1[selctVector] <- as.numeric(Auto1)
+    }
+    
+    if(!is.na(Auto2)){
+      tbl.results$Auto2[selctVector] <- as.numeric(Auto2)
     }
     
   }
@@ -209,16 +241,16 @@ close(WriteCon)
 
 cat(sprintf("Total de 1S: %d\nTotal de 2S: %d", ncount - ncount_2S, ncount_2S))
 
- tbl.results <- tbl.results %>% 
-   mutate(ExoTest_Info = if_else(ExoTest >= 0.01, TRUE, FALSE, missing = NA),
-          ExoTest_Boot_Info = if_else(ExoTest_Boot >= 0.01, TRUE, FALSE, missing = NA),
-          Overall = ExoTest_Info | ExoTest_Boot_Info)
+tbl.results <- tbl.results %>% 
+  mutate(ExoTest_Info = if_else(ExoTest >= 0.01, TRUE, FALSE, missing = NA),
+         ExoTest_Boot_Info = if_else(ExoTest_Boot >= 0.01, TRUE, FALSE, missing = NA),
+         Overall = ExoTest_Info | ExoTest_Boot_Info,
+         Max_auto = pmax(Auto1, Auto2),
+         Max_rank = pmax(rank_normal , rank_barlet , rank_boot  )
+         )
 
-<<<<<<< HEAD
- tbl.results %>% count(Overall)
-=======
 
->>>>>>> dd8986fc4f57c0ebe0dc6bfade05493a146e5f6c
+tbl.results %>% count(Overall)
 # readr::write_excel_csv(x=tbl.results,
 #                        file = sprintf("%s on %s.txt", stringr::str_match(fileName,  stringr::regex(".*(?=\\.\\w{3})")), Sys.Date()))
 

@@ -189,30 +189,57 @@ main() {
     	decl modelCats = new GVAR_CATS();
 	
 		// modelCats.Resample(12, 1995, 1);
+        // mData =	modelDatabase.GetVar("date_2");
+        // modelCats.Append(mData, sprint("DB_DATE"));
 
+        // modelCats.SetSample ( const iYear1 , const iPeriod1 , const iYear2 , const iPeriod2 )
+        // modelCats.SetSample ( 2004, 19, 2021, const iPeriod2 )
+
+        /* Adiciona a variavel em primeira Diferenca */
         for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
-            /* Adiciona a variavel em primeira Diferenca */
             mData =	modelDatabase.GetVar(sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
             modelCats.Append(mData, sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
         }
 
+        // Adiciona a variavel Star em primeira diferenca
         for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
-            // Adiciona a variavel Star em primeira diferenca*/
             mData =	modelDatabase.GetVar(sprint("star_", aVarDependenteNames[iContador]));
             modelCats.Append(mData, sprint("star", "_", aVarDependenteNames[iContador]));
         }
 
-        // modelCats.SaveIn7(sprint("R_", iCont, "_database"));
+        // Adiciona a variavel macroeconomicas (exogenas) 
+        for(iContador = 0; iContador < columns(aMacroVarNames); ++iContador) {
+            mData =	modelDatabase.GetVar(sprint(aMacroVarNames[iContador]));
+            modelCats.Append(mData, sprint(aMacroVarNames[iContador]));
+        }
+
+        // Adiciona a variaveis dummies
+        // for(iContador = 1; iContador < 12; ++iContador) {
+        //     mData =	modelDatabase.GetVar(sprint("M", iContador));
+        //     modelCats.Append(mData, sprint("M", iContador));
+        // }
+        
 
     	// Adiciona as variaveis X como exogenas
         for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
-            println("append: ",sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
+            println("append: ", sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
             modelCats.Select("Y", {sprint("R_", iCont, "_", aVarDependenteNames[iContador]), 0, 0});
         }
         for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
-            println("append: ",sprint("star", "_", aVarDependenteNames[iContador]));
+            println("append: ", sprint("star", "_", aVarDependenteNames[iContador]));
             modelCats.Select("Y", {sprint("star", "_", aVarDependenteNames[iContador]), 0, 0});
         }
+
+        for(iContador = 0; iContador < columns(aMacroVarNames); ++iContador) {
+            println("append: ", sprint(aMacroVarNames[iContador]));
+            modelCats.Select("X", {sprint(aMacroVarNames[iContador]), 0, 0});
+        }
+
+        // for(iContador = 1; iContador < 12; ++iContador) {
+        //     println("append: ", sprint("M", iContador));
+        //     modelCats.Select("X", {sprint("M", iContador), 0, 0});
+        // }
+
         modelCats.Lags(iQtdLags, iQtdLags, iQtdLags);
 
 	    // Rank inicial (mudar para a quantidade de variaveis.)
@@ -224,7 +251,7 @@ main() {
         modelCats.Trend("DRIFT");
 
         // Inclui seasonal centradas
-        modelCats.Seasonals(1);
+        // modelCats.Seasonals(1);
 
         // fixa a amostra
         // modelCats.SetSelSample(1995, 1, 1998, 12);
@@ -236,7 +263,10 @@ main() {
         modelCats.SetPrint(TRUE);
 
         // Estima o modelo.
+        // modelCats.SaveIn7(sprint("R_", iCont, "_database"));
         modelCats.Estimate();
+
+        modelCats.TestSummary();
 
         // Escolhe o Rank 
         mRankMatrix = modelCats.I1RankTable();

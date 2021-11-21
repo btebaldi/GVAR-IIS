@@ -6,14 +6,14 @@
 
 // VARIAVEIS DEPENDENTES
 // NAO MUDAR ISSO !!!
-decl iQtdVarDependente;
-iQtdVarDependente = 3;
+// decl iQtdVarDependente;
+// iQtdVarDependente = 3;
 decl aVarDependenteNames;
 aVarDependenteNames = {"ETANOL_HIDRATADO", "OLEO_DIESEL", "GASOLINA_COMUM"};
 
 // ISSO PODE SER ALTERADO!!
 decl iQtdLags, iQtdRegioes;
-iQtdLags = 5;
+iQtdLags = 4;
 iQtdRegioes = 110;
 
 // Configuracao dos diretorios
@@ -25,12 +25,12 @@ txMatPathG_Matrix = "./mat_files/G_Matrix/";
 txMatPathResult_Matrix = "./mat_files/Result_Matrix/";
 
 txCoIntMatPath = "./mat_files/Cointegration/";
-txDbase = "../export/database for ox/db_Ox_sem_buraco.csv";
+txDbase = "../export/database for ox/db_oil_withDummies.csv";
 txDbaseMacroVariables = "../Database/MacroVariables.in7";
 
 decl aMacroVarNames;
 //aMacroVarNames = {"Macro1", "Macro2", "Macro3"};
-aMacroVarNames = {"lpim_BR", "ln_Selic_aa", "Dln_IPCA"};
+aMacroVarNames = {"brent"};
 
 // TRUE / FALSE;
 decl is_IIS_ON = TRUE;
