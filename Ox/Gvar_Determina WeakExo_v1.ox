@@ -95,7 +95,7 @@ EstimateRank(const mRankMatrix, const col){
 
 main() {
     // Arquivo de configuracao
-    #include "./Config.ox";
+    #include "./Config.ini";
 
 
     println("Carregando dados de macrovariaveis");

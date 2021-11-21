@@ -14,7 +14,7 @@ library(dplyr)
 getwd()
 # Variaveis internas ------------------------------------------------------
 
-fileName = "2021-11-20 - output weakexogenity_l8.txt"
+fileName = "2021-11-21 - output weakexogenity_l8.txt"
 
 filepath = file.path(".", "Ox", "output", fileName)
 
@@ -249,8 +249,17 @@ tbl.results <- tbl.results %>%
          Max_rank = pmax(rank_normal , rank_barlet , rank_boot  )
          )
 
+View(tbl.results)
 
-tbl.results %>% count(Overall)
+tbl.results %>%
+  count(Overall) %>% 
+  print()
+
+tbl.results %>%
+  count(Max_rank) %>%
+  print()
+
+
 # readr::write_excel_csv(x=tbl.results,
 #                        file = sprintf("%s on %s.txt", stringr::str_match(fileName,  stringr::regex(".*(?=\\.\\w{3})")), Sys.Date()))
 
