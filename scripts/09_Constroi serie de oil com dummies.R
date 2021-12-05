@@ -36,3 +36,4 @@ tbl <- tbl %>% filter(year(DATA_INICIAL) < 2019)
 
 saveRDS(object = tbl, file = "./database/db_oil_withDummies.rds")
 readr::write_csv(x = tbl, file = "./export/database for ox/db_oil_withDummies.csv")
+

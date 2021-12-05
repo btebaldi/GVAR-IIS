@@ -15,7 +15,7 @@ library(ggplot2)
 getwd()
 # Variaveis internas ------------------------------------------------------
 
-
+tail(tbl)
 tbl <- readRDS(file = "./database/db_Ox_sem_buraco.rds")
 
 
@@ -50,6 +50,7 @@ ggplot(Oil) +
   geom_line(aes(x=DATA_INICIAL, y=brent, colour="brent")) +
   geom_line(aes(x=DATA_INICIAL, y=WTI, colour = "WTI"))
 
+colnames(Oil)
 
 saveRDS(object = Oil, file = "./database/db_oil.rds")
 readr::write_csv(x = Oil, file = "./export/database for ox/db_Oil.csv")

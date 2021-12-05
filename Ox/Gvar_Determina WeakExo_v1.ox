@@ -230,10 +230,10 @@ main() {
             modelCats.Select("Y", {sprint("star", "_", aVarDependenteNames[iContador]), 0, 0});
         }
 
-        for(iContador = 0; iContador < columns(aMacroVarNames); ++iContador) {
-            println("append: ", sprint(aMacroVarNames[iContador]));
-            modelCats.Select("X", {sprint(aMacroVarNames[iContador]), 0, 0});
-        }
+        // for(iContador = 0; iContador < columns(aMacroVarNames); ++iContador) {
+        //     println("append: ", sprint(aMacroVarNames[iContador]));
+        //     modelCats.Select("X", {sprint(aMacroVarNames[iContador]), 0, 0});
+        // }
 
         // for(iContador = 1; iContador < 12; ++iContador) {
         //     println("append: ", sprint("M", iContador));
@@ -251,7 +251,7 @@ main() {
         modelCats.Trend("DRIFT");
 
         // Inclui seasonal centradas
-        // modelCats.Seasonals(1);
+        modelCats.Seasonals(1);
 
         // fixa a amostra
         // modelCats.SetSelSample(1995, 1, 1998, 12);

@@ -26,7 +26,27 @@ db_com_buraco <- Gas_agrupo %>%
               names_prefix = "R_")
 
 
+# completa datas faltantes
+db_com_buraco <- db_com_buraco %>% add_row(DATA_INICIAL = as.Date("2005-08-14"), DATA_FINAL = as.Date("2005-08-20"))
+db_com_buraco <- db_com_buraco %>% add_row(DATA_INICIAL = as.Date("2005-08-21"), DATA_FINAL = as.Date("2005-08-27"))
+db_com_buraco <- db_com_buraco %>% add_row(DATA_INICIAL = as.Date("2009-08-16"), DATA_FINAL = as.Date("2009-08-22"))
+db_com_buraco <- db_com_buraco %>% add_row(DATA_INICIAL = as.Date("2009-08-23"), DATA_FINAL = as.Date("2009-08-29"))
+db_com_buraco <- db_com_buraco %>% add_row(DATA_INICIAL = as.Date("2015-08-16"), DATA_FINAL = as.Date("2015-08-22"))
+
+db_com_buraco <- db_com_buraco %>% arrange(DATA_INICIAL)
+
+
 saveRDS(object = db_com_buraco,
         file = "./database/db_Ox_com_buraco.rds")
+
+
+
+
+
+
+
+
+
+
 
 

@@ -14,7 +14,7 @@ library(dplyr)
 getwd()
 # Variaveis internas ------------------------------------------------------
 
-fileName = "2021-11-21 - output weakexogenity_l8.txt"
+fileName = "2021-11-28 - output weakexogenity_l8ws.txt"
 
 filepath = file.path(".", "Ox", "output", fileName)
 
@@ -251,10 +251,18 @@ tbl.results <- tbl.results %>%
 
 View(tbl.results)
 
+print("Exogeniedade fraca")
 tbl.results %>%
   count(Overall) %>% 
   print()
 
+print("Autocorrelacao")
+tbl.results %>% 
+  mutate(Max_auto_TF = Max_auto > 0.01) %>% 
+  count(Max_auto_TF) %>% 
+  print()
+
+print("Rank")
 tbl.results %>%
   count(Max_rank) %>%
   print()
