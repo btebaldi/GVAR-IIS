@@ -300,7 +300,7 @@ main() {
     // Arquivo de configuracao
     #include "./Config.ini";
 
-
+	/*
     println("Carregando dados de macrovariaveis");
     decl mMacroData;
     decl daBaseMacro = new Database();
@@ -328,6 +328,7 @@ main() {
 	println("Lista de ranks das regioes: ", sprint("./mat_files/", "rankOfRegions.mat"));
     mRankRegions = loadmat(sprint("./mat_files/", "rankOfRegions.mat"));
     // println(mRankRegions);
+	*/
 		
     for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
@@ -406,7 +407,53 @@ main() {
             // println("rows: ", asBetaZ);
         }
         
-        // Adiciono a(s) variavei(s) beta*Z ao banco de dados
+// Adiciono a(s) variavei(s) beta*Z ao banco de dados
+
+        for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
+			 if(iContador == 0){
+			println("Getting for betaZ: ", sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
+            mData =	modelDatabase.GetVar(sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
+			} else {
+			
+			 mData = mData ~ model.GetVar(sprint("R", iCont, "_Desligados"));
+			
+
+
+
+        }
+        for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
+            println("append: ", sprint("star", "_", aVarDependenteNames[iContador]));
+            modelCats.Select("Y", {sprint("star", "_", aVarDependenteNames[iContador]), 0, 0});
+        }
+
+			 
+
+		
+            mData =	modelDatabase.GetVar(sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
+            modelDatabase.Append(diff(mData), sprint("D_R_", iCont, "_", aVarDependenteNames[iContador]));
+
+            // Adiciona a variavel Star em primeira diferenca
+            mData =	modelDatabase.GetVar(sprint("star_", aVarDependenteNames[iContador]));
+            modelDatabase.Append(diff(mData), sprint("D_star", "_", aVarDependenteNames[iContador]));
+        }
+
+
+
+
+
+mData =	model.GetVar(sprint("R", iCont, "_Admitidos"));
+mData = mData ~ model.GetVar(sprint("R", iCont, "_Desligados"));
+mData = mData ~ model.GetVar("star_Admitidos");
+mData = mData ~ model.GetVar("star_Desligados");
+model.Append(diff(mData), {sprint("D_R", iCont, "_Admitidos"), sprint("D_R", iCont, "_Desligados"), "D_star_Admitidos", "D_star_Desligados"});
+
+// Adiciona a variavel Star em primeira diferenca
+for(iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
+mData =	modelDatabase.GetVar(sprint("star_", aVarDependenteNames[iContador]));
+modelCats.Append(mData, sprint("star", "_", aVarDependenteNames[iContador]));
+}
+        
+        
         model.Append(mData * beta', asBetaZ);
 		
         delete asBetaZ;

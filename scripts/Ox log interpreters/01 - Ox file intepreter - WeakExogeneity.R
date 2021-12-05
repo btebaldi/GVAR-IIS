@@ -14,7 +14,7 @@ library(dplyr)
 getwd()
 # Variaveis internas ------------------------------------------------------
 
-fileName = "2021-11-28 - output weakexogenity_l8ws.txt"
+fileName = "2021-12-05 - output weakexogenity_l8ws.txt"
 
 filepath = file.path(".", "Ox", "output", fileName)
 
@@ -270,4 +270,27 @@ tbl.results %>%
 
 # readr::write_excel_csv(x=tbl.results,
 #                        file = sprintf("%s on %s.txt", stringr::str_match(fileName,  stringr::regex(".*(?=\\.\\w{3})")), Sys.Date()))
+
+
+SaveMatrixForOx <- function(Matrix, file_name, comment = NULL){
+  if(is.null(comment)){comment = file_name}
+  
+  file.name <- sprintf("./export/%s", file_name)
+  
+  fileConn <- file(file.name)
+  writeLines( text = sprintf("%1$d %2$d // A %1$d by %2$d matrix (%3$s)", 
+                             dim(Matrix)[1],
+                             dim(Matrix)[2],
+                             comment),
+              con = fileConn)
+  close(fileConn)
+  
+  write.table(x = Matrix, file = file.name,
+              append = TRUE,
+              col.names = FALSE,
+              row.names = FALSE)
+}
+
+rankOfRegions <- tbl.results %>% select(rank)
+SaveMatrixForOx(Matrix = rankOfRegions, file_name = "rankOfRegions.mat", comment = "(Indication of the rank of the regions)")
 
