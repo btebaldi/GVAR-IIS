@@ -38,7 +38,7 @@ aMacroVarNames = {"brent"};
 // TRUE / FALSE;
 decl is_IIS_ON = FALSE;
 decl IIS_pvalue = 0.0000100;
-decl is_DUMMY_ON = FALSE;
+decl is_DUMMY_ON = TRUE;
 
 
 // Ativa a impressao de

@@ -94,7 +94,7 @@ ProcessoU(mU, const iValue, const sName, const iQtdLags, const iRegDependente, c
 			asConstants = asConstants | {sprint("CSeasonal_", iContRows)};
 		}
 	}
-	println(asConstants);
+	//println(asConstants);
 	
     for (iContRows = 0; iContRows < sizeof(asTipo); ++iContRows) {
         // Preenchimento da matrix Lambda
@@ -119,30 +119,29 @@ ProcessoU(mU, const iValue, const sName, const iQtdLags, const iRegDependente, c
 ProcessoIIS(const iValue, const sName, const iRegDependente, const sVarSufix, const anoIni, const anoFim, const asTipo) {
     //(const iValue, const sName, const iQtdLags, const iRegDependente)
     println("Processo Extracao da matriz de saturacao (IIS)");
-    decl nContTipo, nContTotal, iContVar, sParamName, nCountAno, nCountMes, mReturn, index;
+    decl nContTipo, nContTotal, whatToLookFor, mReturn, index;
+
+	#include "./IIS_NAMES_Config.ox"
 
 	// Matriz IIS
 	// Inicializa uma matriz Zerada Zeros(linhas, colunas)
-	mReturn = zeros(2, ((anoFim - anoIni) + 1) * 12);
-
-	//asTipo = {"Admitidos", "Desligados"};
+	// mReturn = zeros(columns(asTipo), ((anoFim - anoIni) + 1) * 12);
+	mReturn = zeros(columns(asTipo), sizeof(asListaDummies));
 
     //Faz um looping por todas as datas, procura a respectiva dummy e se achar adiciona o valor a tabela.
-    nContTotal = 0;
-
-    for (nCountAno = anoIni; nCountAno <= anoFim; ++nCountAno) {
-        for (nCountMes = 1; nCountMes <= 12; ++nCountMes) {
+    for (nContTotal = 0; nContTotal < sizeof(asListaDummies); ++nContTotal) {
             //println(sprint("I:",nCountAno,"(",nCountMes,")"));
             for (nContTipo = 0; nContTipo < sizeof(asTipo); ++nContTipo) {
-                index = find(sName, sprint("I:", nCountAno, "(", nCountMes, ")@", sVarSufix, iRegDependente, "_" , 	asTipo[nContTipo]));
+
+				whatToLookFor = sprint(asListaDummies[nContTotal], "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]);
+				//println("whatToLookFor", whatToLookFor);
+				index = find(sName, whatToLookFor);
 
                 // caso tenha achado o indice atualiza a tabela
                 if (index >= 0) {
                     mReturn[nContTipo][nContTotal] = iValue[index];
                 }
             }
-            ++nContTotal;
-        }
     }
 //	println(mReturn);
     return mReturn;
@@ -193,15 +192,13 @@ ProcessoPILongRun(const iValue, const sName, const iRegDependente, const sVarSuf
 //	sVarSufix: Sufixo do nome da variavael "D_R"
 //	sMacroSufix: Sufixo do nome da variavael macro {"D"}
 //	aMacoVarNames: Nome d variavel macro
-ProcessoMacroVariables(const iValue, const sName, const iQtdLags, const iRegDependente, const sVarSufix, const sMacroSufix, const aMacoVarNames) {
+ProcessoMacroVariables(const iValue, const sName, const iQtdLags, const iRegDependente, const sVarSufix, const sMacroSufix, const aMacoVarNames, const asTipo, const iQtdVarDependente) {
     //vParamValues, asParamNames, iQtdLags, iCont, sVarSufix, aMacoVarNames
     println("Processo Extracao das variaveis macroeconomicas (matrix de longo Prazo inclusive)");
-    decl nContTipo, nContLag, nContVar, nContTotal, asTipo, mReturn, sParamName, index;//nContTotal, iContVar, sParamName, , nCountAno, nCountMes, , ;
+    decl nContTipo, nContLag, nContVar, nContTotal, mReturn, sParamName, index;//nContTotal, iContVar, sParamName, , nCountAno, nCountMes, , ;
     //println("sName:", sName);
-    mReturn = zeros(2, (rows(aMacoVarNames) * (iQtdLags + 1)));
-    asTipo = {"Admitidos", "Desligados"};
-
-    //println("%r", asTipo, "%c", {"D_Selic", "D_IPCA", "D_PIM", "D_Selic_1", "D_IPCA_1", "D_PIM_1", "D_Selic_2", "D_IPCA_2", "D_PIM_2"},  mReturn);
+    mReturn = zeros(iQtdVarDependente, (rows(aMacoVarNames) * (iQtdLags + 1)));
+    //asTipo = {"Admitidos", "Desligados"};
 
     for (nContTipo = 0; nContTipo < sizeof(asTipo); ++nContTipo) {
         nContTotal = 0;
@@ -227,7 +224,8 @@ ProcessoMacroVariables(const iValue, const sName, const iQtdLags, const iRegDepe
             } // fim nContVar
         } // fim nContLag
     } // fim nContTipo
-//	println("%r", asTipo, "%c", {"D_Selic", "D_IPCA", "D_PIM", "D_Selic_1", "D_IPCA_1", "D_PIM_1", "D_Selic_2", "D_IPCA_2", "D_PIM_2", "betaMacro"},  mReturn);
+
+	// println("%r", asTipo, "%c", {"D_Selic", "D_IPCA", "D_PIM", "D_Selic_1", "D_IPCA_1", "D_PIM_1", "D_Selic_2", "D_IPCA_2", "D_PIM_2", "betaMacro"},  mReturn);
     //println(mReturn);
     return mReturn;
 }
@@ -296,7 +294,7 @@ main() {
     mRankRegions = loadmat(sprint("./mat_files/", "rankOfRegions.mat"));
     // println(mRankRegions);
 		
-    for (iCont = 19; iCont <= iQtdRegioes; ++iCont) {
+    for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
 		println("Rank: ", mRankRegions[iCont-1][0]);
 
@@ -510,8 +508,7 @@ main() {
         // determina a janela de tempo do modelo
         model.SetSelSampleByIndex(1, 765);
 		//model.SetSelSampleByDates(20040509, 20181230);
-		//model.SetSelSample(2004, 19, 2019, 3);
-        println("Model Sample: ", model.GetSelSample());
+
 
         // Liga o autometrics
 		// (Mudar flag para TRUE, para estimar todos modelos com IIS)
@@ -541,7 +538,6 @@ main() {
 		println(">>> SC: ", mInfoCrit[1]);
 		println(">>> HQ: ", mInfoCrit[2]);
 
-		
         println("Fazendo aquisicao de parametros");
 
 		// Declaro as matrizes Phi e Lambda
@@ -570,30 +566,31 @@ main() {
 		
         // Salva a matriz de IIS Para o modelo
         mIIS = ProcessoIIS(vParamValues, asParamNames, iCont, sprint(sVarSufix, "R_"), model.GetYear1(), model.GetYear2(), aVarDependenteNames);
-		println("mIIS", mIIS);
+		//println("mIIS", mIIS);
+		//println("mIIS_", rows(mIIS), "x", columns(mIIS));
 		savemat(sprint(txMatPathRawMatrix, sVarSufix, "R", iCont, "_IIS.mat"), mIIS);
 
 		mAlpha = ProcessoPILongRun(vParamValues, asParamNames, iCont, sprint(sVarSufix, "R_"), aVarDependenteNames, iQtdVarDependente);
-		println("mAlpha", mAlpha);
+		//println("mAlpha", mAlpha);
 		savemat(sprint(txMatPathRawMatrix, sVarSufix, "R", iCont, "_Alpha.mat"), mAlpha);
 
 		// Completa os valores da matrix Lambda
         mLambda = ProcessoLambda(mLambda, vParamValues, asParamNames, iQtdLags, iCont, sVarSufix, sprint(sVarSufix, "R_"), aVarDependenteNames);
-		println("mLambda", mLambda);
+		//println("mLambda", mLambda);
 		savemat(sprint(txMatPathRawMatrix, sVarSufix, "R", iCont, "_Lambda.mat"), mLambda);
 		
 		mPhi = ProcessoPhi(mPhi, vParamValues, asParamNames, iQtdLags, iCont, sprint(sVarSufix, "R_"), aVarDependenteNames);
-		println("mPhi", mPhi);
+		//println("mPhi", mPhi);
 		savemat(sprint(txMatPathRawMatrix, sVarSufix, "R", iCont, "_Phi.mat"), mPhi);
 
 		mU = ProcessoU(mU, vParamValues, asParamNames, iQtdLags, iCont, sprint(sVarSufix, "R_"), aVarDependenteNames, iQtdVarCSeasonal);
-		print("mU", mU);
+		//print("mU", mU);
         savemat(sprint(txMatPathRawMatrix, sVarSufix, "R", iCont, "_U.mat"), mU);
 
 		// const iValue, const sName, const iRegDependente, const sVarSufix, const aMacroVarNames
-        mD_macro = ProcessoMacroVariables(vParamValues, asParamNames, iQtdLags, iCont, sprint(sVarSufix, "R"), sVarSufix, aMacroVarNames);
-        savemat(sprint(txMatPathRawMatrix, sVarSufix, "R", iCont, "_D.mat"), mD_macro);
-		exit(0);
+        mD_macro = ProcessoMacroVariables(vParamValues, asParamNames, iQtdLags, iCont, sprint(sVarSufix, "R_"), sVarSufix, aMacroVarNames, aVarDependenteNames, iQtdVarDependente);
+		//print("mD_macro", mD_macro);
+		savemat(sprint(txMatPathRawMatrix, sVarSufix, "R", iCont, "_D.mat"), mD_macro);
 
 		// separo a matriz lambda em matriz lag-0 e demais lags
         mLambda_0 = mLambda[][0:iQtdVarDependente - 1];
