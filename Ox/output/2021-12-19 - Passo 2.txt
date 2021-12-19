@@ -1,0 +1,581 @@
+[Running] k:\Github\Tes_Cap2\Ox\Gvar_Passo2-Macrovariaveis.ox
+
+Ox Professional version 8.00 (Windows_64/U/MT) (C) J.A. Doornik, 1994-2018
+******************************************
+------------------------------------------
+	Configuracao de variaveis
+------------------------------------------
+
+REGIOES
+	Quantidade de lags: 8
+	Quantidade de Regioes: 110
+	Quantidade de Variaveis Dependente: 3
+Variaveis Dependentes:
+ETANOL_HIDRATADO
+OLEO_DIESEL
+GASOLINA_COMUM
+
+DATABASE
+	Macrovariaveis: ../export/database for ox/db_oil_withSesonal.in7
+	Regioes: ../export/database for ox/db_oil_withSesonal.in7
+
+DIRETORIOS
+	W Matrix Dir: ../export/W_mat/
+	Cointeration Matrix Dir: ./mat_files/Cointegration - l8/
+	Raw Matrix Dir: ./mat_files/RawMatrix/
+	A Matrix Dir: ./mat_files/A_Matrix/
+	G Matrix Dir: ./mat_files/G_Matrix/
+	Result Matrix Dir: ./mat_files/Result_Matrix/
+
+Configuracoes
+	is_IIS_ON: 1
+	IIS_pvalue: 1e-005
+	is_DUMMY_ON: 1
+******************************************
+>>> Inicio da estimacao do modelo de macrovariaveis
+
+
+*****************************************
+             Macrovariaveis 
+*****************************************
+
+Carregando dados das variaveis exogenas
+Carregando base de dados com informacoes regionais
+Construindo variaveis X
+Concluido construcao das variaveis X
+Construindo influencia das variaveis
+Salvando matriz W_w para ser utilizada depois
+Inicio um nomo objeto do tipo PcGive referente a macrovariaveis
+PcGive package version 15.0, object created on 19-12-2021
+(C) Jurgen A Doornik - requires a licensed version of PcGive Professional
+Carregando base de dados de macrovariaveis
+Iniciando construcao da variavel Delta para variaveis
+Adicionado Diff da variavel: brent
+Adicionando variavel mX
+Adicionando variavel D_mX 
+Model Sample: 2005-04-24 - 2018-12-30
+
+Autometrics identification block search over regressors
+no. initial regressors    723  no. of observations       715
+significance level     1e-005  block method         standard
+extension effort     standard  reduction effort     standard
+backtesting              GUM0  backtesting in      A,B,C1,D1
+
+
+A. Step 1: block search for omitted regressors
+   significance         1e-005  diagnostics             off
+   no of blocks              6  blocked by         variable
+   0(127):0 1(127):5 2(127):0 3(127):0 4(127):0 5(88):0  5 found
+A. Step 1 (continued): 
+   significance         8e-005  diagnostics             off
+   no of blocks              6  blocked by         variable
+   0(127):0 1(127):5 2(127):0 3(127):0 4(127):0 5(88):0  5 found
+A. Step 2   size=  5 #pars=  55 loglik=     1410.95  3 selected
+
+B. Step 1: block search for omitted regressors
+   significance         1e-005  diagnostics         delayed
+   no of blocks              6  blocked by         variable
+   0(130):0 1(130):4 2(130):0 3(130):0 4(130):0 5(88):0  4 found
+B. Step 2   size=  7 #pars=  59 loglik=     1432.23  7 selected
+
+B. Step 1: block search for omitted regressors
+   significance         1e-005  diagnostics         delayed
+   no of blocks              6  blocked by         variable
+   0(134):0 1(134):0 2(134):0 3(134):0 4(134):0 5(88):0  0 found
+
+C. Step 1: block search for omitted regressors
+   significance         2e-005  diagnostics              on
+   no of blocks              6  blocked by         variable
+   0(134):57 1(134):0 2(134):0 3(134):83 4(134):10 5(88):80  230 found
+C. Step 1 (continued): 
+   significance         2e-005  diagnostics              on
+   0(134):91 1(110):7  98 found
+C. Step 2   size=105 #pars=  65 loglik=     1484.29 13 selected
+
+D. Step 1: block search for omitted regressors
+   significance         1e-005  diagnostics              on
+   no of blocks              6  blocked by         variable
+   0(140):0 1(140):6 2(140):0 3(140):58 4(140):0 5(88):38  102 found
+D. Step 2   size=115 #pars=  69 loglik=     1501.74 17 selected
+
+D. Step 1: block search for omitted regressors
+   significance         1e-005  diagnostics              on
+   no of blocks              6  blocked by         variable
+   0(144):0 1(144):0 2(144):0 3(144):0 4(144):0 5(88):0  0 found
+
+Block search complete, estimated 25260 models in  6:13.42
+- final selection size= 20 regs= 20 total=  72 loglik=     1515.38
+
+
+---------- Autometrics: dimensions of initial GUM ----------
+no. of observations       715  no. of parameters          72
+no. free regressors (k1)   20  no. free components (k2)    0
+no. of equations            1  no. diagnostic tests        5
+Fixed regressors:  Constant CSeasonal CSeasonal_1 ... CSeasonal_50
+
+[0.2] Presearch reduction of initial GUM
+
+Starting closed lag reduction at 0.00050
+Removing lags(#regressors): none
+
+Starting common lag reduction at 0.00050
+Removing lags(#regressors): none
+
+Starting common lag reduction at 0.00050 (excluding lagged y's)
+Removing lags(#regressors): none
+
+Presearch reduction in opposite order
+
+Starting common lag reduction at 0.00050 (excluding lagged y's)
+Removing lags(#regressors): none
+
+Starting common lag reduction at 0.00050
+Removing lags(#regressors): none
+
+Starting closed lag reduction at 0.00050
+Removing lags(#regressors): none
+
+Encompassing test against initial GUM (iGUM) removes: none
+
+Presearch reduction: none removed
+
+[0.3] Testing GUM 0:  LRF(20) [0.0000] kept
+
+[1.0] Start of Autometrics tree search
+
+Searching from GUM 0  k=  20 loglik=     1515.38
+Found new terminal 1  k=  14 loglik=     1498.48 SC=   -3.5849
+Found new terminal 2  k=  16 loglik=     1505.17 SC=   -3.5852
+Found new terminal 3  k=  16 loglik=     1505.40 SC=   -3.5859
+
+Searching for contrasting terminals in terminal paths
+
+Encompassing test against GUM 0 removes: none
+
+Searching from GUM 1  k=  17 loglik=     1514.25 LRF_GUM0( 3) [0.5626]
+Recalling terminal 1  k=  14 loglik=     1498.48 SC=   -3.5849
+Recalling terminal 2  k=  16 loglik=     1505.17 SC=   -3.5852
+Recalling terminal 3  k=  16 loglik=     1505.40 SC=   -3.5859
+Found new terminal 4  k=  15 loglik=     1504.11 SC=   -3.5914
+Found new terminal 5  k=  15 loglik=     1503.56 SC=   -3.5899
+
+Searching for contrasting terminals in terminal paths
+Replaced  terminal 3  k=  15 loglik=     1501.62 SC=   -3.5845
+Found new terminal 6  k=  15 loglik=     1500.68 SC=   -3.5818
+Found new terminal 7  k=  15 loglik=     1498.47 SC=   -3.5757
+Found new terminal 8  k=  15 loglik=     1499.47 SC=   -3.5784
+Found new terminal 9  k=  15 loglik=     1498.28 SC=   -3.5751
+
+[2.0] Selection of final model from terminal candidates: terminal 4
+
+p-values in Final GUM and terminal model(s)
+                 Final GUM  terminal 1  terminal 2  terminal 3  terminal 4  terminal 5  terminal 6  terminal 7  terminal 8  terminal 9
+D_brent_1       0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000
+I:2008-09-21    0.00007646           .  0.00010546  0.00010647  0.00009111  0.00009313  0.00010185           .           .  0.00011857
+I:2008-09-28    0.00006440  0.00008960  0.00010086           .  0.00007491  0.00007733  0.00008679  0.00009939  0.00009736           .
+I:2008-10-05    0.00031739  0.00041072  0.00030274  0.00035090  0.00039382  0.00039206  0.00039732  0.00038589  0.00037825  0.00035373
+I:2008-10-12    0.00021603  0.00028221  0.00018706  0.00022766  0.00027639  0.00027336  0.00027232  0.00025594  0.00025045  0.00022417
+I:2008-11-30    0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000
+I:2008-12-21    0.00005675  0.00007882  0.00007248  0.00007609  0.00006936  0.00007048  0.00007598  0.00008115  0.00007935  0.00008311
+I:2008-12-28    0.00005165  0.00007249           .  0.00007925  0.00005996  0.00006207  0.00007021  0.00008135  0.00007967  0.00009225
+I:2009-02-15    0.01216924           .  0.01285802  0.01339912  0.01337247           .  0.01371652  0.01387631  0.01374194  0.01373253
+I:2009-03-15    0.00066528  0.00084583  0.00079409  0.00082354           .  0.00077973           .  0.00086348  0.00084942  0.00087797
+I:2009-07-05    0.00077559  0.00097918  0.00088104  0.00093146  0.00090449  0.00091175  0.00095310  0.00098316           .  0.00097988
+I:2015-01-04    0.00897882           .  0.00887077           .           .  0.01007630  0.01017793  0.01006126  0.00995122  0.00964618
+I:2015-02-01    0.00028820  0.00037688  0.00033392  0.00035592  0.00034395           .           .           .  0.00037165           .
+I:2015-08-30    0.00002972  0.00004231  0.00004037  0.00004171  0.00003649  0.00003724  0.00004072  0.00004435  0.00004331  0.00004637
+I:2016-01-10    0.00020999  0.00027704  0.00022829  0.00025161  0.00025634  0.00025752  0.00026795  0.00027169  0.00026627  0.00026261
+I:2016-01-24    0.00021061  0.00027957  0.00027489  0.00027949  0.00024698  0.00025147  0.00027120  0.00029252  0.00028707  0.00030595
+I:2018-12-30    0.00402921  0.00249379  0.00518323  0.00259695  0.00223839  0.00444595  0.00474076  0.00511695  0.00506022  0.00545894
+k                       17          14          16          15          15          15          15          15          15          15
+parameters              69          66          68          67          67          67          67          67          67          67
+loglik              1514.2      1498.5      1505.2      1501.6      1504.1      1503.6      1500.7      1498.5      1499.5      1498.3
+AIC                -4.0426     -4.0069     -4.0201     -4.0129     -4.0199     -4.0183     -4.0103     -4.0041     -4.0069     -4.0036
+HQ                 -3.8722     -3.8439     -3.8521     -3.8475     -3.8544     -3.8529     -3.8448     -3.8386     -3.8414     -3.8381
+SC                 -3.6014     -3.5849     -3.5852     -3.5845     -3.5914     -3.5899     -3.5818     -3.5757     -3.5784     -3.5751
+                                                                   =======
+
+p-values of diagnostic checks for model validity
+          Initial GUM     cut-off   Final GUM     cut-off Final model
+AR(7)         0.44087     0.01000     0.24041     0.01000     0.04424
+ARCH(7)       0.00256     0.00100     0.00188     0.00100     0.00174
+Normality     0.83769     0.01000     0.85260     0.01000     0.62901
+Hetero        0.00007     0.00000     0.00591     0.00100     0.00607
+Chow(70%)     0.01076     0.01000     0.00758     0.01000     0.00692
+
+*** Warning: Final model failed 3 diagnostic test(s)
+
+The final model has 13 insignificant coefficients:
+Joint significance  LRF(13) [0.0000] LRF_GUM0(18) [0.0000]
+I:2008-09-21        Failed backtest against GUM0
+I:2008-09-28        Failed backtest against GUM0
+I:2008-10-05        Failed diagnostic testing
+I:2008-10-12        Failed backtest against GUM0
+I:2008-12-21        Failed backtest against GUM0
+I:2008-12-28        Failed backtest against GUM0
+I:2009-02-15        Failed diagnostic testing
+I:2009-07-05        Failed diagnostic testing
+I:2015-02-01        Failed backtest against GUM0
+I:2015-08-30        Failed backtest against GUM0
+I:2016-01-10        Failed backtest against GUM0
+I:2016-01-24        Failed backtest against GUM0
+I:2018-12-30        Failed diagnostic testing
+
+Summary of Autometrics search
+initial search space     2^20  final search space       2^17
+no. estimated models      832  no. terminal models         9
+test form                LR-F  target size       User:1e-005
+large residuals            no  presearch reduction      lags
+backtesting              GUM0  tie-breaker                SC
+diagnostics p-value      0.01  search effort        standard
+time                  6:16.53  Autometrics version       2.0
+
+SYS( 2) Modelling D_brent by OLS
+        The dataset is: ../export/database for ox/db_oil_withSesonal.in7
+        The estimation sample is: 2005-04-24 - 2018-12-30
+
+                  Coefficient  Std.Error  t-value  t-prob Part.R^2
+D_brent_1            0.286314    0.03447     8.31  0.0000   0.0962
+I:2008-09-21         0.126962    0.03224     3.94  0.0001   0.0234
+I:2008-09-28        -0.129172    0.03241    -3.99  0.0001   0.0239
+I:2008-10-05        -0.115283    0.03236    -3.56  0.0004   0.0192
+I:2008-10-12        -0.119052    0.03256    -3.66  0.0003   0.0202
+I:2008-11-30        -0.204657    0.03224    -6.35  0.0000   0.0586
+I:2008-12-21        -0.128901    0.03219    -4.00  0.0001   0.0241
+I:2008-12-28         0.131133    0.03246     4.04  0.0001   0.0246
+I:2009-02-15       -0.0800806    0.03228    -2.48  0.0134   0.0094
+I:2009-07-05        -0.107303    0.03218    -3.33  0.0009   0.0169
+I:2015-02-01         0.116170    0.03228     3.60  0.0003   0.0196
+I:2015-08-30         0.133916    0.03221     4.16  0.0000   0.0260
+I:2016-01-10        -0.118768    0.03231    -3.68  0.0003   0.0204
+I:2016-01-24         0.119107    0.03231     3.69  0.0002   0.0205
+I:2018-12-30        0.0991175    0.03230     3.07  0.0022   0.0143
+Constant      U   0.000528646   0.001173    0.451  0.6524   0.0003
+CSeasonal     U   0.000974589    0.01216   0.0801  0.9362   0.0000
+CSeasonal_1   U   -0.00823155    0.01216   -0.677  0.4989   0.0007
+CSeasonal_2   U    0.00189768    0.01195    0.159  0.8738   0.0000
+CSeasonal_3   U    -0.0100715    0.01195   -0.843  0.3995   0.0011
+CSeasonal_4   U   -0.00564268    0.01195   -0.472  0.6369   0.0003
+CSeasonal_5   U    -0.0200162    0.01195    -1.68  0.0943   0.0043
+CSeasonal_6   U   0.000207363    0.01196   0.0173  0.9862   0.0000
+CSeasonal_7   U    0.00118763    0.01195   0.0994  0.9208   0.0000
+CSeasonal_8   U   -0.00676846    0.01195   -0.567  0.5712   0.0005
+CSeasonal_9   U    -0.0104470    0.01195   -0.875  0.3821   0.0012
+CSeasonal_10  U   -0.00119642    0.01195   -0.100  0.9203   0.0000
+CSeasonal_11  U    -0.0215008    0.01194    -1.80  0.0723   0.0050
+CSeasonal_12  U   -0.00381378    0.01196   -0.319  0.7500   0.0002
+CSeasonal_13  U   0.000891391    0.01217   0.0733  0.9416   0.0000
+CSeasonal_14  U    -0.0126676    0.01195    -1.06  0.2894   0.0017
+CSeasonal_15  U   -0.00642187    0.01195   -0.537  0.5912   0.0004
+CSeasonal_16  U    -0.0105558    0.01195   -0.884  0.3773   0.0012
+CSeasonal_17  U    -0.0112343    0.01195   -0.940  0.3475   0.0014
+CSeasonal_18  U    -0.0264753    0.01195    -2.22  0.0271   0.0075
+CSeasonal_19  U    0.00341566    0.01198    0.285  0.7757   0.0001
+CSeasonal_20  U    -0.0118864    0.01194   -0.995  0.3201   0.0015
+CSeasonal_21  U    -0.0168124    0.01195    -1.41  0.1599   0.0030
+CSeasonal_22  U    -0.0146634    0.01217    -1.20  0.2288   0.0022
+CSeasonal_23  U    -0.0124555    0.01195    -1.04  0.2976   0.0017
+CSeasonal_24  U    -0.0224341    0.01217    -1.84  0.0657   0.0052
+CSeasonal_25  U    -0.0122140    0.01219    -1.00  0.3167   0.0015
+CSeasonal_26  U    0.00166748    0.01218    0.137  0.8911   0.0000
+CSeasonal_27  U     0.0160237    0.01216     1.32  0.1882   0.0027
+CSeasonal_28  U    -0.0228692    0.01195    -1.91  0.0560   0.0056
+CSeasonal_29  U    -0.0167369    0.01196    -1.40  0.1622   0.0030
+CSeasonal_30  U   -0.00865906    0.01196   -0.724  0.4695   0.0008
+CSeasonal_31  U    -0.0260376    0.01195    -2.18  0.0297   0.0073
+CSeasonal_32  U    -0.0158981    0.01198    -1.33  0.1850   0.0027
+CSeasonal_33  U    -0.0117039    0.01197   -0.978  0.3284   0.0015
+CSeasonal_34  U    0.00109451    0.01218   0.0898  0.9284   0.0000
+CSeasonal_35  U    -0.0170613    0.01196    -1.43  0.1541   0.0031
+CSeasonal_36  U    -0.0205039    0.01196    -1.71  0.0870   0.0045
+CSeasonal_37  U   -0.00628501    0.01219   -0.515  0.6064   0.0004
+CSeasonal_38  U   -0.00501876    0.01217   -0.412  0.6802   0.0003
+CSeasonal_39  U    -0.0112112    0.01194   -0.939  0.3483   0.0014
+CSeasonal_40  U    -0.0299025    0.01216    -2.46  0.0142   0.0092
+CSeasonal_41  U    -0.0118283    0.01245   -0.950  0.3422   0.0014
+CSeasonal_42  U   -0.00382029    0.01220   -0.313  0.7542   0.0002
+CSeasonal_43  U   -0.00445938    0.01242   -0.359  0.7196   0.0002
+CSeasonal_44  U   -0.00718502    0.01242   -0.579  0.5630   0.0005
+CSeasonal_45  U   -0.00565414    0.01242   -0.455  0.6490   0.0003
+CSeasonal_46  U     0.0163943    0.01217     1.35  0.1783   0.0028
+CSeasonal_47  U   -0.00993049    0.01218   -0.815  0.4151   0.0010
+CSeasonal_48  U   -0.00126719    0.01216   -0.104  0.9171   0.0000
+CSeasonal_49  U    -0.0119644    0.01216   -0.984  0.3257   0.0015
+CSeasonal_50  U   0.000305176    0.01217   0.0251  0.9800   0.0000
+
+sigma = 0.0310118   RSS = 0.6232030081
+
+log-likelihood     1504.10562  -T/2log|Omega|     2518.64667
+|Omega|        0.000871612599  log|Y'Y/T|        -6.69481937
+R^2(LR)              0.295556  R^2(LM)              0.295556
+no. of observations       715  no. of parameters          67
+mean(D_brent)    5.49086e-005  se(D_brent)         0.0365328
+
+F-test on regressors except unrestricted: F(15,648) = 18.1249 [0.0000] **
+F-tests on retained regressors, F(1,648) =
+   D_brent_1       69.0029 [0.000]**I:2008-09-21       15.5069 [0.000]**
+I:2008-09-28       15.8864 [0.000]**I:2008-10-05       12.6937 [0.000]**
+I:2008-10-12       13.3702 [0.000]**I:2008-11-30       40.3009 [0.000]**
+I:2008-12-21       16.0356 [0.000]**I:2008-12-28       16.3184 [0.000]**
+I:2009-02-15       6.15290 [0.013]* I:2009-07-05       11.1163 [0.001]**
+I:2015-02-01       12.9521 [0.000]**I:2015-08-30       17.2855 [0.000]**
+I:2016-01-10       13.5145 [0.000]**I:2016-01-24       13.5857 [0.000]**
+I:2018-12-30       9.41799 [0.002]**    Constant U    0.203130 [0.652]  
+   CSeasonal U  0.00641921 [0.936]   CSeasonal_1 U    0.457894 [0.499]  
+ CSeasonal_2 U   0.0252391 [0.874]   CSeasonal_3 U    0.710874 [0.399]  
+ CSeasonal_4 U    0.223082 [0.637]   CSeasonal_5 U     2.80750 [0.094]  
+ CSeasonal_6 U 0.000300469 [0.986]   CSeasonal_7 U  0.00988526 [0.921]  
+ CSeasonal_8 U    0.321074 [0.571]   CSeasonal_9 U    0.764875 [0.382]  
+CSeasonal_10 U   0.0100259 [0.920]  CSeasonal_11 U     3.24008 [0.072]  
+CSeasonal_12 U    0.101623 [0.750]  CSeasonal_13 U  0.00536846 [0.942]  
+CSeasonal_14 U     1.12433 [0.289]  CSeasonal_15 U    0.288701 [0.591]  
+CSeasonal_16 U    0.780605 [0.377]  CSeasonal_17 U    0.883815 [0.348]  
+CSeasonal_18 U     4.90720 [0.027]* CSeasonal_19 U   0.0812620 [0.776]  
+CSeasonal_20 U    0.990233 [0.320]  CSeasonal_21 U     1.97946 [0.160]  
+CSeasonal_22 U     1.45075 [0.229]  CSeasonal_23 U     1.08684 [0.298]  
+CSeasonal_24 U     3.39970 [0.066]  CSeasonal_25 U     1.00423 [0.317]  
+CSeasonal_26 U   0.0187527 [0.891]  CSeasonal_27 U     1.73534 [0.188]  
+CSeasonal_28 U     3.66426 [0.056]  CSeasonal_29 U     1.95779 [0.162]  
+CSeasonal_30 U    0.523845 [0.469]  CSeasonal_31 U     4.74620 [0.030]* 
+CSeasonal_32 U     1.76079 [0.185]  CSeasonal_33 U    0.956509 [0.328]  
+CSeasonal_34 U  0.00807234 [0.928]  CSeasonal_35 U     2.03613 [0.154]  
+CSeasonal_36 U     2.93770 [0.087]  CSeasonal_37 U    0.265646 [0.606]  
+CSeasonal_38 U    0.170070 [0.680]  CSeasonal_39 U    0.880960 [0.348]  
+CSeasonal_40 U     6.04291 [0.014]* CSeasonal_41 U    0.903321 [0.342]  
+CSeasonal_42 U   0.0980794 [0.754]  CSeasonal_43 U    0.128995 [0.720]  
+CSeasonal_44 U    0.334915 [0.563]  CSeasonal_45 U    0.207351 [0.649]  
+CSeasonal_46 U     1.81564 [0.178]  CSeasonal_47 U    0.665038 [0.415]  
+CSeasonal_48 U   0.0108521 [0.917]  CSeasonal_49 U    0.967482 [0.326]  
+CSeasonal_50 U 0.000628997 [0.980]  
+
+correlation of URF residuals (standard deviations on diagonal)
+                   D_brent
+D_brent           0.031012
+correlation between actual and fitted
+      D_brent
+      0.58823
+
+D_brent_1          0.28631
+I:2008-09-21       0.12696
+I:2008-09-28      -0.12917
+I:2008-10-05      -0.11528
+I:2008-10-12      -0.11905
+I:2008-11-30      -0.20466
+I:2008-12-21      -0.12890
+I:2008-12-28       0.13113
+I:2009-02-15     -0.080081
+I:2009-07-05      -0.10730
+I:2015-02-01       0.11617
+I:2015-08-30       0.13392
+I:2016-01-10      -0.11877
+I:2016-01-24       0.11911
+I:2018-12-30      0.099118
+Constant        0.00052865
+CSeasonal       0.00097459
+CSeasonal_1     -0.0082316
+CSeasonal_2      0.0018977
+CSeasonal_3      -0.010071
+CSeasonal_4     -0.0056427
+CSeasonal_5      -0.020016
+CSeasonal_6     0.00020736
+CSeasonal_7      0.0011876
+CSeasonal_8     -0.0067685
+CSeasonal_9      -0.010447
+CSeasonal_10    -0.0011964
+CSeasonal_11     -0.021501
+CSeasonal_12    -0.0038138
+CSeasonal_13    0.00089139
+CSeasonal_14     -0.012668
+CSeasonal_15    -0.0064219
+CSeasonal_16     -0.010556
+CSeasonal_17     -0.011234
+CSeasonal_18     -0.026475
+CSeasonal_19     0.0034157
+CSeasonal_20     -0.011886
+CSeasonal_21     -0.016812
+CSeasonal_22     -0.014663
+CSeasonal_23     -0.012455
+CSeasonal_24     -0.022434
+CSeasonal_25     -0.012214
+CSeasonal_26     0.0016675
+CSeasonal_27      0.016024
+CSeasonal_28     -0.022869
+CSeasonal_29     -0.016737
+CSeasonal_30    -0.0086591
+CSeasonal_31     -0.026038
+CSeasonal_32     -0.015898
+CSeasonal_33     -0.011704
+CSeasonal_34     0.0010945
+CSeasonal_35     -0.017061
+CSeasonal_36     -0.020504
+CSeasonal_37    -0.0062850
+CSeasonal_38    -0.0050188
+CSeasonal_39     -0.011211
+CSeasonal_40     -0.029903
+CSeasonal_41     -0.011828
+CSeasonal_42    -0.0038203
+CSeasonal_43    -0.0044594
+CSeasonal_44    -0.0071850
+CSeasonal_45    -0.0056541
+CSeasonal_46      0.016394
+CSeasonal_47    -0.0099305
+CSeasonal_48    -0.0012672
+CSeasonal_49     -0.011964
+CSeasonal_50    0.00030518
+Processo H iniciado
+asParamNames
+D_brent_1
+I:2008-09-21
+I:2008-09-28
+I:2008-10-05
+I:2008-10-12
+I:2008-11-30
+I:2008-12-21
+I:2008-12-28
+I:2009-02-15
+I:2009-07-05
+I:2015-02-01
+I:2015-08-30
+I:2016-01-10
+I:2016-01-24
+I:2018-12-30
+Constant
+CSeasonal
+CSeasonal_1
+CSeasonal_2
+CSeasonal_3
+CSeasonal_4
+CSeasonal_5
+CSeasonal_6
+CSeasonal_7
+CSeasonal_8
+CSeasonal_9
+CSeasonal_10
+CSeasonal_11
+CSeasonal_12
+CSeasonal_13
+CSeasonal_14
+CSeasonal_15
+CSeasonal_16
+CSeasonal_17
+CSeasonal_18
+CSeasonal_19
+CSeasonal_20
+CSeasonal_21
+CSeasonal_22
+CSeasonal_23
+CSeasonal_24
+CSeasonal_25
+CSeasonal_26
+CSeasonal_27
+CSeasonal_28
+CSeasonal_29
+CSeasonal_30
+CSeasonal_31
+CSeasonal_32
+CSeasonal_33
+CSeasonal_34
+CSeasonal_35
+CSeasonal_36
+CSeasonal_37
+CSeasonal_38
+CSeasonal_39
+CSeasonal_40
+CSeasonal_41
+CSeasonal_42
+CSeasonal_43
+CSeasonal_44
+CSeasonal_45
+CSeasonal_46
+CSeasonal_47
+CSeasonal_48
+CSeasonal_49
+CSeasonal_50
+vParamValues
+      0.28631
+      0.12696
+     -0.12917
+     -0.11528
+     -0.11905
+     -0.20466
+     -0.12890
+      0.13113
+    -0.080081
+     -0.10730
+      0.11617
+      0.13392
+     -0.11877
+      0.11911
+     0.099118
+   0.00052865
+   0.00097459
+   -0.0082316
+    0.0018977
+    -0.010071
+   -0.0056427
+    -0.020016
+   0.00020736
+    0.0011876
+   -0.0067685
+    -0.010447
+   -0.0011964
+    -0.021501
+   -0.0038138
+   0.00089139
+    -0.012668
+   -0.0064219
+    -0.010556
+    -0.011234
+    -0.026475
+    0.0034157
+    -0.011886
+    -0.016812
+    -0.014663
+    -0.012455
+    -0.022434
+    -0.012214
+    0.0016675
+     0.016024
+    -0.022869
+    -0.016737
+   -0.0086591
+    -0.026038
+    -0.015898
+    -0.011704
+    0.0010945
+    -0.017061
+    -0.020504
+   -0.0062850
+   -0.0050188
+    -0.011211
+    -0.029903
+    -0.011828
+   -0.0038203
+   -0.0044594
+   -0.0071850
+   -0.0056541
+     0.016394
+   -0.0099305
+   -0.0012672
+    -0.011964
+   0.00030518
+D_brent_1
+D_brent_2
+D_brent_3
+D_brent_4
+D_brent_5
+D_brent_6
+D_brent_7
+D_brent_8
+
+          D_brent_1    D_brent_2    D_brent_3    D_brent_4    D_brent_5    D_brent_6    D_brent_7    D_brent_8
+brent       0.28631      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+Processo U iniciado
+Processo U finalizado
+Processo Extracao da matriz de saturacao (IIS)
+Processo AlphaBeta iniciado
+Processo B iniciado
+*** Fim da estimacao dos modelos de macrovariaveis *** 
+
+[Done] exited with code=0 in 6.28 minutes
+
