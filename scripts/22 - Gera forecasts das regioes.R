@@ -21,29 +21,66 @@ library(lubridate)
 
 
 file.name <- "forecast_result.csv"
-dir <- "COM IIS - Modelo 17"
+dir <- "Result 1"
 
 
-export_file <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, file.name)
+export_file <- file.path("Ox", "mat_files", "Result_Matrix", dir, file.name)
 main_path <- dirname(export_file)
+
+
+
+# User defined functions --------------------------------------------------
+
+mDiff <- function(x){
+  ret <- x - dplyr::lag(x)
+  return(ret)
+}
+
 
 
 # Load data ---------------------------------------------------------------
 
+# Leitura do banco de dados para construção da tabela de forecasting
+tbl <- readRDS(file = "./database/db_oil_forForecast.rds")
 
-DX.df <- read_excel("Excel Export/DatabaseDesAdm_RA_vForecast_v3.xlsx", 
-                    range = "A1:BR1108")
+tbl %>% filter(year(DATA_INICIAL) < 2019)
+# Seleciona o periodo de forecasting
+tbl <- tbl %>% filter(year(DATA_FINAL) >= 2019)
 
-DX <- DX.df[,-1] %>% data.matrix()
+# Adiciona datas faltantes. (Dados faltantes devido a lockdown da pandemia.)
+tbl <- tbl %>% add_row(DATA_INICIAL = as.Date("2020-08-23"), DATA_FINAL = as.Date("2020-08-29"))
+tbl <- tbl %>% add_row(DATA_INICIAL = as.Date("2020-08-30"), DATA_FINAL = as.Date("2020-09-05"))
+tbl <- tbl %>% add_row(DATA_INICIAL = as.Date("2020-09-06"), DATA_FINAL = as.Date("2020-09-12"))
+tbl <- tbl %>% add_row(DATA_INICIAL = as.Date("2020-09-13"), DATA_FINAL = as.Date("2020-09-19"))
+tbl <- tbl %>% add_row(DATA_INICIAL = as.Date("2020-09-20"), DATA_FINAL = as.Date("2020-09-26"))
+tbl <- tbl %>% add_row(DATA_INICIAL = as.Date("2020-09-27"), DATA_FINAL = as.Date("2020-10-03"))
+tbl <- tbl %>% add_row(DATA_INICIAL = as.Date("2020-10-04"), DATA_FINAL = as.Date("2020-10-10"))
+tbl <- tbl %>% add_row(DATA_INICIAL = as.Date("2020-10-11"), DATA_FINAL = as.Date("2020-10-17"))
 
-X.df <- read_excel("Excel Export/DatabaseDesAdm_RA_vForecast_v3.xlsx", 
-                   range = "A1115:BR2222")
+#  ordena as datas
+tbl <- tbl %>% arrange(DATA_INICIAL)
 
-X <- X.df[,-1] %>% data.matrix()
+#  Colunas selecionadas para a regressao
+colunas_Selecionadas <- paste("R",
+                              sort(rep(1:110, 3)),
+                              rep(c("ETANOL_HIDRATADO", "OLEO_DIESEL", "GASOLINA_COMUM"), 4),
+                              sep = "_")
 
 
+tbl %>% select(c("DATA_INICIAL", colunas_Selecionadas))
 
 
+DX.df <- tbl %>% mutate_if(.predicate = is.numeric, 
+                           .funs = mDiff)
+
+DX <- DX.df[-1,c(-1, -2)] %>% data.matrix()
+
+X.df <- tbl
+
+X <- X.df[-1,c(-1, -2)] %>% data.matrix()
+
+dim(mLag1)
+# Leitura das matrizes de lag.
 mLag1 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL1.rds"))
 mLag2 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL2.rds"))
 mLag3 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL3.rds"))
@@ -54,29 +91,39 @@ mLag6 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL6.rds"))
 
 mLag7 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL7.rds"))
 mLag8 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL8.rds"))
-mLag9 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL9.rds"))
-
-mLag10 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL10.rds"))
-mLag11 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL11.rds"))
-mLag12 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL12.rds"))
-mLag13 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL13.rds"))
+# mLag9 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL9.rds"))
+# 
+# mLag10 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL10.rds"))
+# mLag11 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL11.rds"))
+# mLag12 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL12.rds"))
+# mLag13 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL13.rds"))
 
 # Carrega matriz de coeficiente de longo prazo
 mLagLR <- readRDS(file.path(main_path, "mGy_inv_X_mL.rds"))
 
 # Carrega matriz de coeficiente de constante e dummies sazonais
 mLagDm <- readRDS(file.path(main_path, "mGy_inv_X_mC.rds"))
-mLagDm <- mLagDm[, 1:12]
-colnames(mLagDm) <- c("CONST", paste("M", 1:11))
+
+#  seleciona as colunas: constante + dummies (51)
+mLagDm <- mLagDm[, 1:52]
+
+colnames(mLagDm) <- c("CONST", paste("D", 1:51))
 
 
-#  Vetor de datas
+#  PAREI AQUI----------------
+
+# TEM QUE CONSTRUIR OS FORECASTS.
+#
+# MANEIRA FACIL DE CONSTRUIR OS FORECASTS DX %*% t(mLag1) , com isso teremos os
+# forecasts nas linhas e as colunas sendo as series.
+
+# Vetor de datas
 datelist <- seq(from = as.Date("2015-01-01"),
                 to = as.Date("2019-12-01"),
                 by="month")
 
 
-results.tbl <-  tibble(variavel=X.df$Variavel)
+results.tbl <- tibble(variavel=X.df$Variavel)
 
 i=0
 for(i in 0:35){

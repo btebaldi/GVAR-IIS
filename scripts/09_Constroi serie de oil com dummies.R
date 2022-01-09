@@ -9,7 +9,7 @@ rm(list=ls())
 # Bibliotecas -------------------------------------------------------------
 
 # library(stringr)
-# library(dplyr)
+library(dplyr)
 library(lubridate)
 
 # # Variaveis internas ------------------------------------------------------
@@ -31,6 +31,9 @@ for (i in seq_len(nrow(tbl)) ) {
 }
 
 tbl <- tbl %>% mutate_if(.predicate = is.numeric, .funs = log)
+
+saveRDS(object = tbl, file = "./database/db_oil_forForecast.rds")
+readr::write_csv(x = tbl, file = "./export/database for ox/db_oil_forForecast.csv")
 
 tbl <- tbl %>% filter(year(DATA_INICIAL) < 2019)
 
