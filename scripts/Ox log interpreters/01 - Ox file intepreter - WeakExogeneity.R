@@ -291,6 +291,6 @@ SaveMatrixForOx <- function(Matrix, file_name, comment = NULL){
               row.names = FALSE)
 }
 
-rankOfRegions <- tbl.results %>% select(rank)
+rankOfRegions <- tbl.results %>% select(rank_boot)
 SaveMatrixForOx(Matrix = rankOfRegions, file_name = "rankOfRegions.mat", comment = "(Indication of the rank of the regions)")
 

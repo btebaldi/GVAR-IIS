@@ -1,15 +1,12 @@
 #' Tese Capitulo 2 - Analise de precos de gasolina, alcool e Oleo Diesel
 #' 
-#' Script para geração dos Forecasts das series.
+#' Script para geração dos Forecasts das series utilizando um VECM por regiao
 #' 
 #' Author: Bruno Tebaldi de Queiroz Barbosa
 #' 
 #' Data: 2022-01-06
 #' 
 
-
-
-# setup -------------------------------------------------------------------
 
 rm(list=ls())
 library(readxl)
@@ -18,6 +15,7 @@ library(tidyr)
 library(dplyr)
 library(stringr)
 library(lubridate)
+library(tsDyn)
 
 
 file.name <- "forecast_result.csv"
@@ -26,6 +24,7 @@ dir <- "Result 1"
 
 export_file <- file.path("Ox", "mat_files", "Result_Matrix", dir, file.name)
 main_path <- dirname(export_file)
+
 
 
 
@@ -43,10 +42,7 @@ mDiff <- function(x){
 # Leitura do banco de dados para construção da tabela de forecasting
 tbl <- readRDS(file = "./database/db_oil_forForecast.rds")
 
-brent <- tbl %>% filter(year(DATA_INICIAL) < 2019) %>% select(brent)
-D.brent <- mDiff(brent$brent)
-sd(brent$brent)
-sd(D.brent, na.rm = TRUE)
+
 # Seleciona o periodo de forecasting
 # tbl <- tbl %>% filter(year(DATA_FINAL) >= 2019)
 
@@ -65,61 +61,72 @@ tbl <- tbl %>% arrange(DATA_INICIAL)
 
 #  Colunas selecionadas para a regressao
 colunas_Selecionadas <- paste("R",
-                              sort(rep(1:110, 3)),
-                              rep(c("ETANOL_HIDRATADO", "OLEO_DIESEL", "GASOLINA_COMUM"), 4),
+                              rep(11, 3),
+                              c("ETANOL_HIDRATADO", "OLEO_DIESEL", "GASOLINA_COMUM"),
                               sep = "_")
 
 
+# Selecao de dados para o VECM
+y <- tbl %>% 
+  filter(year(DATA_FINAL) < 2019) %>%
+  select(colunas_Selecionadas)
+  
+brent <- tbl %>% 
+  filter(year(DATA_FINAL) < 2019) %>% 
+  select("brent")
+
+
+mdl <- VECM(data = y,
+     lag = 8,
+     r=1, 
+     include = "const",
+     beta = NULL,
+     estim = "ML",
+     LRinclude = "none",
+     exogen = brent$brent)
+
+# summary(mdl)
+
+# Determina matrizes
+
+# Determina coeficientes de longo prazo
+mLagLR <- mdl$coefficients[,"ECT"] %*% t(mdl$model.specific$beta)
+
+
+j=11
+# determina coeficientes de Lag
+mLag1 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -1", j), sprintf("R_%d_GASOLINA_COMUM -1", j), sprintf("R_%d_OLEO_DIESEL -1", j))]
+mLag2 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -2", j), sprintf("R_%d_GASOLINA_COMUM -2", j), sprintf("R_%d_OLEO_DIESEL -2", j))]
+mLag3 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -3", j), sprintf("R_%d_GASOLINA_COMUM -3", j), sprintf("R_%d_OLEO_DIESEL -3", j))]
+mLag4 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -4", j), sprintf("R_%d_GASOLINA_COMUM -4", j), sprintf("R_%d_OLEO_DIESEL -4", j))]
+mLag5 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -5", j), sprintf("R_%d_GASOLINA_COMUM -5", j), sprintf("R_%d_OLEO_DIESEL -5", j))]
+mLag6 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -6", j), sprintf("R_%d_GASOLINA_COMUM -6", j), sprintf("R_%d_OLEO_DIESEL -6", j))]
+mLag7 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -7", j), sprintf("R_%d_GASOLINA_COMUM -7", j), sprintf("R_%d_OLEO_DIESEL -7", j))]
+mLag8 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -8", j), sprintf("R_%d_GASOLINA_COMUM -8", j), sprintf("R_%d_OLEO_DIESEL -8", j))]
+
+# Determina coeficientes de constante 
+mLagDm <- mdl$coefficients[,"Intercept"]
+
+# Determina coeficientes de Exogenas
+mExo <- mdl$coefficients[,"exo_1"]
+
 DX.df <- tbl %>%
-  select("brent", colunas_Selecionadas) %>%
+  select(colunas_Selecionadas) %>%
   mutate_if(.predicate = is.numeric, .funs = mDiff)
 
 DX <- DX.df %>% data.matrix()
-dim(DX)
 DX <- DX[-1,]
-dim(DX)
 
-X.df <- tbl %>% select("brent", colunas_Selecionadas)
-
+X.df <- tbl %>% select(colunas_Selecionadas)
 X <- X.df %>% data.matrix()
 dim(X)
 X <- X[-1,]
 dim(X)
 
+Exo.df <- tbl %>% select("brent")
+Exo <- Exo.df %>% data.matrix()
 
-
-# Leitura das matrizes de lag.
-mLag1 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL1.rds"))
-mLag2 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL2.rds"))
-mLag3 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL3.rds"))
-
-mLag4 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL4.rds"))
-mLag5 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL5.rds"))
-mLag6 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL6.rds"))
-
-mLag7 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL7.rds"))
-mLag8 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL8.rds"))
-
-mLag9 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL9.rds"))
-mLag10 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL10.rds"))
-mLag11 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL11.rds"))
-mLag12 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL12.rds"))
-
-# Carrega matriz de coeficiente de longo prazo
-mLagLR <- readRDS(file.path(main_path, "mGy_inv_X_mL.rds"))
-
-# Carrega matriz de coeficiente de constante e dummies sazonais
-mLagDm <- readRDS(file.path(main_path, "mGy_inv_X_mC.rds"))
-
-#  seleciona as colunas: constante + dummies (51)
-dim(mLagDm)
-mLagDm <- mLagDm[, 1:52]
-
-colnames(mLagDm) <-  c("CONST", "Seasonal", paste("Seasonal", 1:50, sep = ""))
-
-
-
-# Forecast short run lag 1
+# Forecast
 FSR_1 <- DX %*% t(mLag1)
 FSR_2 <- DX %*% t(mLag2)
 FSR_3 <- DX %*% t(mLag3)
@@ -128,11 +135,6 @@ FSR_5 <- DX %*% t(mLag5)
 FSR_6 <- DX %*% t(mLag6)
 FSR_7 <- DX %*% t(mLag7)
 FSR_8 <- DX %*% t(mLag8)
-
-FSR_9 <- DX %*% t(mLag9)
-FSR_10 <- DX %*% t(mLag10)
-FSR_11 <- DX %*% t(mLag11)
-FSR_12 <- DX %*% t(mLag12)
 
 
 #  ajuste dos lags.
@@ -147,13 +149,9 @@ FSR_6 <- FSR_6[7:(total_rows-6),]
 FSR_7 <- FSR_7[6:(total_rows-7),]
 FSR_8 <- FSR_8[5:(total_rows-8),]
 
-FSR_9 <- FSR_9[4:(total_rows-9),]
-FSR_10 <- FSR_10[3:(total_rows-10),]
-FSR_11 <- FSR_11[2:(total_rows-11),]
-FSR_12 <- FSR_12[1:(total_rows-12),]
-
 FSR = FSR_1 + FSR_2 + FSR_3 + FSR_4 + FSR_5 + FSR_6 + FSR_7 + FSR_8
-FSR = FSR + FSR_9 + FSR_10 + FSR_11 + FSR_12
+
+
 
 # Forecast de long Run
 FLR_1 = X %*% t(mLagLR)
@@ -213,34 +211,3 @@ results.tbl %>% select(starts_with("R_75_"), starts_with("Forecast_R_75_"))
 
 
 
-library(ggplot2)
-
-results.tbl %>% 
-  mutate(Id = row_number()) %>% 
-  ggplot() + 
-  geom_line(aes(x=Id, y = R_75_ETANOL_HIDRATADO)) +
-  geom_line(aes(x=Id, y = Forecast_R_75_ETANOL_HIDRATADO), colour = "red")  +
-  labs()
-
-results.tbl %>% 
-  mutate(Id = row_number()) %>% 
-  ggplot() + 
-  geom_line(aes(x=Id, y = R_75_OLEO_DIESEL)) +
-  geom_line(aes(x=Id, y = Forecast_R_75_OLEO_DIESEL), colour = "red") +
-  labs()
-
-results.tbl %>% 
-  mutate(Id = row_number()) %>% 
-  ggplot() + 
-  geom_line(aes(x=Id, y = R_75_GASOLINA_COMUM)) +
-  geom_line(aes(x=Id, y = Forecast_R_75_GASOLINA_COMUM), colour = "red")  +
-  labs()
-
-
-
-
-# 
-# results.tbl$Regiao = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,1]
-# results.tbl$Tipo = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,2]
-# 
-# readr::write_excel_csv(results.tbl, file = export_file)

@@ -19,7 +19,7 @@ library(stringr)
 # Configs -----------------------------------------------------------------
 
 # Nome do modelo a ser lido
-dir <- "Result 1"
+dir <- "Result 7"
 
 # Caminho dos arquivos
 filepath = file.path("Ox","mat_files", "Result_Matrix", dir, "Read Me Config.txt")
@@ -39,10 +39,10 @@ mGyL.file_list <-   c(
   "mGy_inv_X_mGyL6",
   "mGy_inv_X_mGyL7",
   "mGy_inv_X_mGyL8",
-  # "mGy_inv_X_mGyL9",
-  # "mGy_inv_X_mGyL10",
-  # "mGy_inv_X_mGyL11",
-  # "mGy_inv_X_mGyL12",
+  "mGy_inv_X_mGyL9",
+  "mGy_inv_X_mGyL10",
+  "mGy_inv_X_mGyL11",
+  "mGy_inv_X_mGyL12",
   # "mGy_inv_X_mGyL13",
   "mGy_inv_X_mL"
 )
