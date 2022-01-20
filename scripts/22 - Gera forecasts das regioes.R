@@ -20,7 +20,7 @@ library(stringr)
 library(lubridate)
 
 
-file.name <- "forecast_result.csv"
+file.name <- "Erro_GVARIIS.rds"
 dir <- "Result 1"
 
 
@@ -87,7 +87,6 @@ X <- X[-1,]
 dim(X)
 
 
-
 # Leitura das matrizes de lag.
 mLag1 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL1.rds"))
 mLag2 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL2.rds"))
@@ -99,11 +98,6 @@ mLag6 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL6.rds"))
 
 mLag7 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL7.rds"))
 mLag8 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL8.rds"))
-
-mLag9 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL9.rds"))
-mLag10 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL10.rds"))
-mLag11 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL11.rds"))
-mLag12 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL12.rds"))
 
 # Carrega matriz de coeficiente de longo prazo
 mLagLR <- readRDS(file.path(main_path, "mGy_inv_X_mL.rds"))
@@ -117,8 +111,6 @@ mLagDm <- mLagDm[, 1:52]
 
 colnames(mLagDm) <-  c("CONST", "Seasonal", paste("Seasonal", 1:50, sep = ""))
 
-
-
 # Forecast short run lag 1
 FSR_1 <- DX %*% t(mLag1)
 FSR_2 <- DX %*% t(mLag2)
@@ -129,35 +121,26 @@ FSR_6 <- DX %*% t(mLag6)
 FSR_7 <- DX %*% t(mLag7)
 FSR_8 <- DX %*% t(mLag8)
 
-FSR_9 <- DX %*% t(mLag9)
-FSR_10 <- DX %*% t(mLag10)
-FSR_11 <- DX %*% t(mLag11)
-FSR_12 <- DX %*% t(mLag12)
-
 
 #  ajuste dos lags.
 total_rows <- nrow(DX)
 
-FSR_1 <- FSR_1[12:(total_rows-1),]
-FSR_2 <- FSR_2[11:(total_rows-2),]
-FSR_3 <- FSR_3[10:(total_rows-3),]
-FSR_4 <- FSR_4[9:(total_rows-4),]
-FSR_5 <- FSR_5[8:(total_rows-5),]
-FSR_6 <- FSR_6[7:(total_rows-6),]
-FSR_7 <- FSR_7[6:(total_rows-7),]
-FSR_8 <- FSR_8[5:(total_rows-8),]
+FSR_1 <- FSR_1[8:(total_rows-1),]
+FSR_2 <- FSR_2[7:(total_rows-2),]
+FSR_3 <- FSR_3[6:(total_rows-3),]
+FSR_4 <- FSR_4[5:(total_rows-4),]
+FSR_5 <- FSR_5[4:(total_rows-5),]
+FSR_6 <- FSR_6[3:(total_rows-6),]
+FSR_7 <- FSR_7[2:(total_rows-7),]
+FSR_8 <- FSR_8[1:(total_rows-8),]
 
-FSR_9 <- FSR_9[4:(total_rows-9),]
-FSR_10 <- FSR_10[3:(total_rows-10),]
-FSR_11 <- FSR_11[2:(total_rows-11),]
-FSR_12 <- FSR_12[1:(total_rows-12),]
 
 FSR = FSR_1 + FSR_2 + FSR_3 + FSR_4 + FSR_5 + FSR_6 + FSR_7 + FSR_8
-FSR = FSR + FSR_9 + FSR_10 + FSR_11 + FSR_12
+
 
 # Forecast de long Run
 FLR_1 = X %*% t(mLagLR)
-FLR_1 <- FLR_1[12:(total_rows-1),]
+FLR_1 <- FLR_1[8:(total_rows-1),]
 
 # forecast constante e dummies
 Dummies <- matrix(NA, nrow = 52, ncol = 1)
@@ -186,14 +169,15 @@ for(i in seq_len(nrow(Forecast.Dm))) {
 }
 
 # Ajuste para os lags
-Forecast.Dm <- Forecast.Dm[13:(total_rows),]
+Forecast.Dm <- Forecast.Dm[9:(total_rows),]
 
 Forecast <- FSR + FLR_1 + Forecast.Dm
 
-# Forecast <- FSR + Forecast.Dm
-# Forecast <- FSR
 
-results.tbl <- DX.df %>% filter(row_number() > 13)
+results.tbl <- tbl %>%
+  select("DATA_INICIAL", "brent", colunas_Selecionadas) %>%
+  mutate_if(.predicate = is.numeric, .funs = mDiff) %>%
+  filter(row_number() > 9)
 
 colnames(Forecast) <- c("F_Brent",
                         paste("R",
@@ -207,40 +191,109 @@ for(i in 1:110){
   
 }
 
-results.tbl %>% select(starts_with("R_75_"), starts_with("Forecast_R_75_"))
-
-
-
-
 
 library(ggplot2)
 
-results.tbl %>% 
-  mutate(Id = row_number()) %>% 
-  ggplot() + 
-  geom_line(aes(x=Id, y = R_75_ETANOL_HIDRATADO)) +
-  geom_line(aes(x=Id, y = Forecast_R_75_ETANOL_HIDRATADO), colour = "red")  +
-  labs()
 
-results.tbl %>% 
-  mutate(Id = row_number()) %>% 
-  ggplot() + 
-  geom_line(aes(x=Id, y = R_75_OLEO_DIESEL)) +
-  geom_line(aes(x=Id, y = Forecast_R_75_OLEO_DIESEL), colour = "red") +
-  labs()
+regiao <- c("São Paulo" = 75,
+            "Rio de Janeiro" = 62,
+            "Dist. Federal" = 109,
+            "Belo Horizonte" = 46,
+            "Salvador" = 39)
+i <- 1
+for(i  in seq_along(regiao)){
 
-results.tbl %>% 
-  mutate(Id = row_number()) %>% 
-  ggplot() + 
-  geom_line(aes(x=Id, y = R_75_GASOLINA_COMUM)) +
-  geom_line(aes(x=Id, y = Forecast_R_75_GASOLINA_COMUM), colour = "red")  +
-  labs()
+  g1 <- results.tbl %>% 
+    select(date="DATA_INICIAL",
+           actual=sprintf("R_%d_ETANOL_HIDRATADO", regiao[i]),
+           forecast=sprintf("Forecast_R_%d_ETANOL_HIDRATADO", regiao[i])) %>% 
+    ggplot() + 
+    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
+    theme_bw() +
+    theme(legend.position="bottom") +
+    scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
+    labs(title = sprintf("%s", names(regiao)[i]),
+         subtitle = "Prediction of Etanol Hidratado",
+         # subtitle = "Impulse Response Function - Shor run effects",
+         colour = NULL,
+         y=NULL,
+         x=NULL,
+         caption = "Elaborated by the author")
+  
+  ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS - Etanol - %s.png", names(regiao)[i]),
+         plot = g1,
+         units = "in",
+         width = 8, height = 6,
+         dpi = 100)
+  
+  g1 <- results.tbl %>% 
+    select(date="DATA_INICIAL",
+           actual=sprintf("R_%d_OLEO_DIESEL", regiao[i]),
+           forecast=sprintf("Forecast_R_%d_OLEO_DIESEL", regiao[i])) %>% 
+    ggplot() + 
+    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
+    theme_bw() +
+    theme(legend.position="bottom") +
+    scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
+    labs(title = sprintf("%s", names(regiao)[i]),
+         subtitle = "Prediction of Oleo Diesel",
+         # subtitle = "Impulse Response Function - Shor run effects",
+         colour = NULL,
+         y=NULL,
+         x=NULL,
+         caption = "Elaborated by the author")
+  
+  ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS - Diesel - %s.png", names(regiao)[i]),
+         plot = g1,
+         units = "in",
+         width = 8, height = 6,
+         dpi = 100)
+  
+  g1 <- results.tbl %>% 
+    select(date="DATA_INICIAL",
+           actual=sprintf("R_%d_GASOLINA_COMUM", regiao[i]),
+           forecast=sprintf("Forecast_R_%d_GASOLINA_COMUM", regiao[i])) %>% 
+    ggplot() + 
+    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
+    theme_bw() +
+    theme(legend.position="bottom") +
+    scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
+    labs(title = sprintf("%s", names(regiao)[i]),
+         subtitle = "Prediction of Gasolina Comum",
+         # subtitle = "Impulse Response Function - Shor run effects",
+         colour = NULL,
+         y=NULL,
+         x=NULL,
+         caption = "Elaborated by the author")
+  
+  ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS - Gasolina -%s.png", names(regiao)[i]),
+         plot = g1,
+         units = "in",
+         width = 8, height = 6,
+         dpi = 100)
+  
+}  
 
 
 
+for(i in 1:110){
+  for(serie in c("ETANOL_HIDRATADO","OLEO_DIESEL","GASOLINA_COMUM") ){
+    coluna_actual <- sprintf("R_%d_%s",i, serie)
+    coluna_forecast <- sprintf("Forecast_R_%d_%s",i, serie)
+    coluna_erro <- sprintf("Erro_R_%d_%s",i, serie)
+    
+    results.tbl[coluna_erro] <- results.tbl[[coluna_actual]] - results.tbl[[coluna_forecast]]
+  }
+}
 
-# 
-# results.tbl$Regiao = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,1]
-# results.tbl$Tipo = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,2]
-# 
-# readr::write_excel_csv(results.tbl, file = export_file)
+
+tbl.erro <- results.tbl %>% 
+  select("DATA_INICIAL", starts_with("Erro")) %>% 
+  pivot_longer(cols = -DATA_INICIAL, names_to = "Serie", values_to = "Erro_GVARIIS") %>% 
+  mutate(SE_GVARIIS = Erro_GVARIIS^2)
+
+
+saveRDS(object = tbl.erro, file = export_file)

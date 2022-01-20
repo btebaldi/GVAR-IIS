@@ -18,7 +18,7 @@ library(lubridate)
 library(tsDyn)
 
 
-file.name <- "forecast_result.csv"
+file.name <- "Erro_VECM.rds"
 dir <- "Result 1"
 
 
@@ -59,153 +59,256 @@ tbl <- tbl %>% add_row(DATA_INICIAL = as.Date("2020-10-11"), DATA_FINAL = as.Dat
 #  ordena as datas
 tbl <- tbl %>% arrange(DATA_INICIAL)
 
-#  Colunas selecionadas para a regressao
-colunas_Selecionadas <- paste("R",
-                              rep(11, 3),
-                              c("ETANOL_HIDRATADO", "OLEO_DIESEL", "GASOLINA_COMUM"),
-                              sep = "_")
 
 
-# Selecao de dados para o VECM
-y <- tbl %>% 
-  filter(year(DATA_FINAL) < 2019) %>%
-  select(colunas_Selecionadas)
-  
-brent <- tbl %>% 
-  filter(year(DATA_FINAL) < 2019) %>% 
-  select("brent")
+# Planilha de resultados --------------------------------------------------
+
+results.tbl <-   tbl %>%
+  mutate_if(.predicate = is.numeric, .funs = mDiff) %>% 
+  filter(row_number() > 9)
 
 
-mdl <- VECM(data = y,
-     lag = 8,
-     r=1, 
-     include = "const",
-     beta = NULL,
-     estim = "ML",
-     LRinclude = "none",
-     exogen = brent$brent)
-
-# summary(mdl)
-
-# Determina matrizes
-
-# Determina coeficientes de longo prazo
-mLagLR <- mdl$coefficients[,"ECT"] %*% t(mdl$model.specific$beta)
-
-
-j=11
-# determina coeficientes de Lag
-mLag1 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -1", j), sprintf("R_%d_GASOLINA_COMUM -1", j), sprintf("R_%d_OLEO_DIESEL -1", j))]
-mLag2 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -2", j), sprintf("R_%d_GASOLINA_COMUM -2", j), sprintf("R_%d_OLEO_DIESEL -2", j))]
-mLag3 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -3", j), sprintf("R_%d_GASOLINA_COMUM -3", j), sprintf("R_%d_OLEO_DIESEL -3", j))]
-mLag4 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -4", j), sprintf("R_%d_GASOLINA_COMUM -4", j), sprintf("R_%d_OLEO_DIESEL -4", j))]
-mLag5 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -5", j), sprintf("R_%d_GASOLINA_COMUM -5", j), sprintf("R_%d_OLEO_DIESEL -5", j))]
-mLag6 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -6", j), sprintf("R_%d_GASOLINA_COMUM -6", j), sprintf("R_%d_OLEO_DIESEL -6", j))]
-mLag7 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -7", j), sprintf("R_%d_GASOLINA_COMUM -7", j), sprintf("R_%d_OLEO_DIESEL -7", j))]
-mLag8 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -8", j), sprintf("R_%d_GASOLINA_COMUM -8", j), sprintf("R_%d_OLEO_DIESEL -8", j))]
-
-# Determina coeficientes de constante 
-mLagDm <- mdl$coefficients[,"Intercept"]
-
-# Determina coeficientes de Exogenas
-mExo <- mdl$coefficients[,"exo_1"]
-
-DX.df <- tbl %>%
-  select(colunas_Selecionadas) %>%
-  mutate_if(.predicate = is.numeric, .funs = mDiff)
-
-DX <- DX.df %>% data.matrix()
-DX <- DX[-1,]
-
-X.df <- tbl %>% select(colunas_Selecionadas)
-X <- X.df %>% data.matrix()
-dim(X)
-X <- X[-1,]
-dim(X)
-
-Exo.df <- tbl %>% select("brent")
-Exo <- Exo.df %>% data.matrix()
-
-# Forecast
-FSR_1 <- DX %*% t(mLag1)
-FSR_2 <- DX %*% t(mLag2)
-FSR_3 <- DX %*% t(mLag3)
-FSR_4 <- DX %*% t(mLag4)
-FSR_5 <- DX %*% t(mLag5)
-FSR_6 <- DX %*% t(mLag6)
-FSR_7 <- DX %*% t(mLag7)
-FSR_8 <- DX %*% t(mLag8)
-
-
-#  ajuste dos lags.
-total_rows <- nrow(DX)
-
-FSR_1 <- FSR_1[12:(total_rows-1),]
-FSR_2 <- FSR_2[11:(total_rows-2),]
-FSR_3 <- FSR_3[10:(total_rows-3),]
-FSR_4 <- FSR_4[9:(total_rows-4),]
-FSR_5 <- FSR_5[8:(total_rows-5),]
-FSR_6 <- FSR_6[7:(total_rows-6),]
-FSR_7 <- FSR_7[6:(total_rows-7),]
-FSR_8 <- FSR_8[5:(total_rows-8),]
-
-FSR = FSR_1 + FSR_2 + FSR_3 + FSR_4 + FSR_5 + FSR_6 + FSR_7 + FSR_8
-
-
-
-# Forecast de long Run
-FLR_1 = X %*% t(mLagLR)
-FLR_1 <- FLR_1[12:(total_rows-1),]
-
-# forecast constante e dummies
-Dummies <- matrix(NA, nrow = 52, ncol = 1)
-rownames(Dummies) <- c("CONST", "Seasonal", paste("Seasonal", 1:50, sep = ""))
-
-Dummies[1,1] <- 1 # Constante
-Dummies[2:52,1] <- 0-1/52 # Constante
-
-
-Forecast.Dm <- matrix(NA, nrow = nrow(X), ncol = ncol(X))
-
-season <- 5 # A sazonalidade da amostra começa no periodo 5
-for(i in seq_len(nrow(Forecast.Dm))) {
-  Dummies[2:52,1] <- 0-1/52 # Constante
-  if(season < 52){
-    Dummies[season+1,1] <- 1-1/52
-  }
-  
-  Forecast.Dm[i, ] <- mLagDm %*% Dummies
-  
-  if(season == 52){
-    season <- 1
-  } else{
-    season <- season + 1
-  }
-}
-
-# Ajuste para os lags
-Forecast.Dm <- Forecast.Dm[13:(total_rows),]
-
-Forecast <- FSR + FLR_1 + Forecast.Dm
-
-# Forecast <- FSR + Forecast.Dm
-# Forecast <- FSR
-
-results.tbl <- DX.df %>% filter(row_number() > 13)
-
-colnames(Forecast) <- c("F_Brent",
-                        paste("R",
-                              sort(rep(1:110,3)),
-                              c("ETANOL_HIDRATADO","OLEO_DIESEL","GASOLINA_COMUM"),
-                              sep = "_"))
-i <- 1
 for(i in 1:110){
-  col <- paste("R", i, c("ETANOL_HIDRATADO", "OLEO_DIESEL", "GASOLINA_COMUM"), sep = "_")
-  results.tbl[, paste("Forecast", col, sep = "_") ] <- Forecast[, col]
   
+  #  Colunas selecionadas para a regressao
+  colunas_Selecionadas <- paste("R",
+                                rep(i, 3),
+                                c("ETANOL_HIDRATADO", "OLEO_DIESEL", "GASOLINA_COMUM"),
+                                sep = "_")
+  
+  # Selecao de dados para o VECM
+  y <- tbl %>% 
+    filter(year(DATA_FINAL) < 2019) %>%
+    select(colunas_Selecionadas)
+  
+  brent <- tbl %>% 
+    filter(year(DATA_FINAL) < 2019) %>% 
+    select("brent")
+  
+  #  modelo VECM para a regiao atual
+  mdl <- VECM(data = y,
+              lag = 8,
+              r=1, 
+              include = "const",
+              beta = NULL,
+              estim = "ML",
+              LRinclude = "none",
+              exogen = brent$brent)
+  
+  
+  # Determina coeficientes de longo prazo
+  mLagLR <- mdl$coefficients[,"ECT"] %*% t(mdl$model.specific$beta)
+  
+  
+  # determina coeficientes de Lag
+  mLag1 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -1", i), sprintf("R_%d_GASOLINA_COMUM -1", i), sprintf("R_%d_OLEO_DIESEL -1", i))]
+  mLag2 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -2", i), sprintf("R_%d_GASOLINA_COMUM -2", i), sprintf("R_%d_OLEO_DIESEL -2", i))]
+  mLag3 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -3", i), sprintf("R_%d_GASOLINA_COMUM -3", i), sprintf("R_%d_OLEO_DIESEL -3", i))]
+  mLag4 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -4", i), sprintf("R_%d_GASOLINA_COMUM -4", i), sprintf("R_%d_OLEO_DIESEL -4", i))]
+  mLag5 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -5", i), sprintf("R_%d_GASOLINA_COMUM -5", i), sprintf("R_%d_OLEO_DIESEL -5", i))]
+  mLag6 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -6", i), sprintf("R_%d_GASOLINA_COMUM -6", i), sprintf("R_%d_OLEO_DIESEL -6", i))]
+  mLag7 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -7", i), sprintf("R_%d_GASOLINA_COMUM -7", i), sprintf("R_%d_OLEO_DIESEL -7", i))]
+  mLag8 <- mdl$coefficients[, c(sprintf("R_%d_ETANOL_HIDRATADO -8", i), sprintf("R_%d_GASOLINA_COMUM -8", i), sprintf("R_%d_OLEO_DIESEL -8", i))]
+  
+  # Determina coeficientes de constante 
+  mLagDm <- mdl$coefficients[,"Intercept"]
+  
+  # Determina coeficientes de Exogenas
+  mExo <- mdl$coefficients[,"exo_1"]
+  
+  #  constroi o vetor de variaveis defasadas
+  DX.df <- tbl %>%
+    select(colunas_Selecionadas) %>%
+    mutate_if(.predicate = is.numeric, .funs = mDiff)
+  
+  DX <- DX.df %>% data.matrix()
+  DX <- DX[-1,]
+  
+  X.df <- tbl %>% select(colunas_Selecionadas)
+  X <- X.df %>% data.matrix()
+  dim(X)
+  X <- X[-1,]
+  dim(X)
+  
+  Exo.df <- tbl %>% select("brent")
+  Exo <- Exo.df %>% data.matrix()
+  
+  # Forecast
+  FSR_1 <- DX %*% t(mLag1)
+  FSR_2 <- DX %*% t(mLag2)
+  FSR_3 <- DX %*% t(mLag3)
+  FSR_4 <- DX %*% t(mLag4)
+  FSR_5 <- DX %*% t(mLag5)
+  FSR_6 <- DX %*% t(mLag6)
+  FSR_7 <- DX %*% t(mLag7)
+  FSR_8 <- DX %*% t(mLag8)
+  
+  #  ajuste dos lags.
+  total_rows <- nrow(DX)
+  
+  FSR_1 <- FSR_1[8:(total_rows-1),]
+  FSR_2 <- FSR_2[7:(total_rows-2),]
+  FSR_3 <- FSR_3[6:(total_rows-3),]
+  FSR_4 <- FSR_4[5:(total_rows-4),]
+  FSR_5 <- FSR_5[4:(total_rows-5),]
+  FSR_6 <- FSR_6[3:(total_rows-6),]
+  FSR_7 <- FSR_7[2:(total_rows-7),]
+  FSR_8 <- FSR_8[1:(total_rows-8),]
+  
+  FSR = FSR_1 + FSR_2 + FSR_3 + FSR_4 + FSR_5 + FSR_6 + FSR_7 + FSR_8
+  
+  # Forecast de long Run
+  FLR_1 = X %*% t(mLagLR)
+  FLR_1 <- FLR_1[8:(total_rows-1),]
+  
+  
+  # forecast constante e dummies
+  Dummies <- matrix(NA, nrow = 1, ncol = 1)
+  Dummies[1,1] <- 1 # Constante
+  
+  Forecast.Dm <- matrix(NA, nrow = nrow(X), ncol = ncol(X))
+  
+  for(j in seq_len(nrow(Forecast.Dm))) {
+    Forecast.Dm[j, ] <- mLagDm %*% Dummies
+  }
+  
+  # Ajuste para os lags
+  Forecast.Dm <- Forecast.Dm[9:(total_rows),]
+  
+  
+  #  calcula o forecast total
+  Forecast <- FSR + FLR_1 + Forecast.Dm
+  
+  colnames(Forecast) <- paste("Forecast", "R",
+                              i,
+                              c("ETANOL_HIDRATADO","OLEO_DIESEL","GASOLINA_COMUM"),
+                              sep = "_")
+  
+  #  adiciona os resultado no data.frame de resultados.
+  results.tbl[, colnames(Forecast) ] <- Forecast[, colnames(Forecast)]  
+  
+} # Fim do for(i in 1:110)
+
+
+
+library(ggplot2)
+
+regiao <- c("São Paulo" = 75,
+            "Rio de Janeiro" = 62,
+            "Dist. Federal" = 109,
+            "Belo Horizonte" = 46,
+            "Salvador" = 39)
+i <- 1
+for(i  in seq_along(regiao)){
+  
+  g1 <- results.tbl %>% 
+    select(date="DATA_INICIAL",
+           actual=sprintf("R_%d_ETANOL_HIDRATADO", regiao[i]),
+           forecast=sprintf("Forecast_R_%d_ETANOL_HIDRATADO", regiao[i])) %>% 
+    ggplot() + 
+    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
+    theme_bw() +
+    theme(legend.position="bottom") +
+    scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
+    labs(title = sprintf("%s", names(regiao)[i]),
+         subtitle = "Prediction of Etanol Hidratado",
+         # subtitle = "Impulse Response Function - Shor run effects",
+         colour = NULL,
+         y=NULL,
+         x=NULL,
+         caption = "Elaborated by the author")
+  
+  ggsave(filename = sprintf("./Graficos/Forecast VECM - Etanol - %s.png", names(regiao)[i]),
+         plot = g1,
+         units = "in",
+         width = 8, height = 6,
+         dpi = 100)
+  
+  g1 <- results.tbl %>% 
+    select(date="DATA_INICIAL",
+           actual=sprintf("R_%d_OLEO_DIESEL", regiao[i]),
+           forecast=sprintf("Forecast_R_%d_OLEO_DIESEL", regiao[i])) %>% 
+    ggplot() + 
+    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
+    theme_bw() +
+    theme(legend.position="bottom") +
+    scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
+    labs(title = sprintf("%s", names(regiao)[i]),
+         subtitle = "Prediction of Oleo Diesel",
+         # subtitle = "Impulse Response Function - Shor run effects",
+         colour = NULL,
+         y=NULL,
+         x=NULL,
+         caption = "Elaborated by the author")
+  
+  ggsave(filename = sprintf("./Graficos/Forecast VECM - Diesel - %s.png", names(regiao)[i]),
+         plot = g1,
+         units = "in",
+         width = 8, height = 6,
+         dpi = 100)
+  
+  g1 <- results.tbl %>% 
+    select(date="DATA_INICIAL",
+           actual=sprintf("R_%d_GASOLINA_COMUM", regiao[i]),
+           forecast=sprintf("Forecast_R_%d_GASOLINA_COMUM", regiao[i])) %>% 
+    ggplot() + 
+    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
+    theme_bw() +
+    theme(legend.position="bottom") +
+    scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
+    labs(title = sprintf("%s", names(regiao)[i]),
+         subtitle = "Prediction of Gasolina Comum",
+         # subtitle = "Impulse Response Function - Shor run effects",
+         colour = NULL,
+         y=NULL,
+         x=NULL,
+         caption = "Elaborated by the author")
+  
+  g1
+  
+  ggsave(filename = sprintf("./Graficos/Forecast VECM - Gasolina -%s.png", names(regiao)[i]),
+         plot = g1,
+         units = "in",
+         width = 8, height = 6,
+         dpi = 100)
+  
+}  
+
+
+
+
+
+
+# Calculo dos erros -------------------------------------------------------
+
+for(i in 1:110){
+  for(serie in c("ETANOL_HIDRATADO","OLEO_DIESEL","GASOLINA_COMUM") ){
+    coluna_actual <- sprintf("R_%d_%s",i, serie)
+    coluna_forecast <- sprintf("Forecast_R_%d_%s",i, serie)
+    coluna_erro <- sprintf("Erro_R_%d_%s",i, serie)
+    
+    results.tbl[coluna_erro] <- results.tbl[[coluna_actual]] - results.tbl[[coluna_forecast]]
+  }
 }
 
-results.tbl %>% select(starts_with("R_75_"), starts_with("Forecast_R_75_"))
+
+
+
+tbl.erro <- results.tbl %>% 
+  select("DATA_INICIAL", starts_with("Erro")) %>% 
+  pivot_longer(cols = -DATA_INICIAL, names_to = "Serie", values_to = "Erro_VECM") %>% 
+  mutate(SE_VECM = Erro_VECM^2)
+
+
+saveRDS(object = tbl.erro, file = export_file)
+
+
+
+
+
 
 
 
