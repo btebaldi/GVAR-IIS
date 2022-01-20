@@ -1,0 +1,358 @@
+--------------- Ox at 18:36:25 on 17-Jan-2022 ---------------
+
+Ox Professional version 8.00 (Windows_64/U/MT) (C) J.A. Doornik, 1994-2018
+******************************************
+------------------------------------------
+	Configuracao de variaveis
+------------------------------------------
+
+REGIOES
+	Quantidade de lags: 8
+	Quantidade de Regioes: 110
+	Quantidade de Variaveis Dependente: 3
+Variaveis Dependentes:
+ETANOL_HIDRATADO
+OLEO_DIESEL
+GASOLINA_COMUM
+
+DATABASE
+	Macrovariaveis: ../export/database for ox/db_oil_withSesonal.in7
+	Regioes: ../export/database for ox/db_oil_withSesonal.in7
+
+DIRETORIOS
+	W Matrix Dir: ../export/W_mat/
+	Cointeration Matrix Dir: ./mat_files/Cointegration - l8/
+	Raw Matrix Dir: ./mat_files/RawMatrix/
+	A Matrix Dir: ./mat_files/A_Matrix/
+	G Matrix Dir: ./mat_files/G_Matrix/
+	Result Matrix Dir: ./mat_files/Result_Matrix/
+
+Configuracoes
+	is_IIS_ON: 1
+	IIS_pvalue: 1e-005
+	is_DUMMY_ON: 0
+******************************************
+>>> Inicio da estimacao do modelo de macrovariaveis
+
+
+*****************************************
+             Macrovariaveis 
+*****************************************
+
+Carregando dados das variaveis exogenas
+Carregando base de dados com informacoes regionais
+Construindo variaveis X
+Concluido construcao das variaveis X
+Construindo influencia das variaveis
+
+      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+Salvando matriz W_w para ser utilizada depois
+Inicio um nomo objeto do tipo PcGive referente a macrovariaveis
+PcGive package version 15.0, object created on 17-01-2022
+(C) Jurgen A Doornik - requires a licensed version of PcGive Professional
+Carregando base de dados de macrovariaveis
+Iniciando construcao da variavel Delta para variaveis
+Adicionado Diff da variavel: brent
+Adicionando variavel mX
+Adicionando variavel D_mX 
+Model Sample: 2004-07-11 - 2018-12-30
+
+Autometrics identification block search over regressors
+no. initial regressors    764  no. of observations       756
+significance level     1e-005  block method         standard
+extension effort     standard  reduction effort     standard
+backtesting              GUM0  backtesting in      A,B,C1,D1
+
+
+A. Step 1: block search for omitted regressors
+   significance         1e-005  diagnostics             off
+   no of blocks              7  blocked by         variable
+   0(127):0 1(127):2 2(127):0 3(127):0 4(127):0 5(127):0 6(2):0  2 found
+A. Step 1 (continued): 
+   significance         8e-005  diagnostics             off
+   no of blocks              7  blocked by         variable
+   0(127):0 1(127):2 2(127):0 3(127):0 4(127):0 5(127):0 6(2):0  2 found
+A. Step 2   size=  2 #pars=   2 loglik=     1438.09  1 selected
+
+B. Step 1: block search for omitted regressors
+   significance         1e-005  diagnostics         delayed
+   no of blocks              7  blocked by         variable
+   0(128):0 1(128):2 2(128):0 3(128):0 4(128):0 5(128):0 6(2):0  2 found
+B. Step 2   size=  3 #pars=   4 loglik=     1452.17  3 selected
+
+B. Step 1: block search for omitted regressors
+   significance         1e-005  diagnostics         delayed
+   no of blocks              6  blocked by         variable
+   0(130):0 1(130):0 2(130):0 3(130):0 4(130):0 5(129):0  0 found
+
+C. Step 1: block search for omitted regressors
+   significance         2e-005  diagnostics              on
+   no of blocks              6  blocked by         variable
+   0(130):1 1(130):0 2(130):0 3(130):90 4(130):6 5(129):30  127 found
+C. Step 2   size=130 #pars=   9 loglik=     1498.87  8 selected
+
+D. Step 1: block search for omitted regressors
+   significance         1e-005  diagnostics              on
+   no of blocks              6  blocked by         variable
+   0(135):0 1(135):7 2(135):0 3(135):0 4(135):0 5(129):0  7 found
+D. Step 2   size= 15 #pars=  15 loglik=     1533.17 14 selected
+
+D. Step 1: block search for omitted regressors
+   significance         1e-005  diagnostics              on
+   no of blocks              6  blocked by         variable
+   0(141):0 1(141):0 2(141):0 3(141):81 4(141):3 5(129):72  156 found
+D. Step 1 (continued): 
+   significance         1e-005  diagnostics              on
+   0(170):15  15 found
+D. Step 2   size= 29 #pars=  19 loglik=     1545.35 18 selected
+
+D. Step 1: block search for omitted regressors
+   significance         1e-005  diagnostics              on
+   no of blocks              6  blocked by         variable
+   0(145):0 1(145):0 2(145):0 3(145):0 4(145):0 5(129):0  0 found
+
+Block search complete, estimated 19715 models in  1:28.86
+- final selection size= 18 regs= 18 total=  19 loglik=     1545.35
+
+
+---------- Autometrics: dimensions of initial GUM ----------
+no. of observations       756  no. of parameters          19
+no. free regressors (k1)   18  no. free components (k2)    0
+no. of equations            1  no. diagnostic tests        5
+Fixed regressors:  Constant
+
+[0.2] Presearch reduction of initial GUM
+
+Starting closed lag reduction at 0.00050
+Removing lags(#regressors): none
+
+Starting common lag reduction at 0.00050
+Removing lags(#regressors): none
+
+Starting common lag reduction at 0.00050 (excluding lagged y's)
+Removing lags(#regressors): none
+
+Presearch reduction in opposite order
+
+Starting common lag reduction at 0.00050 (excluding lagged y's)
+Removing lags(#regressors): none
+
+Starting common lag reduction at 0.00050
+Removing lags(#regressors): none
+
+Starting closed lag reduction at 0.00050
+Removing lags(#regressors): none
+
+Encompassing test against initial GUM (iGUM) removes: none
+
+Presearch reduction: none removed
+
+[0.3] Testing GUM 0:  LRF(18) [0.0000] kept
+
+[1.0] Start of Autometrics tree search
+
+Searching from GUM 0  k=  18 loglik=     1545.35
+Found new terminal 1  k=  14 loglik=     1533.40 SC=   -3.9251
+Found new terminal 2  k=  13 loglik=     1530.66 SC=   -3.9266
+Found new terminal 3  k=  13 loglik=     1531.00 SC=   -3.9275
+Found new terminal 4  k=  15 loglik=     1537.68 SC=   -3.9277
+Found new terminal 5  k=  15 loglik=     1537.11 SC=   -3.9261
+
+Searching for contrasting terminals in terminal paths
+
+Encompassing test against GUM 0 removes: none
+
+Searching from GUM 1  k=  16 loglik=     1545.33 LRF_GUM0( 2) [0.9882]
+Recalling terminal 1  k=  14 loglik=     1533.40 SC=   -3.9251
+Recalling terminal 2  k=  13 loglik=     1530.66 SC=   -3.9266
+Recalling terminal 3  k=  13 loglik=     1531.00 SC=   -3.9275
+Recalling terminal 4  k=  15 loglik=     1537.68 SC=   -3.9277
+Recalling terminal 5  k=  15 loglik=     1537.11 SC=   -3.9261
+
+Searching for contrasting terminals in terminal paths
+Found new terminal 6  k=  13 loglik=     1529.91 SC=   -3.9246
+Found new terminal 7  k=  13 loglik=     1529.61 SC=   -3.9238
+
+[2.0] Selection of final model from terminal candidates: terminal 4
+
+p-values in Final GUM and terminal model(s)
+                 Final GUM  terminal 1  terminal 2  terminal 3  terminal 4  terminal 5  terminal 6  terminal 7
+D_brent_1       0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000
+I:2008-09-21    0.00038671           .  0.00045120  0.00048886  0.00046311  0.00046999  0.00052831  0.00053368
+I:2008-09-28    0.00003673  0.00004970  0.00004486  0.00004811  0.00004549  0.00004643  0.00005036  0.00005111
+I:2008-10-05    0.00104758  0.00110372  0.00143306  0.00125763  0.00107594  0.00107666  0.00118224  0.00117755
+I:2008-10-12    0.00328624  0.00332433  0.00440888  0.00381845  0.00327961  0.00327280  0.00355807  0.00353647
+I:2008-11-09    0.00334455  0.00360747           .           .  0.00351069  0.00352391  0.00374950  0.00375049
+I:2008-11-30    0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000
+I:2008-12-28    0.00002842  0.00004299  0.00003267  0.00003877  0.00003776  0.00003871  0.00004431  0.00004515
+I:2009-02-22    0.01032324  0.01234166  0.01086643  0.01176367  0.01165779  0.01177887  0.01253594           .
+I:2015-01-04    0.00206288  0.00223150           .  0.00242078  0.00216734  0.00217521  0.00233509  0.00233452
+I:2015-02-01    0.00021770  0.00027229  0.00028084           .  0.00025091  0.00025341           .           .
+I:2015-08-30    0.00006103  0.00008377  0.00007590  0.00008184  0.00007532           .  0.00008889  0.00008987
+I:2016-01-10    0.00013587  0.00015508  0.00019086  0.00017297  0.00014773  0.00014865  0.00016593  0.00016600
+I:2016-01-24    0.00011026  0.00014823  0.00013536  0.00014517           .  0.00013630  0.00015686  0.00015846
+I:2016-04-10    0.00094223           .           .  0.00116225  0.00107219  0.00108244           .           .
+I:2018-12-30    0.01452480  0.01712108  0.01522741           .  0.01624243  0.01639675           .  0.01750590
+k                       16          14          13          13          15          15          13          13
+parameters              17          15          14          14          16          16          14          14
+loglik              1545.3      1533.4      1530.7      1531.0      1537.7      1537.1      1529.9      1529.6
+AIC                -4.0432     -4.0169     -4.0123     -4.0132     -4.0256     -4.0241     -4.0103     -4.0095
+HQ                 -4.0031     -3.9816     -3.9793     -3.9802     -3.9879     -3.9864     -3.9773     -3.9765
+SC                 -3.9391     -3.9251     -3.9266     -3.9275     -3.9277     -3.9261     -3.9246     -3.9238
+                                                                   =======
+
+p-values of diagnostic checks for model validity
+          Initial GUM     cut-off   Final GUM     cut-off Final model
+AR(7)         0.14941     0.01000     0.14746     0.01000     0.10891
+ARCH(7)       0.00000     0.00000     0.00000     0.00000     0.00000
+Normality     0.08194     0.01000     0.08123     0.01000     0.01891
+Hetero        0.01214     0.01000     0.01131     0.01000     0.01241
+Chow(70%)     0.12620     0.01000     0.11880     0.01000     0.04135
+
+*** Warning: Final model failed 1 diagnostic test(s)
+
+The final model has 13 insignificant coefficients:
+Joint significance  LRF(13) [0.0000] LRF_GUM0(16) [0.0000]
+I:2008-09-21        Failed diagnostic testing
+I:2008-09-28        Failed backtest against GUM0
+I:2008-10-05        Failed diagnostic testing
+I:2008-10-12        Failed diagnostic testing
+I:2008-11-09        Failed diagnostic testing
+I:2008-12-28        Failed backtest against GUM0
+I:2009-02-22        Failed diagnostic testing
+I:2015-01-04        Failed diagnostic testing
+I:2015-02-01        Failed diagnostic testing
+I:2015-08-30        Failed backtest against GUM0
+I:2016-01-10        Failed backtest against GUM0
+I:2016-04-10        Failed diagnostic testing
+I:2018-12-30        Failed diagnostic testing
+
+Summary of Autometrics search
+initial search space     2^18  final search space       2^16
+no. estimated models      658  no. terminal models         7
+test form                LR-F  target size       User:1e-005
+large residuals            no  presearch reduction      lags
+backtesting              GUM0  tie-breaker                SC
+diagnostics p-value      0.01  search effort        standard
+time                  1:29.15  Autometrics version       2.0
+
+SYS( 2) Modelling D_brent by OLS
+        The dataset is: ../export/database for ox/db_oil_withSesonal.in7
+        The estimation sample is: 2004-07-11 - 2018-12-30
+
+                  Coefficient  Std.Error  t-value  t-prob Part.R^2
+D_brent_1            0.278823    0.03302     8.44  0.0000   0.0879
+I:2008-09-21         0.112789    0.03207     3.52  0.0005   0.0164
+I:2008-09-28        -0.131979    0.03217    -4.10  0.0000   0.0222
+I:2008-10-05        -0.105722    0.03220    -3.28  0.0011   0.0144
+I:2008-10-12       -0.0953602    0.03233    -2.95  0.0033   0.0116
+I:2008-11-09       -0.0938454    0.03205    -2.93  0.0035   0.0115
+I:2008-11-30        -0.194551    0.03205    -6.07  0.0000   0.0474
+I:2008-12-28         0.133853    0.03229     4.15  0.0000   0.0227
+I:2009-02-22        0.0812190    0.03212     2.53  0.0117   0.0086
+I:2015-01-04       -0.0986570    0.03206    -3.08  0.0022   0.0126
+I:2015-02-01         0.117816    0.03202     3.68  0.0003   0.0180
+I:2015-08-30         0.127599    0.03205     3.98  0.0001   0.0210
+I:2016-01-10        -0.122339    0.03207    -3.81  0.0001   0.0193
+I:2016-04-10         0.105134    0.03202     3.28  0.0011   0.0144
+I:2018-12-30        0.0773461    0.03211     2.41  0.0162   0.0078
+Constant      U   0.000498074   0.001175    0.424  0.6719   0.0002
+
+sigma = 0.0319938   RSS = 0.7574686465
+
+log-likelihood     1537.68035  -T/2log|Omega|     2610.39788
+|Omega|         0.00100194265  log|Y'Y/T|         -6.6092468
+R^2(LR)              0.256635  R^2(LM)              0.256635
+no. of observations       756  no. of parameters          16
+mean(D_brent)     0.000535304  se(D_brent)         0.0367373
+
+F-test on regressors except unrestricted: F(15,740) = 17.0315 [0.0000] **
+F-tests on retained regressors, F(1,740) =
+   D_brent_1       71.2935 [0.000]**I:2008-09-21       12.3691 [0.000]**
+I:2008-09-28       16.8270 [0.000]**I:2008-10-05       10.7770 [0.001]**
+I:2008-10-12       8.70159 [0.003]**I:2008-11-09       8.57608 [0.004]**
+I:2008-11-30       36.8525 [0.000]**I:2008-12-28       17.1886 [0.000]**
+I:2009-02-22       6.39395 [0.012]* I:2015-01-04       9.46854 [0.002]**
+I:2015-02-01       13.5367 [0.000]**I:2015-08-30       15.8503 [0.000]**
+I:2016-01-10       14.5518 [0.000]**I:2016-04-10       10.7836 [0.001]**
+I:2018-12-30       5.80297 [0.016]*     Constant U    0.179567 [0.672]  
+
+correlation of URF residuals (standard deviations on diagonal)
+                   D_brent
+D_brent           0.031994
+correlation between actual and fitted
+      D_brent
+      0.50659
+
+D_brent_1          0.27882
+I:2008-09-21       0.11279
+I:2008-09-28      -0.13198
+I:2008-10-05      -0.10572
+I:2008-10-12     -0.095360
+I:2008-11-09     -0.093845
+I:2008-11-30      -0.19455
+I:2008-12-28       0.13385
+I:2009-02-22      0.081219
+I:2015-01-04     -0.098657
+I:2015-02-01       0.11782
+I:2015-08-30       0.12760
+I:2016-01-10      -0.12234
+I:2016-04-10       0.10513
+I:2018-12-30      0.077346
+Constant        0.00049807
+Processo H iniciado
+asParamNames
+D_brent_1
+I:2008-09-21
+I:2008-09-28
+I:2008-10-05
+I:2008-10-12
+I:2008-11-09
+I:2008-11-30
+I:2008-12-28
+I:2009-02-22
+I:2015-01-04
+I:2015-02-01
+I:2015-08-30
+I:2016-01-10
+I:2016-04-10
+I:2018-12-30
+Constant
+vParamValues
+      0.27882
+      0.11279
+     -0.13198
+     -0.10572
+    -0.095360
+    -0.093845
+     -0.19455
+      0.13385
+     0.081219
+    -0.098657
+      0.11782
+      0.12760
+     -0.12234
+      0.10513
+     0.077346
+   0.00049807
+D_brent_1
+D_brent_2
+D_brent_3
+D_brent_4
+D_brent_5
+D_brent_6
+D_brent_7
+D_brent_8
+
+          D_brent_1    D_brent_2    D_brent_3    D_brent_4    D_brent_5    D_brent_6    D_brent_7    D_brent_8
+brent       0.27882      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+Processo U iniciado
+Processo U finalizado
+Processo Extracao da matriz de saturacao (IIS)
+Processo AlphaBeta iniciado
+Processo B iniciado
+*** Fim da estimacao dos modelos de macrovariaveis *** 

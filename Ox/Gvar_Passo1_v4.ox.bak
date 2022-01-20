@@ -22,6 +22,7 @@ ProcessoPhi(mPhi, const iValue, const sName, const iQtdLags, const iRegDependent
 
 				//println("Parametro procurado: ", sParamName);
                 index = strfind(sName, sParamName);
+				//println("index: ", index);
 
                 if (index > -1) {
                     mPhi[iContRows][(sizeof(asTipo)*iContCols) + iContVar] = iValue[index];
@@ -30,7 +31,7 @@ ProcessoPhi(mPhi, const iValue, const sName, const iQtdLags, const iRegDependent
         } // Fim: iContCols (looping nos lags)
     } // Fim: iContRows (looping nos tipos para as linhas)
     println("Processo Phi finalizado");
-//	println(mPhi);
+	//println(mPhi);
     return mPhi;
 }
 
@@ -62,6 +63,7 @@ ProcessoLambda(mLambda, const iValue, const sName, const iQtdLags, const iRegDep
 
 				//println("Parametro procurado: ", sParamName);
                 index = strfind(sName, sParamName);
+				//println("index: ", index);
 
                 if (index > -1) {
                     mLambda[iContRows][(sizeof(asTipo)*iContCols) + iContVar] = iValue[index];
@@ -70,6 +72,7 @@ ProcessoLambda(mLambda, const iValue, const sName, const iQtdLags, const iRegDep
         } // Fim: iContCols (looping nos lags)
     } // Fim: iContRows (looping nos tipos para as linhas)
     println("Processo Lambda finalizado");
+    //println(mLambda);
     return mLambda;
 }
 
@@ -161,7 +164,7 @@ ProcessoPILongRun(const iValue, const sName, const iRegDependente, const sVarSuf
 
     for (nContTipo = 0; nContTipo < sizeof(asTipo); ++nContTipo) {
 
-	println(sprint("betaZ_", "1", "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
+	//println(sprint("betaZ_", "1", "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
 	
         index = find(sName, sprint("betaZ_", "1", "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
         // caso tenha achado o indice atualiza a tabela
@@ -486,7 +489,18 @@ main() {
 	    }
 	
 		// Adiciona a variavel "betaZ" com um lag apenas (representação da matriz de longo prazo)
-		model.Select("X", asBetaZ);
+		if(mRankRegions[iCont-1][0] > 0){
+			//model.Select("X", asBetaZ);
+		}
+
+			//println("mRankRegions has ", rows(mRankRegions), " rows and ", columns(mRankRegions), " cols");
+		// continue;
+        // FOR DEBUG ONLY
+        // if(iCont >2){
+        //     exit(0);
+        // }
+
+		
 
         // Adiciona a variaveis macroeconomicas com um lag apenas (representação da matriz de longo prazo)
         //decl nContVarMacro;
@@ -522,11 +536,12 @@ main() {
         }
 
 		// Desliga a impressao em tela do Autometrics
-        // model.AutometricsSet("print", 0);
+        model.AutometricsSet("print", 0);
         // determina o metodo de estimacao.
         model.SetMethod(M_OLS);
         // Realiza a estimacao do modelo
 		println("INICIANDO ESTIMACAO");
+		model.SetPrint(FALSE);
         model.Estimate();
 
 		
@@ -559,7 +574,7 @@ main() {
         vParamValues = model.GetPar();
 
         //Impressao dos parametros em Tela (Mudar flag para TRUE, para imprimir todos os modelos)
-        if ((iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE) {
+        if (FALSE) {
             print("%r", asParamNames,
                   "%c", {"Coef", "Std.Err"}, "%14.4f", vParamValues ~ model.GetStdErr());
         }
@@ -567,7 +582,7 @@ main() {
         // Salva a matriz de IIS Para o modelo
         mIIS = ProcessoIIS(vParamValues, asParamNames, iCont, sprint(sVarSufix, "R_"), model.GetYear1(), model.GetYear2(), aVarDependenteNames);
 		//println("mIIS", mIIS);
-		println("mIIS_", rows(mIIS), "x", columns(mIIS));
+		//println("mIIS_", rows(mIIS), "x", columns(mIIS));
 		savemat(sprint(txMatPathRawMatrix, sVarSufix, "R", iCont, "_IIS.mat"), mIIS);
 
 		mAlpha = ProcessoPILongRun(vParamValues, asParamNames, iCont, sprint(sVarSufix, "R_"), aVarDependenteNames, iQtdVarDependente);
