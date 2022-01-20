@@ -31,7 +31,7 @@ mDiff <- function(x){
 # looping -----------------------------------------------------------------
 
 lista_de_modelos <- c(12, 13, 14, 15, 16, 17)
-
+modelo_atual <- 12
 for (modelo_atual in lista_de_modelos) {
   
   
@@ -196,14 +196,17 @@ for (modelo_atual in lista_de_modelos) {
   library(ggplot2)
   
   
-  regiao <- c("São Paulo" = 75,
+  regiao <- c("Sao Paulo" = 75,
               "Rio de Janeiro" = 62,
               "Dist. Federal" = 109,
               "Belo Horizonte" = 46,
               "Salvador" = 39)
+  
   i <- 1
   for(i  in seq_along(regiao)){
     
+    
+    results.tbl %>% filter(year(DATA_INICIAL) >= 2019)
     g1 <- results.tbl %>% 
       select(date="DATA_INICIAL",
              actual=sprintf("R_%d_ETANOL_HIDRATADO", regiao[i]),
@@ -211,6 +214,9 @@ for (modelo_atual in lista_de_modelos) {
       ggplot() + 
       geom_line(aes(x=date, y = actual, colour= "Actual")) +
       geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
+      geom_rect(inherit.aes=FALSE,mapping = aes(xmin=start, xmax=end, ymin=min(dat$value),
+                                                   ymax=max(dat$value), group=group),
+                color="transparent", fill="orange", alpha=0.3) +
       theme_bw() +
       theme(legend.position="bottom") +
       scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
@@ -223,11 +229,11 @@ for (modelo_atual in lista_de_modelos) {
            caption = "Elaborated by the author")
     
     print(g1)
-    # ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS - Etanol - %s.png", names(regiao)[i]),
-    #        plot = g1,
-    #        units = "in",
-    #        width = 8, height = 6,
-    #        dpi = 100)
+    ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS (%s) - Etanol - %s.png", dir, names(regiao)[i]),
+           plot = g1,
+           units = "in",
+           width = 8, height = 6,
+           dpi = 100)
     
     g1 <- results.tbl %>% 
       select(date="DATA_INICIAL",
@@ -248,11 +254,11 @@ for (modelo_atual in lista_de_modelos) {
            caption = "Elaborated by the author")
     
     print(g1)
-    # ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS - Diesel - %s.png", names(regiao)[i]),
-    #        plot = g1,
-    #        units = "in",
-    #        width = 8, height = 6,
-    #        dpi = 100)
+    ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS (%s) - Diesel - %s.png", dir, names(regiao)[i]),
+           plot = g1,
+           units = "in",
+           width = 8, height = 6,
+           dpi = 100)
     
     g1 <- results.tbl %>% 
       select(date="DATA_INICIAL",
@@ -273,11 +279,11 @@ for (modelo_atual in lista_de_modelos) {
            caption = "Elaborated by the author")
     
     print(g1)
-    # ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS - Gasolina -%s.png", names(regiao)[i]),
-    #        plot = g1,
-    #        units = "in",
-    #        width = 8, height = 6,
-    #        dpi = 100)
+    ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS (%s) - Gasolina - %s.png", dir, names(regiao)[i]),
+           plot = g1,
+           units = "in",
+           width = 8, height = 6,
+           dpi = 100)
     
   }  
   

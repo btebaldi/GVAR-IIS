@@ -490,7 +490,7 @@ main() {
 	
 		// Adiciona a variavel "betaZ" com um lag apenas (representação da matriz de longo prazo)
 		if(mRankRegions[iCont-1][0] > 0){
-			//model.Select("X", asBetaZ);
+			model.Select("X", asBetaZ);
 		}
 
 			//println("mRankRegions has ", rows(mRankRegions), " rows and ", columns(mRankRegions), " cols");
@@ -516,6 +516,7 @@ main() {
 		if (is_DUMMY_ON) {
 			println("\tAdicionado: CSeasonal");
 	        model.Select("U", {"CSeasonal", 0, iQtdVarCSeasonal-1});
+			//model.Select("X", {"CSeasonal", 0, iQtdVarCSeasonal-1});
         }
 
 	

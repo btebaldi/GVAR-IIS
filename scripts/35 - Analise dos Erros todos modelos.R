@@ -1,6 +1,6 @@
 #' Tese Capitulo 2 - Analise de precos de gasolina, alcool e Oleo Diesel
 #' 
-#' Script para geração dos Forecasts das series.
+#' Script para analise dos erros de Forecast da series.
 #' 
 #' Author: Bruno Tebaldi de Queiroz Barbosa
 #' 
@@ -46,7 +46,7 @@ for (modelo_atual in lista_de_modelos) {
   full_table <- dplyr::inner_join(full_table, tbl, by = c("DATA_INICIAL", "Serie"))
 }
 
-full_table <- full_table %>% filter(year(DATA_INICIAL)> 2019) %>% na.omit()
+full_table <- full_table %>% filter(year(DATA_INICIAL)>= 2019) %>% na.omit()
 
 
 # Data prepraration -------------------------------------------------------
