@@ -21,7 +21,7 @@ library(lubridate)
 
 
 file.name <- "forecast_result.csv"
-dir <- "Result 1"
+dir <- "Result 16"
 
 
 export_file <- file.path("Ox", "mat_files", "Result_Matrix", dir, file.name)
@@ -137,7 +137,7 @@ for(i in seq_along(regiao)){
   
   print(g1)
   
-  ggsave(filename = sprintf("./Graficos/IRF - Long Run - %s.png",names(regiao)[i]),
+  ggsave(filename = sprintf("./Graficos/IRF - Long Run - %s (%s).png",names(regiao)[i], dir),
          plot = g1,
          units = "in",
          width = 8, height = 6,
@@ -216,7 +216,7 @@ for(i  in seq_along(regiao)){
   
   print(g1)
   
-  ggsave(filename = sprintf("./Graficos/IRF - Short Run - %s.png",names(regiao)[i]),
+  ggsave(filename = sprintf("./Graficos/IRF - Short Run - %s (%s).png",names(regiao)[i], dir),
          plot = g1,
          units = "in",
          width = 8, height = 6,

@@ -1,15 +1,15 @@
-% latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Sun Jan 16 20:15:06 2022
+% latex table generated in R 4.1.2 by xtable 1.8-4 package
+% Thu Jan 20 09:37:25 2022
 \begin{table}[ht]
 \centering
-\begin{tabular}{rlrrr}
+\begin{tabular}{rlrrrrrrrrr}
   \hline
- & Descricao & GVAR & VECM & Diebold \\ 
+ & Descricao & GVAR & VECM & GVAR\_M12 & GVAR\_M13 & GVAR\_M14 & GVAR\_M15 & GVAR\_M16 & GVAR\_M17 & Diebold \\ 
   \hline
-1 & Total & 3.89E-04 & 4.19E-04 & 2.50E-16 \\ 
-  2 & Etanol Hidratado & 5.33E-04 & 5.65E-04 & 2.15E-04 \\ 
-  3 & Oleo Diesel & 3.69E-04 & 4.04E-04 & 2.02E-12 \\ 
-  4 & Gasolina Comum & 2.65E-04 & 2.88E-04 & 3.94E-10 \\ 
+1 & GVAR & 3.89E-04 & 4.19E-04 & 5.82E-04 & 6.37E-04 & 5.58E-04 & 6.06E-04 & 3.62E-04 & 3.74E-04 &  \\ 
+  2 & VECM & 5.33E-04 & 5.65E-04 & 6.38E-04 & 8.05E-04 & 6.54E-04 & 7.95E-04 & 4.90E-04 & 5.00E-04 &  \\ 
+  3 & GVAR\_M12 & 3.69E-04 & 4.04E-04 & 7.03E-04 & 6.69E-04 & 6.34E-04 & 6.18E-04 & 3.40E-04 & 3.61E-04 &  \\ 
+  4 & GVAR\_M13 & 2.65E-04 & 2.88E-04 & 4.06E-04 & 4.36E-04 & 3.85E-04 & 4.05E-04 & 2.55E-04 & 2.62E-04 &  \\ 
    \hline
 \end{tabular}
 \end{table}
