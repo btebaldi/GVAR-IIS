@@ -30,17 +30,24 @@ ProcessoH(const asParamNames, const vParamValues, const iQtdLags, const varMacro
 			{
 				if(nContCol == 0)
 				{
+					if(rows(varMacro) >1){
 					sP_Name = sprint(sMacroSufix, varMacro[nContVar], "@", sMacroSufix, varMacro[nContRow]);
+					} else {
 					sP_Name = sprint(sMacroSufix, varMacro[nContVar]);
+					}
 				}
 				else
 				{
+					if(rows(varMacro) >1){
 					sP_Name = sprint(sMacroSufix, varMacro[nContVar], "_", nContCol, "@", sMacroSufix, varMacro[nContRow]);
+					} else {
 					sP_Name = sprint(sMacroSufix, varMacro[nContVar], "_", nContCol);
+					}
 				}
 
 				println(sP_Name);
 				index = find(asParamNames, sP_Name);
+				println(index);
 	
 				// caso tenha achado o indice atualiza a tabela
 				if(index >=0)
@@ -96,8 +103,9 @@ ProcessoB(const asParamNames, const vParamValues, const iQtdLags, const varMacro
 				sP_Name = sprint(sMacroSufix, "mX", "_", nContCol, "@", sMacroSufix, varMacro[nContRow]);
 			}
 						
-			//println(sParamName);
+			println(sP_Name);
 			index = find(asParamNames, sP_Name);
+			println(index);
 
 			// caso tenha achado o indice atualiza a tabela
 			if(index >=0)
@@ -369,7 +377,10 @@ main()
 	// Processo comentado pois foi verificado que nao existe cointegracao entre as variaveis externas e as macrovariaveis.
 	if(rows(aMacroVarNames) < -1){
 	// Adiciona a variavel "betaMacro" com um lag apenas (representação da matriz de longo prazo)
+		println("Adicionando variavel betaMacro");
 		model.Select("X", {"betaMacro", 1, 1});
+	} else {
+		println("Cointegracao de Macrovariaveis desligado");
 	}
 
 	// Adiciona variaveis constante e sesonals
