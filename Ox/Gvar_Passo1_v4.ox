@@ -514,8 +514,10 @@ main() {
         model.Select("U", {"Constant", 0, 0});
 
 		if (is_DUMMY_ON) {
-			println("\tAdicionado: CSeasonal");
+			println("\tAdicionado: CSeasonal U");
 	        model.Select("U", {"CSeasonal", 0, iQtdVarCSeasonal-1});
+
+			//println("\tAdicionado: CSeasonal X");
 			//model.Select("X", {"CSeasonal", 0, iQtdVarCSeasonal-1});
         }
 
