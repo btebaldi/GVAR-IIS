@@ -38,8 +38,8 @@ aMacroVarNames = {"brent", "lnCambio"};
 // TRUE / FALSE;
 decl is_IIS_ON = TRUE;
 decl IIS_pvalue = 0.0000100;
-decl is_DUMMY_ON = TRUE;
-decl type_DUMMY = "X";
+decl is_DUMMY_ON = FALSE;
+decl type_DUMMY = "U";
 
 // Ativa a impressao de
 #define pritnConfig
