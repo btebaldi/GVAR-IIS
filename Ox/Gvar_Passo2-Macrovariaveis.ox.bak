@@ -105,6 +105,7 @@ ProcessoB(const asParamNames, const vParamValues, const iQtdLags, const varMacro
 						
 			println(sP_Name);
 			index = find(asParamNames, sP_Name);
+			println(index);
 
 			// caso tenha achado o indice atualiza a tabela
 			if(index >=0)

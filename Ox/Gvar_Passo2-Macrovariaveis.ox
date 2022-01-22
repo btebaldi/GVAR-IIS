@@ -386,8 +386,16 @@ main()
 	// Adiciona variaveis constante e sesonals
 	model.Select("U", {"Constant", 0, 0});
 	if (is_DUMMY_ON) {
-        //model.Autometrics(0.0001, "IIS", 1);
-        model.Select("U", {"CSeasonal", 0, iQtdVarCSeasonal-1});
+		if(type_DUMMY == "U"){
+			println("\tAdicionado: CSeasonal U");
+	        model.Select("U", {"CSeasonal", 0, iQtdVarCSeasonal-1});
+		}else if(type_DUMMY == "X"){
+			println("\tAdicionado: CSeasonal X");
+			model.Select("X", {"CSeasonal", 0, iQtdVarCSeasonal-1});
+		} else {
+			println("\n\t >>>> NAO TEM ESSA CONFIGURACAO DE DUMMY <<<");
+			exit(0);
+		}
     }
 		
 	// determina a janela de tempo do modelo
