@@ -1,0 +1,351 @@
+--------------- Ox at 17:54:15 on 22-Jan-2022 ---------------
+
+Ox Professional version 8.00 (Windows_64/U/MT) (C) J.A. Doornik, 1994-2018
+******************************************
+------------------------------------------
+	Configuracao de variaveis
+------------------------------------------
+
+REGIOES
+	Quantidade de lags: 8
+	Quantidade de Regioes: 110
+	Quantidade de Variaveis Dependente: 3
+Variaveis Dependentes:
+ETANOL_HIDRATADO
+OLEO_DIESEL
+GASOLINA_COMUM
+
+DATABASE
+	Macrovariaveis: ../export/database for ox/db_oil_withSesonal.in7
+	Regioes: ../export/database for ox/db_oil_withSesonal.in7
+
+DIRETORIOS
+	W Matrix Dir: ../export/W_mat/
+	Cointeration Matrix Dir: ./mat_files/Cointegration - l8/
+	Raw Matrix Dir: ./mat_files/RawMatrix/
+	A Matrix Dir: ./mat_files/A_Matrix/
+	G Matrix Dir: ./mat_files/G_Matrix/
+	Result Matrix Dir: ./mat_files/Result_Matrix/
+
+Configuracoes
+	is_IIS_ON: 0
+	IIS_pvalue: 1e-005
+	is_DUMMY_ON: 0
+	type_DUMMY: U
+******************************************
+>>> Inicio da estimacao do modelo de macrovariaveis
+
+
+*****************************************
+             Macrovariaveis 
+*****************************************
+
+Carregando dados das variaveis exogenas
+Carregando base de dados com informacoes regionais
+Construindo variaveis X
+Concluido construcao das variaveis X
+Construindo influencia das variaveis
+
+      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000      0.00000
+Salvando matriz W_w para ser utilizada depois
+Inicio um nomo objeto do tipo PcGive referente a macrovariaveis
+PcGive package version 15.0, object created on 22-01-2022
+(C) Jurgen A Doornik - requires a licensed version of PcGive Professional
+Carregando base de dados de macrovariaveis
+Iniciando construcao da variavel Delta para variaveis
+Adicionado Diff da variavel: brent
+Adicionado Diff da variavel: lnCambio
+Adicionando variavel mX
+Adicionando variavel D_mX 
+Cointegracao de Macrovariaveis desligado
+Model Sample: 2004-07-11 - 2018-12-30
+Processo IIS desligado para esta regiao
+
+SYS( 1) Estimating the system by OLS
+        The dataset is: ../export/database for ox/db_oil_withSesonal.in7
+        The estimation sample is: 2004-07-11 - 2018-12-30
+
+URF equation for: D_brent
+                  Coefficient  Std.Error  t-value  t-prob
+D_brent_1            0.284867    0.03858     7.38  0.0000
+D_brent_2           -0.101220    0.04007    -2.53  0.0117
+D_brent_3            0.130903    0.04036     3.24  0.0012
+D_brent_4          -0.0817850    0.04057    -2.02  0.0442
+D_brent_5           0.0914660    0.04049     2.26  0.0242
+D_brent_6          0.00426028    0.04050    0.105  0.9163
+D_brent_7          -0.0189986    0.04041   -0.470  0.6384
+D_brent_8           0.0555167    0.03926     1.41  0.1578
+D_lnCambio_1        0.0626299    0.08041    0.779  0.4363
+D_lnCambio_2        -0.153553    0.08109    -1.89  0.0587
+D_lnCambio_3       -0.0252417    0.08143   -0.310  0.7567
+D_lnCambio_4        -0.123675    0.08131    -1.52  0.1287
+D_lnCambio_5         0.115604    0.08138     1.42  0.1559
+D_lnCambio_6       -0.0640389    0.08138   -0.787  0.4316
+D_lnCambio_7      -0.00309969    0.08120  -0.0382  0.9696
+D_lnCambio_8        -0.169017    0.08039    -2.10  0.0359
+Constant      U   0.000410656   0.001275    0.322  0.7475
+
+sigma = 0.0349621   RSS = 0.9033172135
+
+URF equation for: D_lnCambio
+                  Coefficient  Std.Error  t-value  t-prob
+D_brent_1          -0.0469576    0.01857    -2.53  0.0116
+D_brent_2           0.0537120    0.01928     2.79  0.0055
+D_brent_3          -0.0340038    0.01942    -1.75  0.0804
+D_brent_4         -0.00408808    0.01952   -0.209  0.8342
+D_brent_5          -0.0412224    0.01949    -2.12  0.0347
+D_brent_6         -0.00200482    0.01949   -0.103  0.9181
+D_brent_7          -0.0130329    0.01945   -0.670  0.5030
+D_brent_8          -0.0270914    0.01889    -1.43  0.1521
+D_lnCambio_1         0.128229    0.03870     3.31  0.0010
+D_lnCambio_2        0.0734134    0.03902     1.88  0.0603
+D_lnCambio_3        0.0349030    0.03919    0.891  0.3734
+D_lnCambio_4       -0.0363905    0.03913   -0.930  0.3527
+D_lnCambio_5       -0.0268464    0.03916   -0.686  0.4932
+D_lnCambio_6        0.0124068    0.03916    0.317  0.7515
+D_lnCambio_7       -0.0426684    0.03907    -1.09  0.2752
+D_lnCambio_8        0.0429620    0.03869     1.11  0.2671
+Constant      U   0.000324252  0.0006137    0.528  0.5974
+
+sigma = 0.0168245   RSS = 0.2091837536
+
+log-likelihood     3534.07912  -T/2log|Omega|     5679.51418
+|Omega|       2.98298912e-007  log|Y'Y/T|        -14.8585256
+R^2(LR)              0.153499  R^2(LM)             0.0789558
+no. of observations       756  no. of parameters          34
+
+F-test on regressors except unrestricted: F(32,1476) = 4.00789 [0.0000] **
+F-tests on retained regressors, F(2,738) =
+   D_brent_1       27.2442 [0.000]**   D_brent_2       5.39062 [0.005]**
+   D_brent_3       5.55237 [0.004]**   D_brent_4       2.41909 [0.090]  
+   D_brent_5       3.64654 [0.027]*    D_brent_6    0.00823334 [0.992]  
+   D_brent_7      0.479848 [0.619]     D_brent_8       1.54255 [0.215]  
+D_lnCambio_1       7.30555 [0.001]**D_lnCambio_2       2.71020 [0.067]  
+D_lnCambio_3      0.396651 [0.673]  D_lnCambio_4       2.24836 [0.106]  
+D_lnCambio_5       1.03993 [0.354]  D_lnCambio_6      0.311966 [0.732]  
+D_lnCambio_7      0.675173 [0.509]  D_lnCambio_8       2.32058 [0.099]  
+    Constant U    0.270770 [0.763]  
+
+correlation of URF residuals (standard deviations on diagonal)
+                   D_brent   D_lnCambio
+D_brent           0.034962     -0.31265
+D_lnCambio        -0.31265     0.016824
+correlation between actual and fitted
+      D_brent   D_lnCambio
+      0.33690      0.26275
+
+D_brent_1@D_brent            0.28487
+D_brent_2@D_brent           -0.10122
+D_brent_3@D_brent            0.13090
+D_brent_4@D_brent          -0.081785
+D_brent_5@D_brent           0.091466
+D_brent_6@D_brent          0.0042603
+D_brent_7@D_brent          -0.018999
+D_brent_8@D_brent           0.055517
+D_lnCambio_1@D_brent        0.062630
+D_lnCambio_2@D_brent        -0.15355
+D_lnCambio_3@D_brent       -0.025242
+D_lnCambio_4@D_brent        -0.12367
+D_lnCambio_5@D_brent         0.11560
+D_lnCambio_6@D_brent       -0.064039
+D_lnCambio_7@D_brent      -0.0030997
+D_lnCambio_8@D_brent        -0.16902
+Constant@D_brent          0.00041066
+D_brent_1@D_lnCambio       -0.046958
+D_brent_2@D_lnCambio        0.053712
+D_brent_3@D_lnCambio       -0.034004
+D_brent_4@D_lnCambio      -0.0040881
+D_brent_5@D_lnCambio       -0.041222
+D_brent_6@D_lnCambio      -0.0020048
+D_brent_7@D_lnCambio       -0.013033
+D_brent_8@D_lnCambio       -0.027091
+D_lnCambio_1@D_lnCambio      0.12823
+D_lnCambio_2@D_lnCambio     0.073413
+D_lnCambio_3@D_lnCambio     0.034903
+D_lnCambio_4@D_lnCambio    -0.036391
+D_lnCambio_5@D_lnCambio    -0.026846
+D_lnCambio_6@D_lnCambio     0.012407
+D_lnCambio_7@D_lnCambio    -0.042668
+D_lnCambio_8@D_lnCambio     0.042962
+Constant@D_lnCambio       0.00032425
+Processo H iniciado
+asParamNames
+D_brent_1@D_brent
+D_brent_2@D_brent
+D_brent_3@D_brent
+D_brent_4@D_brent
+D_brent_5@D_brent
+D_brent_6@D_brent
+D_brent_7@D_brent
+D_brent_8@D_brent
+D_lnCambio_1@D_brent
+D_lnCambio_2@D_brent
+D_lnCambio_3@D_brent
+D_lnCambio_4@D_brent
+D_lnCambio_5@D_brent
+D_lnCambio_6@D_brent
+D_lnCambio_7@D_brent
+D_lnCambio_8@D_brent
+Constant@D_brent
+D_brent_1@D_lnCambio
+D_brent_2@D_lnCambio
+D_brent_3@D_lnCambio
+D_brent_4@D_lnCambio
+D_brent_5@D_lnCambio
+D_brent_6@D_lnCambio
+D_brent_7@D_lnCambio
+D_brent_8@D_lnCambio
+D_lnCambio_1@D_lnCambio
+D_lnCambio_2@D_lnCambio
+D_lnCambio_3@D_lnCambio
+D_lnCambio_4@D_lnCambio
+D_lnCambio_5@D_lnCambio
+D_lnCambio_6@D_lnCambio
+D_lnCambio_7@D_lnCambio
+D_lnCambio_8@D_lnCambio
+Constant@D_lnCambio
+vParamValues
+      0.28487
+     -0.10122
+      0.13090
+    -0.081785
+     0.091466
+    0.0042603
+    -0.018999
+     0.055517
+     0.062630
+     -0.15355
+    -0.025242
+     -0.12367
+      0.11560
+    -0.064039
+   -0.0030997
+     -0.16902
+   0.00041066
+    -0.046958
+     0.053712
+    -0.034004
+   -0.0040881
+    -0.041222
+   -0.0020048
+    -0.013033
+    -0.027091
+      0.12823
+     0.073413
+     0.034903
+    -0.036391
+    -0.026846
+     0.012407
+    -0.042668
+     0.042962
+   0.00032425
+D_brent_1@D_brent
+0
+D_lnCambio_1@D_brent
+8
+D_brent_2@D_brent
+1
+D_lnCambio_2@D_brent
+9
+D_brent_3@D_brent
+2
+D_lnCambio_3@D_brent
+10
+D_brent_4@D_brent
+3
+D_lnCambio_4@D_brent
+11
+D_brent_5@D_brent
+4
+D_lnCambio_5@D_brent
+12
+D_brent_6@D_brent
+5
+D_lnCambio_6@D_brent
+13
+D_brent_7@D_brent
+6
+D_lnCambio_7@D_brent
+14
+D_brent_8@D_brent
+7
+D_lnCambio_8@D_brent
+15
+D_brent_1@D_lnCambio
+17
+D_lnCambio_1@D_lnCambio
+25
+D_brent_2@D_lnCambio
+18
+D_lnCambio_2@D_lnCambio
+26
+D_brent_3@D_lnCambio
+19
+D_lnCambio_3@D_lnCambio
+27
+D_brent_4@D_lnCambio
+20
+D_lnCambio_4@D_lnCambio
+28
+D_brent_5@D_lnCambio
+21
+D_lnCambio_5@D_lnCambio
+29
+D_brent_6@D_lnCambio
+22
+D_lnCambio_6@D_lnCambio
+30
+D_brent_7@D_lnCambio
+23
+D_lnCambio_7@D_lnCambio
+31
+D_brent_8@D_lnCambio
+24
+D_lnCambio_8@D_lnCambio
+32
+
+                 D_brent_1 D_lnCambio_1    D_brent_2 D_lnCambio_2    D_brent_3 D_lnCambio_3    D_brent_4 D_lnCambio_4    D_brent_5 D_lnCambio_5    D_brent_6 D_lnCambio_6    D_brent_7 D_lnCambio_7    D_brent_8 D_lnCambio_8
+brent              0.28487     0.062630     -0.10122     -0.15355      0.13090    -0.025242    -0.081785     -0.12367     0.091466      0.11560    0.0042603    -0.064039    -0.018999   -0.0030997     0.055517     -0.16902
+lnCambio         -0.046958      0.12823     0.053712     0.073413    -0.034004     0.034903   -0.0040881    -0.036391    -0.041222    -0.026846   -0.0020048     0.012407    -0.013033    -0.042668    -0.027091     0.042962
+Processo U iniciado
+Processo U finalizado
+Processo Extracao da matriz de saturacao (IIS)
+Processo AlphaBeta iniciado
+Processo B iniciado
+D_mX_1@D_brent
+-1
+D_mX_2@D_brent
+-1
+D_mX_3@D_brent
+-1
+D_mX_4@D_brent
+-1
+D_mX_5@D_brent
+-1
+D_mX_6@D_brent
+-1
+D_mX_7@D_brent
+-1
+D_mX_8@D_brent
+-1
+D_mX_1@D_lnCambio
+-1
+D_mX_2@D_lnCambio
+-1
+D_mX_3@D_lnCambio
+-1
+D_mX_4@D_lnCambio
+-1
+D_mX_5@D_lnCambio
+-1
+D_mX_6@D_lnCambio
+-1
+D_mX_7@D_lnCambio
+-1
+D_mX_8@D_lnCambio
+-1
+*** Fim da estimacao dos modelos de macrovariaveis *** 
