@@ -23,31 +23,39 @@ library(forecast)
 
 # Data load ---------------------------------------------------------------
 
-VECM_ERROS <- readRDS(file = file.path("Ox", "mat_files", "Result_Matrix", "Result 1", "Erro_VECM.rds"))
-GVARIIS_ERROS <- readRDS(file = file.path("Ox", "mat_files", "Result_Matrix", "Result 1", "Erro_GVARIIS.rds"))
+VECM_ERROS <- readRDS(file = file.path("Ox", "mat_files", "Result_Matrix", "VECM", "Erro_VECM.rds"))
+VECM2_ERROS <- readRDS(file = file.path("Ox", "mat_files", "Result_Matrix", "VECM w Cambio", "Erro_VECM_wCambio.rds"))
+colnames(VECM2_ERROS) <- c("DATA_INICIAL", "Serie", "Erro_VECM2", "SE_VECM2")
+# GVARIIS_ERROS <- readRDS(file = file.path("Ox", "mat_files", "Result_Matrix", "Result 1", "Erro_GVARIIS.rds"))
 
-lista_de_modelos <- c(12, 13, 14, 15, 16, 17)
+lista_de_modelos <- c(1, 12:18, 21:28)
 for (modelo_atual in lista_de_modelos) {
-  assign(x = sprintf("GVARIIS_ERROS_M%d", modelo_atual), 
+  assign(x = sprintf("GVARIIS_ERROS_M%d", modelo_atual),
          value = readRDS(file = file.path("Ox",
                                           "mat_files",
                                           "Result_Matrix",
                                           sprintf("Result %d", modelo_atual), 
-                                          sprintf("Erro_Modelo_%d.rds", modelo_atual))) )
+                                          "Erro_GVARIIS.rds")) )
 }
 
 
-full_table <- dplyr::inner_join(VECM_ERROS, GVARIIS_ERROS, by = c("DATA_INICIAL", "Serie")) %>% 
-  filter(year(DATA_INICIAL)> 2019) %>% na.omit()
+full_table <- dplyr::inner_join(VECM_ERROS, VECM2_ERROS, by = c("DATA_INICIAL", "Serie")) %>% 
+  filter(year(DATA_INICIAL)>= 2019) %>% na.omit()
 
 for (modelo_atual in lista_de_modelos) {
-  tbl <- get(sprintf("GVARIIS_ERROS_M%d", modelo_atual), )
+  tbl <- get(sprintf("GVARIIS_ERROS_M%d", modelo_atual))
+  colnames(tbl) <- c("DATA_INICIAL",
+                     "Serie",
+                     sprintf("Erro_M_%d", modelo_atual),
+                     sprintf("SE_M_%d", modelo_atual))
   
   full_table <- dplyr::inner_join(full_table, tbl, by = c("DATA_INICIAL", "Serie"))
 }
 
-full_table <- full_table %>% filter(year(DATA_INICIAL)>= 2019) %>% na.omit()
+full_table <- full_table %>% 
+  na.omit()
 
+rm(list = setdiff(ls(), c("full_table", "lista_de_modelos")))
 
 # Data prepraration -------------------------------------------------------
 
@@ -63,15 +71,72 @@ for (lin in seq_len(nrow(full_table))) {
 }
 
 
+my_levelsVar <- c("OLEO_DIESEL", "ETANOL_HIDRATADO", "GASOLINA_COMUM")
+my_labelsVar <- c("Oleo Diesel", "Etanol Hidratado", "Gasolina Comum")
+
+
 full_table$Variavel <- factor(full_table$Variavel,
-                              levels = c("OLEO_DIESEL", "ETANOL_HIDRATADO", "GASOLINA_COMUM"),
-                              labels = c("Oleo Diesel", "Etanol Hidratado", "Gasolina Comum"))
+                              levels = my_levelsVar,
+                              labels = my_labelsVar)
 tail(full_table)
+
+
+
+# Calcula os melhores modelos
+
+tbl <- full_table %>%
+  select(starts_with("SE_"))
+
+tbl <- apply(tbl, 2, mean)
+tbl <- sort(tbl)
+
+my_levels <- names(tbl)
+my_labels <- stringr::str_match(names(tbl), "SE_(.*)")
+my_labels <- my_labels[, 2]
+
+my_labels <- stringr::str_replace(string = my_labels,
+                                  pattern = "M_", 
+                                  replacement = "Model ")
+
+my_labels <- stringr::str_replace(string = my_labels,
+                                  pattern = "VECM2", 
+                                  replacement = "VECM w/ Exc")
 
 # Boxplot graficos --------------------------------------------------------
 
 
-regions <- c("São Paulo" = 75,
+for (var in my_labelsVar) {
+  
+  g1 <- full_table %>% 
+    select(DATA_INICIAL, Region, Variavel, starts_with("SE")) %>% 
+    filter(Variavel == var) %>% 
+    pivot_longer(cols = c("SE_VECM", "SE_VECM2", paste("SE_M_", lista_de_modelos, sep = "")),
+                 names_to = "Modelo", values_to = "SE") %>% 
+    mutate(Modelo = factor(Modelo,
+                           levels = my_levels,
+                           labels = my_labels)) %>%
+    ggplot(mapping = aes(x = SE, y = Modelo)) +
+    stat_boxplot(geom = "errorbar", width = 0.2) +
+    geom_boxplot(outlier.shape = NA) +
+    labs(title = sprintf("Squared Error - %s", var),
+         subtitle = "Boxplot of the forecast suqared errors",
+         y=NULL,
+         x="Squared Errors",
+         caption = "Elaborated by the author\nNote: Outliers are not ploted in the graph") +
+    theme_bw() +
+    scale_x_continuous(limits = c(0, 0.003))
+  
+  print(g1)
+  
+  ggsave(filename = sprintf("./Graficos/MSE/BoxPlot - MSE - %s - %s.png", "Total", var),
+         plot = g1,
+         units = "in",
+         width = 8, height = 6,
+         dpi = 100)
+}
+
+
+regions <- c("Sao Paulo" = 75,
              "Rio de Janeiro" = 62,
              "Dist. Federal" = 109,
              "Belo Horizonte" = 46,
@@ -81,172 +146,117 @@ regions <- c("São Paulo" = 75,
 
 i <- 1
 for (i in seq_along(regions)) {
-  g1 <- full_table %>% 
-    dplyr::filter(Region == regions[i]) %>%
-    pivot_longer(cols = c("SE_GVARIIS", "SE_VECM", paste("SE_GVARIIS_M", 12:17, sep = "")), names_to = "Modelo", values_to = "SE") %>% 
-    mutate(Modelo = factor(Modelo,
-                           levels = c("SE_VECM", "SE_GVARIIS", paste("SE_GVARIIS_M", 12:17, sep = "")),
-                           labels = c("VECM", "GVAR-IIS M1", paste("GVAR-IIS M", 2:7, sep = "")))) %>% 
-    ggplot() +
-    geom_boxplot(aes(x = SE, y = Variavel, fill = Modelo)) + 
-    labs(title = sprintf("%s", names(regions)[i]),
-         subtitle = "Boxplot of the forecast suqared errors",
-         y=NULL,
-         x="Squared Errors",
-         caption = "Elaborated by the author")
   
-  print(g1)
-  
-  ggsave(filename = sprintf("./Graficos/BoxPlot - MSE - %s.png",names(regions)[i]),
-         plot = g1,
-         units = "in",
-         width = 8, height = 6,
-         dpi = 100)
+  for (var in my_labelsVar) {
+    
+    g1 <- full_table %>% 
+      filter(Region == regions[i]) %>% 
+      select(DATA_INICIAL, Region, Variavel, starts_with("SE")) %>% 
+      filter(Variavel == var) %>% 
+      pivot_longer(cols = c("SE_VECM", "SE_VECM2", paste("SE_M_", lista_de_modelos, sep = "")),
+                   names_to = "Modelo", values_to = "SE") %>% 
+      mutate(Modelo = factor(Modelo,
+                             levels = my_levels,
+                             labels = my_labels)) %>%
+      ggplot(mapping = aes(x = SE, y = Modelo)) +
+      stat_boxplot(geom = "errorbar", width = 0.2) +
+      geom_boxplot(outlier.shape = NA) +
+      labs(title = sprintf("%s - Squared Error - %s", names(regions)[i], var),
+           subtitle = "Boxplot of the forecast suqared errors",
+           y=NULL,
+           x="Squared Errors",
+           caption = "Elaborated by the author\nNote: Outliers are not ploted in the graph") +
+      theme_bw() +
+      scale_x_continuous(limits = c(0, 0.003))
+    
+    print(g1)
+    
+    ggsave(filename = sprintf("./Graficos/MSE/BoxPlot - MSE - %s - %s.png",  names(regions)[i], var),
+           plot = g1,
+           units = "in",
+           width = 8, height = 6,
+           dpi = 100)
+  }
 }
 
 
 
 # MSE ---------------------------------------------------------------------
 
-df_Result <- tibble(Descricao =as.character(NA),
-                    GVAR = as.numeric(NA),
-                    VECM = as.numeric(NA),
-                    
-                    GVAR_M12 = as.numeric(NA),
-                    GVAR_M13 = as.numeric(NA),
-                    GVAR_M14 = as.numeric(NA),
-                    GVAR_M15 = as.numeric(NA),
-                    GVAR_M16 = as.numeric(NA),
-                    GVAR_M17 = as.numeric(NA),
-                    
-                    .rows = 4)
 
-df_Result$Descricao[1] <- "Total"
-df_Result$Descricao[2] <- "Etanol Hidratado"
-df_Result$Descricao[3] <- "Oleo Diesel"
-df_Result$Descricao[4] <- "Gasolina Comum"
+my_labels <- c("Model 18", "Model 16", "Model 28", "Model 26", "Model 17", "Model 27", "Model 1","Model 21",
+               "VECM w/ Exc","VECM", "Model 24", "Model 14", "Model 22", "Model 12", "Model 25", "Model 15",
+               "Model 23", "Model 13")
+my_levels <- c("M_18", "M_16", "M_28", "M_26", "M_17", "M_27", "M_1","M_21",
+               "VECM2","VECM", "M_24", "M_14", "M_22", "M_12", "M_25", "M_15",
+               "M_23", "M_13")
 
-df_Result$VECM[1] <- mean(full_table$SE_VECM)
-df_Result$GVAR[1] <- mean(full_table$SE_GVARIIS)
-
-df_Result$GVAR_M12[1] <- mean(full_table$SE_GVARIIS_M12)
-df_Result$GVAR_M13[1] <- mean(full_table$SE_GVARIIS_M13)
-df_Result$GVAR_M14[1] <- mean(full_table$SE_GVARIIS_M14)
-df_Result$GVAR_M15[1] <- mean(full_table$SE_GVARIIS_M15)
-df_Result$GVAR_M16[1] <- mean(full_table$SE_GVARIIS_M16)
-df_Result$GVAR_M17[1] <- mean(full_table$SE_GVARIIS_M17)
+MSE_Result <- tibble(Modelo = as.character(NA),
+                     MSE_TOtal = as.numeric(NA),
+                     
+                     MSE_Etanol = as.numeric(NA),
+                     MSE_Diesel = as.numeric(NA),
+                     MSE_Gasolina = as.numeric(NA),
+                     
+                     .rows = length(my_labels))
 
 
-tbl_aux <- full_table %>% 
-  group_by(Variavel) %>% 
-  summarise(VECM = mean(SE_VECM),
-            GVAR = mean(SE_GVARIIS),
-            GVAR_M12 = mean(SE_GVARIIS_M12),
-            GVAR_M13 = mean(SE_GVARIIS_M13),
-            GVAR_M14 = mean(SE_GVARIIS_M14),
-            GVAR_M15 = mean(SE_GVARIIS_M15),
-            GVAR_M16 = mean(SE_GVARIIS_M16),
-            GVAR_M17 = mean(SE_GVARIIS_M17))
+MSE_Result$Modelo <- my_labels
 
-
-df_Result$GVAR[df_Result$Descricao == "Etanol Hidratado"] <- tbl_aux$GVAR[tbl_aux$Variavel == "Etanol Hidratado"]
-df_Result$GVAR[df_Result$Descricao == "Oleo Diesel"] <- tbl_aux$GVAR[tbl_aux$Variavel == "Oleo Diesel"]
-df_Result$GVAR[df_Result$Descricao == "Gasolina Comum"] <- tbl_aux$GVAR[tbl_aux$Variavel == "Gasolina Comum"]
-
-df_Result$VECM[df_Result$Descricao == "Etanol Hidratado"] <- tbl_aux$VECM[tbl_aux$Variavel == "Etanol Hidratado"]
-df_Result$VECM[df_Result$Descricao == "Oleo Diesel"] <- tbl_aux$VECM[tbl_aux$Variavel == "Oleo Diesel"]
-df_Result$VECM[df_Result$Descricao == "Gasolina Comum"] <- tbl_aux$VECM[tbl_aux$Variavel == "Gasolina Comum"]
-
-
-for (modelo_atual in lista_de_modelos) {
-  df_Result[df_Result$Descricao == "Etanol Hidratado", sprintf("GVAR_M%d", modelo_atual)] <- tbl_aux[tbl_aux$Variavel == "Etanol Hidratado", sprintf("GVAR_M%d", modelo_atual)]
-  df_Result[df_Result$Descricao == "Oleo Diesel",      sprintf("GVAR_M%d", modelo_atual)] <- tbl_aux[tbl_aux$Variavel == "Oleo Diesel",      sprintf("GVAR_M%d", modelo_atual)]
-  df_Result[df_Result$Descricao == "Gasolina Comum",   sprintf("GVAR_M%d", modelo_atual)] <- tbl_aux[tbl_aux$Variavel == "Gasolina Comum",   sprintf("GVAR_M%d", modelo_atual)]
+my_levelsVarColMap <- c("MSE_TOtal" = "Total",
+                        "MSE_Diesel" = "Oleo Diesel",
+                        "MSE_Etanol" = "Etanol Hidratado",
+                        "MSE_Gasolina" = "Gasolina Comum")
+for (var in c("Total", my_labelsVar)) {
+  
+  if(var == "Total"){
+    tbl <- full_table %>%
+      select(starts_with("SE_")) 
+  } else {
+    tbl <- full_table %>%
+      filter(Variavel == var) %>% 
+      select(starts_with("SE_")) 
+  }
+  tbl <- apply(tbl , 2, mean)
+  
+  colidx <- which(my_levelsVarColMap == var)
+  
+  for (i in seq_len(nrow(MSE_Result))) {
+    idx <- which(my_labels == MSE_Result$Modelo[i])
+    MSE_Result[i, names(my_levelsVarColMap)[colidx]] <- tbl[paste("SE_", my_levels[i], sep ="")]
+  }
   
 }
 
 
-print(xtable::xtable(df_Result, type = "latex", display = c("d", "s", "E", "E", "E", "E", "E", "E", "E", "E")), file = "./MSE_allmodels_latex.txt")
-writexl::write_xlsx(x = df_Result, path = "./MSE_allmodels_latex.xlsx")
+print(xtable::xtable(MSE_Result, type = "latex", display = c("d", "s", "E", "E", "E", "E")),
+      file = "./Tabelas/MSE_allmodels_latex.txt")
+writexl::write_xlsx(x = MSE_Result, path = "./Tabelas/MSE_allmodels_latex.xlsx")
 
 # Diebold Mariano ---------------------------------------------------------
 
-DM_Table_Result <- tibble(Modelo =as.character(NA),
-                          GVARIIS = as.numeric(NA),
-                          VECM = as.numeric(NA),
-                          
-                          GVARIIS_M12 = as.numeric(NA),
-                          GVARIIS_M13 = as.numeric(NA),
-                          GVARIIS_M14 = as.numeric(NA),
-                          GVARIIS_M15 = as.numeric(NA),
-                          GVARIIS_M16 = as.numeric(NA),
-                          GVARIIS_M17 = as.numeric(NA),
-                          
-                          .rows = 8)
+
+my_labels <- c("Model 18", "Model 16", "Model 28", "Model 26", "Model 17", "Model 27", "Model 1","Model 21",
+               "VECM w/ Exc","VECM", "Model 24", "Model 14", "Model 22", "Model 12", "Model 25", "Model 15",
+               "Model 23", "Model 13")
+my_levels <- c("M_18", "M_16", "M_28", "M_26", "M_17", "M_27", "M_1","M_21",
+               "VECM2","VECM", "M_24", "M_14", "M_22", "M_12", "M_25", "M_15",
+               "M_23", "M_13")
 
 
-DM_Table_Result$Modelo[1] <- "GVARIIS"
-DM_Table_Result$Modelo[2] <- "VECM"
-DM_Table_Result$Modelo[3] <- "GVARIIS_M12"
-DM_Table_Result$Modelo[4] <- "GVARIIS_M13"
-DM_Table_Result$Modelo[5] <- "GVARIIS_M14"
-DM_Table_Result$Modelo[6] <- "GVARIIS_M15"
-DM_Table_Result$Modelo[7] <- "GVARIIS_M16"
-DM_Table_Result$Modelo[8] <- "GVARIIS_M17"
-
-
-for(M1 in DM_Table_Result$Modelo){
-  for (M2 in DM_Table_Result$Modelo) {
-    if(M1 == M2){
-      next
-    } else {
-      mDm_test <- dm.test(e1 = full_table[[sprintf("Erro_%s", M1)]],
-                          e2 = full_table[[sprintf("Erro_%s", M2)]],
-                          # alternative = "two.sided" , #"two.sided", "less", "greater"
-                          alternative = "greater",
-                          h = 1,
-                          power = 2)
-      
-      DM_Table_Result[DM_Table_Result$Modelo == M1, M2] <- mDm_test$p.value
-      
-    }
+for(mVar in c("Total", "Etanol Hidratado", "Oleo Diesel", "Gasolina Comum") ){
+  if(mVar == "Total"){
+    tbl_aux <- full_table
+  } else {
+    tbl_aux <- full_table %>% 
+      filter(Variavel == mVar)
   }
-}
-
-
-print(xtable::xtable(DM_Table_Result, type = "latex", display = c("d", "s", "E", "E", "E", "E", "E", "E", "E", "E")), file = "./diebold_allmodels_latex.txt")
-writexl::write_xlsx(x = DM_Table_Result, path = "./diebold_allmodels_latex.xlsx")
-
-# Diebold mariano geral
-
-# Diebold mariano By serie
-for(mVar in c("Etanol Hidratado", "Oleo Diesel", "Gasolina Comum") ){
-  tbl_aux <- full_table %>% 
-    filter(Variavel == mVar)
-  
   
   DM_Table_Result <- tibble(Modelo =as.character(NA),
-                            GVARIIS = as.numeric(NA),
-                            VECM = as.numeric(NA),
-                            
-                            GVARIIS_M12 = as.numeric(NA),
-                            GVARIIS_M13 = as.numeric(NA),
-                            GVARIIS_M14 = as.numeric(NA),
-                            GVARIIS_M15 = as.numeric(NA),
-                            GVARIIS_M16 = as.numeric(NA),
-                            GVARIIS_M17 = as.numeric(NA),
-                            
-                            .rows = 8)
+                            .rows = length(my_labels))
   
-  
-  DM_Table_Result$Modelo[1] <- "GVARIIS"
-  DM_Table_Result$Modelo[2] <- "VECM"
-  DM_Table_Result$Modelo[3] <- "GVARIIS_M12"
-  DM_Table_Result$Modelo[4] <- "GVARIIS_M13"
-  DM_Table_Result$Modelo[5] <- "GVARIIS_M14"
-  DM_Table_Result$Modelo[6] <- "GVARIIS_M15"
-  DM_Table_Result$Modelo[7] <- "GVARIIS_M16"
-  DM_Table_Result$Modelo[8] <- "GVARIIS_M17"
+  DM_Table_Result$Modelo <- my_labels
+  DM_Table_Result[,my_labels] <- NA
   
   
   for(M1 in DM_Table_Result$Modelo){
@@ -254,23 +264,31 @@ for(mVar in c("Etanol Hidratado", "Oleo Diesel", "Gasolina Comum") ){
       if(M1 == M2){
         next
       } else {
-        mDm_test <- dm.test(e1 = tbl_aux[[sprintf("Erro_%s", M1)]],
-                            e2 = tbl_aux[[sprintf("Erro_%s", M2)]],
+        
+        M1_idx <- which(my_labels == M1)
+        M1_name <- sprintf("Erro_%s", my_levels[M1_idx])
+        
+        M2_idx <- which(my_labels == M2)
+        M2_name <- sprintf("Erro_%s", my_levels[M2_idx])
+        
+        mDm_test <- dm.test(e1 = full_table[[M1_name]],
+                            e2 = full_table[[M2_name]],
                             # alternative = "two.sided" , #"two.sided", "less", "greater"
+                            # h1: e1 > e2
                             alternative = "greater",
                             h = 1,
-                            power = 2)
-        
+                            power = 1)
+
         DM_Table_Result[DM_Table_Result$Modelo == M1, M2] <- mDm_test$p.value
         
       }
     }
   }
   
-  
-  print(xtable::xtable(DM_Table_Result, type = "latex", display = c("d", "s", "E", "E", "E", "E", "E", "E", "E", "E")),
-        file = sprintf("./diebold_allmodels_latex(%s).txt", mVar))
-  writexl::write_xlsx(x = df_Result, path = sprintf("./diebold_allmodels_latex(%s).xlsx", mVar))
+  print(xtable::xtable(DM_Table_Result, type = "latex",
+                       display = c("d", "s", rep("E", length(my_labels)))),
+        file = sprintf("./Tabelas/diebold - %s - latex.txt", mVar))
+  writexl::write_xlsx(x = DM_Table_Result, path = sprintf("./Tabelas/diebold - %s.xlsx", mVar))
   
 }
 

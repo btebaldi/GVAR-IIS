@@ -20,13 +20,13 @@ library(stringr)
 library(lubridate)
 
 
-file.name <- "forecast_result.csv"
-dir <- "Result 16"
+# file.name <- "forecast_result.csv"
+dir <- "Result 28"
 
 
-export_file <- file.path("Ox", "mat_files", "Result_Matrix", dir, file.name)
-main_path <- dirname(export_file)
-
+# export_file <- file.path("Ox", "mat_files", "Result_Matrix", dir, file.name)
+# main_path <- dirname(export_file)
+main_path <- file.path("Ox", "mat_files", "Result_Matrix", dir)
 
 # Leitura das matrizes de lag.
 mLag1 <- readRDS(file.path(main_path, "mGy_inv_X_mGyL1.rds"))
@@ -108,7 +108,7 @@ mDiff <- function(x){
   return(ret)
 }
 
-regiao <- c("São Paulo" = 75,
+regiao <- c("Sao Paulo" = 75,
             "Rio de Janeiro" = 62,
             "Dist. Federal" = 109,
             "Belo Horizonte" = 46,
@@ -137,7 +137,7 @@ for(i in seq_along(regiao)){
   
   print(g1)
   
-  ggsave(filename = sprintf("./Graficos/IRF - Long Run - %s (%s).png",names(regiao)[i], dir),
+  ggsave(filename = sprintf("./Graficos/IRF/IRF - Nivel - %s (%s).png",names(regiao)[i], dir),
          plot = g1,
          units = "in",
          width = 8, height = 6,
@@ -216,7 +216,7 @@ for(i  in seq_along(regiao)){
   
   print(g1)
   
-  ggsave(filename = sprintf("./Graficos/IRF - Short Run - %s (%s).png",names(regiao)[i], dir),
+  ggsave(filename = sprintf("./Graficos/IRF/IRF - Short Run - %s (%s).png",names(regiao)[i], dir),
          plot = g1,
          units = "in",
          width = 8, height = 6,

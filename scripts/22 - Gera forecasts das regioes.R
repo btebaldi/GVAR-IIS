@@ -195,7 +195,7 @@ for(i in 1:110){
 library(ggplot2)
 
 
-regiao <- c("São Paulo" = 75,
+regiao <- c("Sao Paulo" = 75,
             "Rio de Janeiro" = 62,
             "Dist. Federal" = 109,
             "Belo Horizonte" = 46,
@@ -221,7 +221,9 @@ for(i  in seq_along(regiao)){
          x=NULL,
          caption = "Elaborated by the author")
   
-  ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS - Etanol - %s.png", names(regiao)[i]),
+  ggsave(filename = sprintf("./Graficos/%s/Forecast GVAR-IIS - Etanol - %s.png",
+                            dir,
+                            names(regiao)[i]),
          plot = g1,
          units = "in",
          width = 8, height = 6,
@@ -245,7 +247,9 @@ for(i  in seq_along(regiao)){
          x=NULL,
          caption = "Elaborated by the author")
   
-  ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS - Diesel - %s.png", names(regiao)[i]),
+  ggsave(filename = sprintf("./Graficos/%s/Forecast GVAR-IIS - Diesel - %s.png",
+                            dir,
+                            names(regiao)[i]),
          plot = g1,
          units = "in",
          width = 8, height = 6,
@@ -269,7 +273,9 @@ for(i  in seq_along(regiao)){
          x=NULL,
          caption = "Elaborated by the author")
   
-  ggsave(filename = sprintf("./Graficos/Forecast GVAR-IIS - Gasolina -%s.png", names(regiao)[i]),
+  ggsave(filename = sprintf("./Graficos/%s/Forecast GVAR-IIS - Gasolina -%s.png",
+                            dir,
+                            names(regiao)[i]),
          plot = g1,
          units = "in",
          width = 8, height = 6,

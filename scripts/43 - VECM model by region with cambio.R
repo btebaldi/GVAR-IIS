@@ -160,7 +160,10 @@ for(i in 1:110){
   # Forecast de long Run
   FLR_1 = X %*% t(mLagLR)
   FLR_1 <- FLR_1[8:(total_rows-1),]
-  
+
+  # Forecast Exogeas
+  F_Exo <- Exo %*% t(mExo)
+  F_Exo <- F_Exo[9:(total_rows),]
   
   # forecast constante e dummies
   Dummies <- matrix(NA, nrow = 1, ncol = 1)
@@ -177,7 +180,8 @@ for(i in 1:110){
   
   
   #  calcula o forecast total
-  Forecast <- FSR + FLR_1 + Forecast.Dm
+  Forecast <- FSR + FLR_1 + Forecast.Dm + F_Exo 
+  
   
   colnames(Forecast) <- paste("Forecast", "R",
                               i,
