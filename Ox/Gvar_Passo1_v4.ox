@@ -297,7 +297,7 @@ main() {
     mRankRegions = loadmat(sprint("./mat_files/", "rankOfRegions.mat"));
     // println(mRankRegions);
 		
-    for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
+    for (iCont = 109; iCont <= iQtdRegioes; ++iCont) {
 
 		println("Rank: ", mRankRegions[iCont-1][0]);
 
@@ -544,12 +544,12 @@ main() {
         }
 
 		// Desliga a impressao em tela do Autometrics
-        model.AutometricsSet("print", 0);
+        model.AutometricsSet("print", 1);
         // determina o metodo de estimacao.
         model.SetMethod(M_OLS);
         // Realiza a estimacao do modelo
 		println("INICIANDO ESTIMACAO");
-		model.SetPrint(FALSE);
+		model.SetPrint(TRUE);
         model.Estimate();
 
 		
