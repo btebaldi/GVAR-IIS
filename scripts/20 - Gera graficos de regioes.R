@@ -25,15 +25,15 @@ mDiff <- function(x){
 
 # Configs -----------------------------------------------------------------
 
-grafico_path_mask <- "./Graficos"
+grafico_path_mask <- "./Graficos/Regions"
 
 # Read databases ----------------------------------------------------------
 
 # Faz leitura do banco de dados
-tbl <- readRDS(file = "./database/db_oil_withDummies.rds")
+tbl <- readRDS(file = "./database/db_oil_forForecast2.rds")
 
 # Constroi um vetor com as regioes que vão gerar graficos.
-regions <- c("São Paulo" = 75,
+regions <- c("Sao Paulo" = 75,
              "Rio de Janeiro" = 62,
              "Dist. Federal" = 109,
              "Belo Horizonte" = 46,
@@ -70,13 +70,13 @@ for (i in seq_along(regions)) {
     facet_grid(name~., labeller = mlabbels) + 
     labs(title = "Price level (in log)",
          subtitle = sprintf("Region %s", names(regions)[i]),
-         y="Log-Price [log(R$)]",
+         y="Log-Price [R$]",
          x=NULL,
          caption = "Prices in Brazilian Reais (R$)\nSource: elaborated by the author") +
     theme(plot.caption = element_text(hjust = 0), legend.position = "none")
   
   # Salva o ultimo grafico criado
-  grafico_filename <- sprintf(file.path(grafico_path_mask, sprintf("%d - %s - Preco Nivel.png", regions[i], names(regions)[i])))
+  grafico_filename <- sprintf(file.path(grafico_path_mask, sprintf("Regiao %d - %s - Preco Nivel.png", regions[i], names(regions)[i])))
   ggsave(plot = g1,
          filename = grafico_filename,
          units = "in",

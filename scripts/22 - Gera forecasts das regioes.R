@@ -21,7 +21,7 @@ library(lubridate)
 
 
 file.name <- "Erro_GVARIIS.rds"
-dir <- "Result 1"
+dir <- "Result 18"
 
 
 export_file <- file.path("Ox", "mat_files", "Result_Matrix", dir, file.name)
