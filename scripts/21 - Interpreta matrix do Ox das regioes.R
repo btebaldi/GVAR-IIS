@@ -19,7 +19,7 @@ library(stringr)
 # Configs -----------------------------------------------------------------
 
 # Nome do modelo a ser lido
-dir <- "Result 17"
+dir <- "Result 28"
 
 # Caminho dos arquivos
 filepath = file.path("Ox","mat_files", "Result_Matrix", dir, "Read Me Config.txt")
