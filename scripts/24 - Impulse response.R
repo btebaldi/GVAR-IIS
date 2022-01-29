@@ -17,6 +17,7 @@ library(readr)
 library(tidyr)
 library(dplyr)
 library(stringr)
+library(ggplot2)
 library(lubridate)
 
 
@@ -173,7 +174,7 @@ a8 <- cbind(Ze, Ze, Ze, Ze, Ze, Ze,  I, Ze)
 mF <- rbind(a1, a2, a3, a4, a5, a6, a7, a8)
 
 mShock <- matrix(0, nrow = nrow(mF), ncol=1)
-mShock[1,1] <- 1
+mShock[1,1] <- 0.03666161
 
 n <- 24
 response <- matrix(NA, nrow = n, ncol = 331)
@@ -226,6 +227,6 @@ for(i  in seq_along(regiao)){
 
 
 
-
+saveRDS(object = response.df, file = "./database/db_IRF_response.rds")
 
 
