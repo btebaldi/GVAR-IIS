@@ -49,13 +49,12 @@ i=1
 
 for (i in seq_along(regions)) {
   
-  
   # Constroi um vetor com o nome das coluas
   cols <- paste("R", regions[i], series, sep = "_")
   cols_wData <- c("DATA_FINAL", cols)
   
   # dicionario de colunas (apenas para deixar os graficos mais bonitos)
-  cols_dic <- c("Etanol Hidratado", "Gasolina Comum", "Óleo Diesel")
+  cols_dic <- c("Hydrous Ethanol", "Regular Gasoline", "Diesel Oil")
   names(cols_dic) <- cols
   
   # labeller : Troca o nome das series.
@@ -68,12 +67,15 @@ for (i in seq_along(regions)) {
     ggplot() +
     geom_line(aes(x=DATA_FINAL, y = value, colour = name)) +
     facet_grid(name~., labeller = mlabbels) + 
-    labs(title = "Price level (in log)",
-         subtitle = sprintf("Region %s", names(regions)[i]),
-         y="Log-Price [R$]",
+    labs(title = "Natural logarithm of the price level",
+         subtitle = sprintf("Region of %s", names(regions)[i]),
+         y="Log-price",
          x=NULL,
          caption = "Prices in Brazilian Reais (R$)\nSource: elaborated by the author") +
+    theme_bw() + 
     theme(plot.caption = element_text(hjust = 0), legend.position = "none")
+  
+  g1
   
   # Salva o ultimo grafico criado
   grafico_filename <- sprintf(file.path(grafico_path_mask, sprintf("Regiao %d - %s - Preco Nivel.png", regions[i], names(regions)[i])))
@@ -92,12 +94,15 @@ for (i in seq_along(regions)) {
     ggplot() +
     geom_line(aes(x=DATA_FINAL, y = value, colour = name)) +
     facet_grid(name~., labeller = mlabbels) + 
-    labs(title = "Difference of the price level (in log)",
-         subtitle = sprintf("Region %s", names(regions)[i]),
-         y="Diff. Log-Price",
+    labs(title = "Natural logarithm difference of the price level",
+         subtitle = sprintf("Region of %s", names(regions)[i]),
+         y="Diff. Log-price",
          x=NULL,
          caption = "Prices in Brazilian Reais (R$)\nSource: elaborated by the author") +
+    theme_bw() + 
     theme(plot.caption = element_text(hjust = 0), legend.position = "none")
+  
+  g2
   
   grafico_filename <- sprintf(file.path(grafico_path_mask, sprintf("%d - %s - Preco Diferenca.png", regions[i], names(regions)[i])))
   ggsave(plot = g2,
