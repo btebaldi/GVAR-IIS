@@ -19,6 +19,7 @@ library(dplyr)
 library(stringr)
 library(ggplot2)
 library(lubridate)
+library(cowplot)
 
 
 # file.name <- "forecast_result.csv"
@@ -115,7 +116,7 @@ regiao <- c("Sao Paulo" = 75,
             "Belo Horizonte" = 46,
             "Salvador" = 39)
 
-
+i=1
 for(i in seq_along(regiao)){
   g1 <- response.df %>% 
     mutate_all(.funs = mDiff) %>%
@@ -124,17 +125,20 @@ for(i in seq_along(regiao)){
            Gasolina = sprintf("R_%d_G",regiao[i]))  %>% 
     mutate(Id = row_number()) %>% 
     ggplot() +
-    geom_line(aes(x=Id, y=Etanol, colour="Etanol Hidratado")) +
-    geom_line(aes(x=Id, y=Diesel, colour="Oleo Diesel")) +
-    geom_line(aes(x=Id, y=Gasolina, colour="Gasolina Comum")) +
-    geom_hline(yintercept = 0) + theme_bw() +
+    geom_line(aes(x=Id, y=Etanol, colour="Hydrous ethanol"), linetype = "dotted",  size=1) +
+    geom_line(aes(x=Id, y=Diesel, colour="Diesel oil"), linetype = "dashed", size=1) +
+    geom_line(aes(x=Id, y=Gasolina, colour="Regular gasoline"), linetype = "solid", size=1) +
+    geom_hline(yintercept = 0) +
+    theme_bw() +
+    theme(legend.position = "bottom") +
     labs(title = sprintf("%s", names(regiao)[i]),
          subtitle = "Impulse Response Function - Long Run",
          # subtitle = "Impulse Response Function - Shor run effects",
          colour = NULL,
          y=NULL,
          x=NULL,
-         caption = "Elaborated by the author")
+         caption = "Elaborated by the author") +
+    guides(color = guide_legend(override.aes = list(linetype = c(2, 3, 1) ) ) )
   
   print(g1)
   
@@ -144,9 +148,9 @@ for(i in seq_along(regiao)){
          width = 8, height = 6,
          dpi = 100)
 }
+# Diesel oil, regular gasoline, and hydrous ethanol.
 
-
-
+saveRDS(object = response.df, file = sprintf("./database/db_IRF_response_LongRun (%s).rds", dir))
 
 # Calculando os parametros do VECM -----------------------------------------
 
@@ -202,19 +206,27 @@ for(i  in seq_along(regiao)){
            Gasolina = sprintf("R_%d_G",regiao[i]))  %>% 
     mutate(Id = row_number()) %>% 
     ggplot() +
-    geom_line(aes(x=Id, y=Etanol, colour="Etanol Hidratado"), size =1) +
-    geom_line(aes(x=Id, y=Diesel, colour="Oleo Diesel"), size =1) +
-    geom_line(aes(x=Id, y=Gasolina, colour="Gasolina Comum"), size =1) +
+    geom_line(aes(x=Id, y=Etanol, colour="Hydrous ethanol"), linetype = "dotted",  size=1) +
+    geom_line(aes(x=Id, y=Diesel, colour="Diesel oil"), linetype = "dashed", size=1) +
+    geom_line(aes(x=Id, y=Gasolina, colour="Regular gasoline"), linetype = "solid", size=1) +
     geom_hline(yintercept = 0) +
     theme_bw() +
+    theme(legend.position = "bottom") +
     labs(title = sprintf("%s", names(regiao)[i]),
          subtitle = "Impulse Response Function",
          # subtitle = "Impulse Response Function - Shor run effects",
          colour = NULL,
          y=NULL,
          x=NULL,
-         caption = "Elaborated by the author")
+         caption = "Elaborated by the author") +
+    guides(color = guide_legend(override.aes = list(linetype = c(2, 3, 1) ) ) )
   
+  
+  if(i %in% c(1,2,4)){
+    assign(x = sprintf("g_%s", regiao[i]), 
+           value = g1)
+  }
+
   print(g1)
   
   ggsave(filename = sprintf("./Graficos/IRF/IRF - Short Run - %s (%s).png",names(regiao)[i], dir),
@@ -224,8 +236,14 @@ for(i  in seq_along(regiao)){
          dpi = 100)
 }
 
-
-
 saveRDS(object = response.df, file = sprintf("./database/db_IRF_response (%s).rds", dir))
 
+g1 <- cowplot::plot_grid(g_75, g_46, g_62,
+  nrow=3, ncol = 1)
 
+
+ggsave(filename = sprintf("./Graficos/IRF/IRF - Short Run - Combined SP-BH-RJ (%s).png", dir),
+       plot = g1,
+       units = "in",
+       width = 8, height = 6*3,
+       dpi = 100)

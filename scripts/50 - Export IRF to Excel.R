@@ -24,7 +24,11 @@ Cadastro_de_municipios <- read_excel("database/Cadastro de municipios.xlsx",
 
 
 model <- "Result 28"
-IRF <- readRDS(file = sprintf("./database/db_IRF_response (%s).rds", model))
+Long_run <- ""
+Long_run <- "_LongRun"
+# IRF <- readRDS(file = sprintf("./database/db_IRF_response (%s).rds", model))
+IRF <- readRDS(file = sprintf("./database/db_IRF_response%s (%s).rds", Long_run, model))
+
 
 
 # Regioes faltantes -------------------------------------------------------
@@ -254,4 +258,4 @@ tbl_longer <- tbl_longer %>% mutate(Date = Sys.Date() + tbl_longer$Id,
 
 
 writexl::write_xlsx(x = tbl_longer,
-                    path = sprintf("./Excel Videos/Shoques_v1 (%s).xlsx", model))
+                    path = sprintf("./Excel Videos/Shoques_v1%s (%s).xlsx", Long_run, model))
