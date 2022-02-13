@@ -205,7 +205,7 @@ regiao <- c("Sao Paulo" = 75,
             "Salvador" = 39)
 i <- 1
 for(i  in seq_along(regiao)){
-
+  
   g1 <- results.tbl %>% 
     select(date="DATA_INICIAL",
            actual=sprintf("R_%d_ETANOL_HIDRATADO", regiao[i]),
@@ -225,6 +225,31 @@ for(i  in seq_along(regiao)){
          caption = "Elaborated by the author")
   
   ggsave(filename = sprintf("./Graficos/%s/Forecast GVAR-IIS - Etanol - %s.png", dir, names(regiao)[i]),
+         plot = g1,
+         units = "in",
+         width = 8, height = 6,
+         dpi = 100)
+  
+  g1 <- results.tbl %>% 
+    filter(year(DATA_INICIAL) >= 2019) %>% 
+    select(date="DATA_INICIAL",
+           actual=sprintf("R_%d_ETANOL_HIDRATADO", regiao[i]),
+           forecast=sprintf("Forecast_R_%d_ETANOL_HIDRATADO", regiao[i])) %>% 
+    ggplot() + 
+    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
+    theme_bw() +
+    theme(legend.position="bottom") +
+    scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
+    labs(title = sprintf("%s", names(regiao)[i]),
+         subtitle = "Prediction of Etanol Hidratado",
+         # subtitle = "Impulse Response Function - Shor run effects",
+         colour = NULL,
+         y=NULL,
+         x=NULL,
+         caption = "Elaborated by the author")
+  
+  ggsave(filename = sprintf("./Graficos/%s/Forecast GVAR-IIS - Etanol 2019 plus - %s.png", dir, names(regiao)[i]),
          plot = g1,
          units = "in",
          width = 8, height = 6,
@@ -255,6 +280,31 @@ for(i  in seq_along(regiao)){
          dpi = 100)
   
   g1 <- results.tbl %>% 
+    filter(year(DATA_INICIAL) >= 2019) %>% 
+    select(date="DATA_INICIAL",
+           actual=sprintf("R_%d_OLEO_DIESEL", regiao[i]),
+           forecast=sprintf("Forecast_R_%d_OLEO_DIESEL", regiao[i])) %>% 
+    ggplot() + 
+    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
+    theme_bw() +
+    theme(legend.position="bottom") +
+    scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
+    labs(title = sprintf("%s", names(regiao)[i]),
+         subtitle = "Prediction of Oleo Diesel",
+         # subtitle = "Impulse Response Function - Shor run effects",
+         colour = NULL,
+         y=NULL,
+         x=NULL,
+         caption = "Elaborated by the author")
+  
+  ggsave(filename = sprintf("./Graficos/%s/Forecast GVAR-IIS - Diesel 2019 plus - %s.png", dir, names(regiao)[i]),
+         plot = g1,
+         units = "in",
+         width = 8, height = 6,
+         dpi = 100)
+  
+  g1 <- results.tbl %>% 
     select(date="DATA_INICIAL",
            actual=sprintf("R_%d_GASOLINA_COMUM", regiao[i]),
            forecast=sprintf("Forecast_R_%d_GASOLINA_COMUM", regiao[i])) %>% 
@@ -273,6 +323,31 @@ for(i  in seq_along(regiao)){
          caption = "Elaborated by the author")
   
   ggsave(filename = sprintf("./Graficos/%s/Forecast GVAR-IIS - Gasolina -%s.png", dir, names(regiao)[i]),
+         plot = g1,
+         units = "in",
+         width = 8, height = 6,
+         dpi = 100)
+  
+  g1 <- results.tbl %>% 
+    filter(year(DATA_INICIAL) >= 2019) %>% 
+    select(date="DATA_INICIAL",
+           actual=sprintf("R_%d_GASOLINA_COMUM", regiao[i]),
+           forecast=sprintf("Forecast_R_%d_GASOLINA_COMUM", regiao[i])) %>% 
+    ggplot() + 
+    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
+    theme_bw() +
+    theme(legend.position="bottom") +
+    scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
+    labs(title = sprintf("%s", names(regiao)[i]),
+         subtitle = "Prediction of Gasolina Comum",
+         # subtitle = "Impulse Response Function - Shor run effects",
+         colour = NULL,
+         y=NULL,
+         x=NULL,
+         caption = "Elaborated by the author")
+  
+  ggsave(filename = sprintf("./Graficos/%s/Forecast GVAR-IIS - Gasolina 2019 plus -%s.png", dir, names(regiao)[i]),
          plot = g1,
          units = "in",
          width = 8, height = 6,
