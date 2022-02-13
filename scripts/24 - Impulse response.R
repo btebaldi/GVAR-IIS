@@ -239,7 +239,7 @@ for(i  in seq_along(regiao)){
 saveRDS(object = response.df, file = sprintf("./database/db_IRF_response (%s).rds", dir))
 
 g1 <- cowplot::plot_grid(g_75, g_46, g_62,
-  nrow=3, ncol = 1)
+                         nrow=3, ncol = 1)
 
 
 ggsave(filename = sprintf("./Graficos/IRF/IRF - Short Run - Combined SP-BH-RJ (%s).png", dir),

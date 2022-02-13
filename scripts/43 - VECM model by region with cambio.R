@@ -16,6 +16,7 @@ library(dplyr)
 library(stringr)
 library(lubridate)
 library(tsDyn)
+library(cowplot)
 
 
 file.name <- "Erro_VECM_wCambio.rds"
@@ -216,7 +217,7 @@ for(i  in seq_along(regiao)){
     theme(legend.position="bottom") +
     scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
     labs(title = sprintf("%s", names(regiao)[i]),
-         subtitle = "Prediction of Etanol Hidratado",
+         subtitle = "Prediction of Hydrous Ethanol",
          # subtitle = "Impulse Response Function - Shor run effects",
          colour = NULL,
          y=NULL,
@@ -240,7 +241,7 @@ for(i  in seq_along(regiao)){
     theme(legend.position="bottom") +
     scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
     labs(title = sprintf("%s", names(regiao)[i]),
-         subtitle = "Prediction of Oleo Diesel",
+         subtitle = "Prediction of Diesel Oil",
          # subtitle = "Impulse Response Function - Shor run effects",
          colour = NULL,
          y=NULL,
@@ -264,7 +265,7 @@ for(i  in seq_along(regiao)){
     theme(legend.position="bottom") +
     scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
     labs(title = sprintf("%s", names(regiao)[i]),
-         subtitle = "Prediction of Gasolina Comum",
+         subtitle = "Prediction of Regular Gasoline",
          # subtitle = "Impulse Response Function - Shor run effects",
          colour = NULL,
          y=NULL,
@@ -288,18 +289,19 @@ for(i  in seq_along(regiao)){
            actual=sprintf("R_%d_ETANOL_HIDRATADO", regiao[i]),
            forecast=sprintf("Forecast_R_%d_ETANOL_HIDRATADO", regiao[i])) %>% 
     ggplot() + 
-    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = actual, colour= "Actual"), linetype="dashed") +
     geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
     theme_bw() +
     theme(legend.position="bottom") +
     scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
     labs(title = sprintf("%s", names(regiao)[i]),
-         subtitle = "Prediction of Etanol Hidratado",
+         subtitle = "Prediction of Hydrous Ethanol",
          # subtitle = "Impulse Response Function - Shor run effects",
          colour = NULL,
          y=NULL,
          x=NULL,
-         caption = "Elaborated by the author")
+         caption = "Elaborated by the author") +
+    guides(color = guide_legend(override.aes = list(linetype = c(2, 1) ) ) )
   
   ggsave(filename = sprintf("./Graficos/%s/Forecast VECM - Etanol 2019 plus - %s.png", dir,  names(regiao)[i]),
          plot = g1,
@@ -307,57 +309,75 @@ for(i  in seq_along(regiao)){
          width = 8, height = 6,
          dpi = 100)
   
-  g1 <- results.tbl %>% 
+  g2 <- results.tbl %>% 
     filter(year(DATA_INICIAL) >= 2019) %>%
     select(date="DATA_INICIAL",
            actual=sprintf("R_%d_OLEO_DIESEL", regiao[i]),
            forecast=sprintf("Forecast_R_%d_OLEO_DIESEL", regiao[i])) %>% 
     ggplot() + 
-    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = actual, colour= "Actual"), linetype="dashed") +
     geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
     theme_bw() +
     theme(legend.position="bottom") +
     scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
     labs(title = sprintf("%s", names(regiao)[i]),
-         subtitle = "Prediction of Oleo Diesel",
+         subtitle = "Prediction of Diesel Oil",
          # subtitle = "Impulse Response Function - Shor run effects",
          colour = NULL,
          y=NULL,
          x=NULL,
-         caption = "Elaborated by the author")
+         caption = "Elaborated by the author") +
+    guides(color = guide_legend(override.aes = list(linetype = c(2, 1) ) ) )
   
   ggsave(filename = sprintf("./Graficos/%s/Forecast VECM - Diesel 2019 plus - %s.png", dir, names(regiao)[i]),
-         plot = g1,
+         plot = g2,
          units = "in",
          width = 8, height = 6,
          dpi = 100)
   
-  g1 <- results.tbl %>% 
+  g3 <- results.tbl %>% 
     filter(year(DATA_INICIAL) >= 2019) %>%
     select(date="DATA_INICIAL",
            actual=sprintf("R_%d_GASOLINA_COMUM", regiao[i]),
            forecast=sprintf("Forecast_R_%d_GASOLINA_COMUM", regiao[i])) %>% 
     ggplot() + 
-    geom_line(aes(x=date, y = actual, colour= "Actual")) +
+    geom_line(aes(x=date, y = actual, colour= "Actual"), linetype="dashed") +
     geom_line(aes(x=date, y = forecast, colour= "Forecast")) +
+    # geom_ribbon(aes(x=date,
+    #                 ymin = as.numeric(is.na(actual)) * Inf,
+    #                 ymax = -as.numeric(is.na(actual))* Inf, 
+    # ), alpha=0.3) +
     theme_bw() +
     theme(legend.position="bottom") +
     scale_colour_manual(values=c(Actual="#000000",Forecast="#FF0000"))+
     labs(title = sprintf("%s", names(regiao)[i]),
-         subtitle = "Prediction of Gasolina Comum",
+         subtitle = "Prediction of Regular Gasoline",
          # subtitle = "Impulse Response Function - Shor run effects",
          colour = NULL,
          y=NULL,
          x=NULL,
-         caption = "Elaborated by the author")
+         caption = "Elaborated by the author") +
+    guides(color = guide_legend(override.aes = list(linetype = c(2, 1) ) ) )
   
-  g1
+  g3
   
   ggsave(filename = sprintf("./Graficos/%s/Forecast VECM - Gasolina 2019 plus -%s.png", dir, names(regiao)[i]),
-         plot = g1,
+         plot = g3,
          units = "in",
          width = 8, height = 6,
          dpi = 100)
+  
+  
+  gcow <- cowplot::plot_grid(g1, g2, g3,
+                             nrow=1, ncol = 3)
+  
+  
+  ggsave(filename = sprintf("./Graficos/%s/Forecast VECM - All 2019 plus -%s.png", dir, names(regiao)[i]),
+         plot = gcow,
+         units = "in",
+         width = 8*3, height = 6,
+         dpi = 100)
+  
 }  
 
 
