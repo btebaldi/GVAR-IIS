@@ -14,9 +14,9 @@ library(dplyr)
 getwd()
 # Variaveis internas ------------------------------------------------------
 
-fileName = "2021-12-05 - output weakexogenity_l8ws.txt"
+fileName = "2025-04-16 - Check Weak Exo_all_v12.out"
 
-filepath = file.path(".", "Ox", "output", fileName)
+filepath = file.path(".", "Results", fileName)
 
 if(!file.exists(filepath)) {
   stop("Arquivo nao existe")
@@ -251,6 +251,17 @@ tbl.results <- tbl.results %>%
 
 View(tbl.results)
 
+print("Exogeniedade fraca por econometria")
+tbl.results %>%
+  count(ExoTest_Info) %>% 
+  print()
+
+print("Exogeniedade fraca por bootstrap")
+tbl.results %>%
+  count(ExoTest_Boot_Info) %>% 
+  print()
+
+
 print("Exogeniedade fraca")
 tbl.results %>%
   count(Overall) %>% 
@@ -264,7 +275,7 @@ tbl.results %>%
 
 print("Rank")
 tbl.results %>%
-  count(Max_rank) %>%
+  count(rank_boot) %>%
   print()
 
 

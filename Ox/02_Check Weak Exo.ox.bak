@@ -193,8 +193,8 @@ main() {
         // Estima vetores do cointegraÃ§Ã£o por bootstrap
        	// if(any(<94, 95, 97, 98, 105, 107, 108, 109, 110> .== iCont)){
             mRankMatrix = modelCats.BootstrapRankTest();
-            decl iRank_boot = EstimateRank(mRankMatrix[0], 7);
-            println("RANK ESTIMADO BOOSTRAP: ", iRank_boot);
+            iRank = EstimateRank(mRankMatrix[0], 7);
+            println("RANK ESTIMADO BOOSTRAP: ", iRank);
         // }
 
         if(iRank == 0){
