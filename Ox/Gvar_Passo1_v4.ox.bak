@@ -297,7 +297,7 @@ main() {
     mRankRegions = loadmat(sprint("./mat_files/", "rankOfRegions.mat"));
     // println(mRankRegions);
 		
-    for (iCont = 109; iCont <= iQtdRegioes; ++iCont) {
+    for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
 		println("Rank: ", mRankRegions[iCont-1][0]);
 
@@ -371,6 +371,7 @@ main() {
 
 
 		for (iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
+	        println("\tAdicionando variavel ", sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
 			if(iContador ==0){
 				mData =	model.GetVar(sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
             } else {
@@ -379,10 +380,17 @@ main() {
         }
 
 		for (iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
+	        println("\tAdicionando variavel ", sprint("star_", aVarDependenteNames[iContador]));
 			mData = mData ~ model.GetVar(sprint("star_", aVarDependenteNames[iContador]));
 		}
-		//println("%c", GetRegionNames(iQtdRegioes, "R_", aVarDependenteNames[iContador]), mData[0:6][]);
 
+		for (iContador = 0; iContador < columns(aMacroVarNames); ++iContador) {
+	        println("\tAdicionando variavel ", aMacroVarNames[iContador]);
+			mData = mData ~ model.GetVar(aMacroVarNames[iContador]);
+		}
+		println("%c", {"ETA", "GAS", "ETA*", "GAS*", "brent", "FX"}, mData[0:6][]);
+//		 println("%r", asTipo, "%c", {"D_Selic", "D_IPCA", "D_PIM", "D_Selic_1", "D_IPCA_1", "D_PIM_1", "D_Selic_2", "D_IPCA_2", "D_PIM_2", "betaMacro"},  mReturn);
+		break;
         decl asBetaZ;
         for(decl i=1; i<=rows(beta); i++){
             if(i==1){

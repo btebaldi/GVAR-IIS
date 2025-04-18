@@ -371,6 +371,7 @@ main() {
 
 
 		for (iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
+	        println("\tAdicionando variavel ", sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
 			if(iContador ==0){
 				mData =	model.GetVar(sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
             } else {
@@ -379,10 +380,17 @@ main() {
         }
 
 		for (iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
+	        println("\tAdicionando variavel ", sprint("star_", aVarDependenteNames[iContador]));
 			mData = mData ~ model.GetVar(sprint("star_", aVarDependenteNames[iContador]));
 		}
-		//println("%c", GetRegionNames(iQtdRegioes, "R_", aVarDependenteNames[iContador]), mData[0:6][]);
 
+		for (iContador = 0; iContador < columns(aMacroVarNames); ++iContador) {
+	        println("\tAdicionando variavel ", aMacroVarNames[iContador]);
+			mData = mData ~ model.GetVar(aMacroVarNames[iContador]);
+		}
+//		println("%c", {"ETA", "GAS", "ETA*", "GAS*", "brent", "FX"}, mData[0:6][]);
+
+//		break;
         decl asBetaZ;
         for(decl i=1; i<=rows(beta); i++){
             if(i==1){

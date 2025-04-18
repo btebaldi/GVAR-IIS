@@ -307,7 +307,7 @@ main()
 
 	println("Construindo influencia das variaveis");
 	mW_w = zeros(1, columns(mX_tilda)) ;//~ -1*ones(1, columns(mX_Des));
-	println(mW_w);
+	//println(mW_w);
 	mX = mX_tilda * mW_w';
 
 	// Salvo a matriz W_w para utilizar depois, aqui contriuda de maneira diferente por questoes de conformidade.
