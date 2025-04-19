@@ -14,7 +14,7 @@ library(dplyr)
 getwd()
 # Variaveis internas ------------------------------------------------------
 
-fileName = "2025-04-16 - Check Weak Exo_all_v12.out"
+fileName = "2025-04-17 - Check Weak Exo_all.out"
 
 filepath = file.path(".", "Results", fileName)
 
@@ -277,6 +277,12 @@ print("Rank")
 tbl.results %>%
   count(rank_boot) %>%
   print()
+
+print("Rank")
+tbl.results %>%
+  count(rank) %>%
+  print()
+
 
 
 # readr::write_excel_csv(x=tbl.results,
