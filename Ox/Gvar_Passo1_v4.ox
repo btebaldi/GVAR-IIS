@@ -377,18 +377,20 @@ main() {
             } else {
 				mData = mData ~ model.GetVar(sprint("R_", iCont, "_", aVarDependenteNames[iContador]));
 			}
-        }
+		}
 
 		for (iContador = 0; iContador < columns(aVarDependenteNames); ++iContador) {
 	        println("\tAdicionando variavel ", sprint("star_", aVarDependenteNames[iContador]));
 			mData = mData ~ model.GetVar(sprint("star_", aVarDependenteNames[iContador]));
 		}
 
-		for (iContador = 0; iContador < columns(aMacroVarNames); ++iContador) {
-	        println("\tAdicionando variavel ", aMacroVarNames[iContador]);
-			mData = mData ~ model.GetVar(aMacroVarNames[iContador]);
-		}
-//		println("%c", {"ETA", "GAS", "ETA*", "GAS*", "brent", "FX"}, mData[0:6][]);
+
+		// Caso o espaco de cointegracao tenha variaveis exogenas aqui devemos completar o vetor
+//		for (iContador = 0; iContador < columns(aMacroVarNames); ++iContador) {
+//	        println("\tAdicionando variavel ", aMacroVarNames[iContador]);
+//			mData = mData ~ model.GetVar(aMacroVarNames[iContador]);
+//		}
+//		println("%c", {"ETA", "GAS", "ETA*", "GAS*", "brent", "FX"}, "%r", {"T_1", "T_2", "T_3", "T_4"}, mData[0:5][]);
 
 //		break;
         decl asBetaZ;
