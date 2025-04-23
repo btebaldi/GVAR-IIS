@@ -14,8 +14,8 @@ ProcessoH(const asParamNames, const vParamValues, const iQtdLags, const varMacro
 	mRet = zeros(rows(varMacro), rows(varMacro)*iQtdLags);
 	//println(mRet);
 
-	println("asParamNames", asParamNames);
-	println("vParamValues", vParamValues);
+//	println("asParamNames", asParamNames);
+//	println("vParamValues", vParamValues);
 
 	decl debug_ColsNames;
 	
@@ -45,9 +45,9 @@ ProcessoH(const asParamNames, const vParamValues, const iQtdLags, const varMacro
 					}
 				}
 
-				println(sP_Name);
+//				println(sP_Name);
 				index = find(asParamNames, sP_Name);
-				println(index);
+//				println(index);
 	
 				// caso tenha achado o indice atualiza a tabela
 				if(index >=0)
@@ -103,9 +103,9 @@ ProcessoB(const asParamNames, const vParamValues, const iQtdLags, const varMacro
 				sP_Name = sprint(sMacroSufix, "mX", "_", nContCol, "@", sMacroSufix, varMacro[nContRow]);
 			}
 						
-			println(sP_Name);
+//			println(sP_Name);
 			index = find(asParamNames, sP_Name);
-			println(index);
+//			println(index);
 
 			// caso tenha achado o indice atualiza a tabela
 			if(index >=0)
@@ -307,7 +307,7 @@ main()
 
 	println("Construindo influencia das variaveis");
 	mW_w = zeros(1, columns(mX_tilda)) ;//~ -1*ones(1, columns(mX_Des));
-	println(mW_w);
+	//println(mW_w);
 	mX = mX_tilda * mW_w';
 
 	// Salvo a matriz W_w para utilizar depois, aqui contriuda de maneira diferente por questoes de conformidade.

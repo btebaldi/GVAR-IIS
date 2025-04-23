@@ -14,8 +14,8 @@ ProcessoH(const asParamNames, const vParamValues, const iQtdLags, const varMacro
 	mRet = zeros(rows(varMacro), rows(varMacro)*iQtdLags);
 	//println(mRet);
 
-	println("asParamNames", asParamNames);
-	println("vParamValues", vParamValues);
+//	println("asParamNames", asParamNames);
+//	println("vParamValues", vParamValues);
 
 	decl debug_ColsNames;
 	
@@ -45,9 +45,9 @@ ProcessoH(const asParamNames, const vParamValues, const iQtdLags, const varMacro
 					}
 				}
 
-				println(sP_Name);
+//				println(sP_Name);
 				index = find(asParamNames, sP_Name);
-				println(index);
+//				println(index);
 	
 				// caso tenha achado o indice atualiza a tabela
 				if(index >=0)
@@ -68,8 +68,8 @@ ProcessoH(const asParamNames, const vParamValues, const iQtdLags, const varMacro
 		} // Fim da contagem de lags/colunas
 	} // Fim da contagem de linhas
 
-	debug_ColsNames = debug_ColsNames[1:];
-	print( "%r", varMacro, "%c", debug_ColsNames, "%cf", mRet);
+//	debug_ColsNames = debug_ColsNames[1:];
+//	print( "%r", varMacro, "%c", debug_ColsNames, "%cf", mRet);
 
 	return mRet;
 }
@@ -103,9 +103,9 @@ ProcessoB(const asParamNames, const vParamValues, const iQtdLags, const varMacro
 				sP_Name = sprint(sMacroSufix, "mX", "_", nContCol, "@", sMacroSufix, varMacro[nContRow]);
 			}
 						
-			println(sP_Name);
+//			println(sP_Name);
 			index = find(asParamNames, sP_Name);
-			println(index);
+//			println(index);
 
 			// caso tenha achado o indice atualiza a tabela
 			if(index >=0)

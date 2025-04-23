@@ -195,6 +195,7 @@ main() {
             mRankMatrix = modelCats.BootstrapRankTest();
             decl iRank_boot = EstimateRank(mRankMatrix[0], 7);
             println("RANK ESTIMADO BOOSTRAP: ", iRank_boot);
+			iRank = iRank_boot;
         // }
 
         if(iRank == 0){

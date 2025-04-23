@@ -297,7 +297,7 @@ main() {
     mRankRegions = loadmat(sprint("./mat_files/", "rankOfRegions.mat"));
     // println(mRankRegions);
 		
-    for (iCont = 80; iCont <= iQtdRegioes; ++iCont) {
+    for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
 		println("Rank: ", mRankRegions[iCont-1][0]);
 

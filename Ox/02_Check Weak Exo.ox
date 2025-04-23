@@ -145,10 +145,10 @@ main() {
         }
 
 		// Adiciona as variaveis Macro como exogenas
-         for(decl iContador = 0; iContador < columns(aMacroVarNames); ++iContador) {
-             println("append: ", sprint(aMacroVarNames[iContador]));
-             modelCats.Select("X", {sprint(aMacroVarNames[iContador]), 0, 0});
-         }
+//         for(decl iContador = 0; iContador < columns(aMacroVarNames); ++iContador) {
+//             println("append: ", sprint(aMacroVarNames[iContador]));
+//             modelCats.Select("X", {sprint(aMacroVarNames[iContador]), 0, 0});
+//         }
 
 //         for(iContador = 1; iContador < 12; ++iContador) {
 //             println("append: ", sprint("M", iContador));

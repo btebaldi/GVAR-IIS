@@ -2,7 +2,7 @@
 
 dim(const mMatrix)
 {
-println(rows(mMatrix), " x ", columns(mMatrix));
+println(rows(mMatrix), " x ", columns(mMatrix))
 
 }
 
