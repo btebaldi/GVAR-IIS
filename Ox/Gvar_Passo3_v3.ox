@@ -38,7 +38,7 @@ main()
 			}
 			//println(GL);
 	    }
-		println("Saving G", iCurrentLag, " matrix");
+		//println("Saving G", iCurrentLag, " matrix");
 		savemat(sprint(txMatPathG_Matrix, "G", iCurrentLag, ".mat"), GL);
 	}
 
@@ -58,7 +58,7 @@ main()
 			mUStack = mUStack | mUi;
 		}
 
-		println("Saving U_Stacked (region ", iContRegion, ")");
+		//println("Saving U_Stacked (region ", iContRegion, ")");
 		savemat(sprint(txMatPathG_Matrix, "U_Stacked", ".mat"), mUStack);
 	}
 
@@ -72,7 +72,7 @@ main()
 		mBetai = loadmat(sprint(txCoIntMatPath, "Weak2_CoInt_R", iContRegion, ".mat"));
 		mWi = loadmat(sprint(txMatPathW_Matrix, "W", iContRegion, ".mat"));
 
-        println("Regularizacao do beta para operacionalizacao");
+        //println("Regularizacao do beta para operacionalizacao");
 		// Regularizacao do beta para operacionalizacao.
 		if(columns(mAlphai) > rows(mBetai))
 		{
@@ -80,10 +80,8 @@ main()
 		mBetai = mBetai | reshape(0, columns(mAlphai) - rows(mBetai), columns(mBetai));;
 		}
 
-		println("primeira passagem, inicializo o Aplha0 e AplhaL");
-		dim(mAlphai);
-		dim(mBetai);
-		dim(mWi);
+		//println("primeira passagem, inicializo o Aplha0 e AplhaL");
+
 		// primeira passagem, inicializo o Aplha0 e AplhaL
 		if(iContRegion==1)
 		{
@@ -95,7 +93,7 @@ main()
 			aAlphaiStack = aAlphaiStack | mAlphai * mBetai * mWi;
 		}
 
-		println(sprint("Saving G_alpha (region ",iContRegion, ")"));
+		//println(sprint("Saving G_alpha (region ",iContRegion, ")"));
 		savemat(sprint(txMatPathG_Matrix, "G_alpha", ".mat"), aAlphaiStack);
 	}
 
@@ -116,7 +114,7 @@ main()
 			mIISiStack = mIISiStack | mIISi;
 		}
 
-		println(sprint("Saving IIS (region ",iContRegion, ")"));
+		//println(sprint("Saving IIS (region ",iContRegion, ")"));
 		savemat(sprint(txMatPathG_Matrix, "IIS_Stacked", ".mat"), mIISiStack);
 	}
 
@@ -136,7 +134,7 @@ main()
 			mDStack = mDStack | mDi;
 		}
 
-		println(sprint("Saving D_Stacked (region ",iContRegion, ")"));
+		//println(sprint("Saving D_Stacked (region ",iContRegion, ")"));
 		savemat(sprint(txMatPathG_Matrix, "D_Stacked", ".mat"), mDStack);
 	}
 

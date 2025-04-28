@@ -1,0 +1,424 @@
+--------------- Ox at 20:48:53 on 27-Apr-2025 ---------------
+
+Ox 9.10 (Windows_64/Parallel) (C) J.A. Doornik, 1994-2023 (oxlang.dev)
+******************************************
+------------------------------------------
+	Configuracao de variaveis
+------------------------------------------
+
+REGIOES
+	Quantidade de lags: 8
+	Quantidade de Regioes: 110
+	Quantidade de Variaveis Dependente: 2
+Variaveis Dependentes:
+[0] = ETANOL_HIDRATADO
+[1] = GASOLINA_COMUM
+
+DATABASE
+	Macrovariaveis: ../export/database for ox/db_oil_withSesonal.in7
+	Regioes: ../export/database for ox/db_oil_withSesonal.in7
+	Database Star: ../export/database for ox/db_oil_withSesonal_Star.in7
+
+DIRETORIOS
+	W Matrix Dir: ../export/W_mat/
+	Cointeration Matrix Dir: ./mat_files/Cointegration - l8/
+	Raw Matrix Dir: ./mat_files/RawMatrix/
+	A Matrix Dir: ./mat_files/A_Matrix/
+	G Matrix Dir: ./mat_files/G_Matrix/
+	Result Matrix Dir: ./mat_files/Result_Matrix/
+
+WEIGHT MATRIX
+	Matrix de Pesos: ../export/W_mat/PIB_PC_1.mat
+
+Configuracoes
+	is_IIS_ON: 0
+	IIS_pvalue: 1e-06
+	is_DUMMY_ON: 1
+	type_DUMMY: U
+******************************************
+>>> Inicio da estimacao do modelo de macrovariaveis
+
+
+*****************************************
+             Macrovariaveis 
+*****************************************
+
+Carregando dados das variaveis exogenas
+Carregando base de dados com informacoes regionais
+Construindo variaveis X
+Concluido construcao das variaveis X
+Construindo influencia das variaveis
+Salvando matriz W_w para ser utilizada depois
+Inicio um nomo objeto do tipo PcGive referente a macrovariaveis
+PcGive package version 16.10, object created on 27-04-2025
+(C) Jurgen A Doornik - requires a licensed version of PcGive Professional
+Carregando base de dados de macrovariaveis
+Iniciando construcao da variavel Delta para variaveis
+Adicionado Diff da variavel: brent
+Adicionado Diff da variavel: lnCambio
+Adicionando variavel mX
+Adicionando variavel D_mX 
+Cointegracao de Macrovariaveis desligado
+	Adicionado: CSeasonal U
+Model Sample: 2005-04-24 - 2018-12-30
+Processo IIS desligado para esta regiao
+
+SYS( 1) Estimating the system by OLS
+        The dataset is: ../export/database for ox/db_oil_withSesonal.in7
+        The estimation sample is: 2005-04-24 - 2018-12-30
+
+URF equation for: D_brent
+                  Coefficient  Std.Error  t-value  t-prob
+D_brent_1            0.273234    0.04136     6.61  0.0000
+D_brent_2           -0.105518    0.04266    -2.47  0.0136
+D_brent_3            0.136094    0.04296     3.17  0.0016
+D_brent_4          -0.0843984    0.04310    -1.96  0.0506
+D_brent_5            0.105910    0.04312     2.46  0.0143
+D_brent_6         -0.00611154    0.04315   -0.142  0.8874
+D_brent_7          -0.0101649    0.04298   -0.237  0.8131
+D_brent_8           0.0447345    0.04187     1.07  0.2857
+D_lnCambio_1        0.0103218    0.08592    0.120  0.9044
+D_lnCambio_2        -0.179962    0.08647    -2.08  0.0378
+D_lnCambio_3        0.0253709    0.08681    0.292  0.7702
+D_lnCambio_4       -0.0934279    0.08668    -1.08  0.2815
+D_lnCambio_5         0.161257    0.08668     1.86  0.0633
+D_lnCambio_6       -0.0959151    0.08660    -1.11  0.2684
+D_lnCambio_7        0.0511449    0.08634    0.592  0.5538
+D_lnCambio_8        -0.203922    0.08549    -2.39  0.0174
+Constant      U   0.000283866   0.001309    0.217  0.8284
+CSeasonal     U    0.00539120    0.01386    0.389  0.6975
+CSeasonal_1   U   -0.00558099    0.01382   -0.404  0.6864
+CSeasonal_2   U    0.00354604    0.01364    0.260  0.7949
+CSeasonal_3   U   -0.00925186    0.01353   -0.684  0.4942
+CSeasonal_4   U   -0.00105062    0.01358  -0.0774  0.9384
+CSeasonal_5   U    -0.0185447    0.01358    -1.37  0.1726
+CSeasonal_6   U    0.00630206    0.01360    0.463  0.6433
+CSeasonal_7   U   3.07740e-05    0.01349  0.00228  0.9982
+CSeasonal_8   U   -0.00109350    0.01355  -0.0807  0.9357
+CSeasonal_9   U   -0.00869802    0.01352   -0.644  0.5201
+CSeasonal_10  U    0.00251740    0.01357    0.186  0.8529
+CSeasonal_11  U    -0.0178332    0.01353    -1.32  0.1880
+CSeasonal_12  U   -0.00221512    0.01360   -0.163  0.8707
+CSeasonal_13  U   -0.00375380    0.01356   -0.277  0.7821
+CSeasonal_14  U   -0.00803248    0.01359   -0.591  0.5546
+CSeasonal_15  U   -0.00311258    0.01354   -0.230  0.8182
+CSeasonal_16  U   -0.00659112    0.01362   -0.484  0.6287
+CSeasonal_17  U   -0.00649937    0.01358   -0.478  0.6325
+CSeasonal_18  U    -0.0259809    0.01356    -1.92  0.0559
+CSeasonal_19  U    0.00704226    0.01358    0.518  0.6043
+CSeasonal_20  U   -0.00808001    0.01353   -0.597  0.5506
+CSeasonal_21  U    -0.0105958    0.01363   -0.777  0.4372
+CSeasonal_22  U   -0.00192128    0.01358   -0.142  0.8875
+CSeasonal_23  U   -0.00884600    0.01359   -0.651  0.5153
+CSeasonal_24  U   -0.00799185    0.01353   -0.591  0.5550
+CSeasonal_25  U    -0.0192841    0.01361    -1.42  0.1569
+CSeasonal_26  U    0.00217144    0.01362    0.159  0.8734
+CSeasonal_27  U    0.00956415    0.01351    0.708  0.4791
+CSeasonal_28  U    -0.0146591    0.01372    -1.07  0.2859
+CSeasonal_29  U    -0.0147146    0.01372    -1.07  0.2839
+CSeasonal_30  U   -0.00447517    0.01371   -0.326  0.7443
+CSeasonal_31  U    -0.0235470    0.01370    -1.72  0.0860
+CSeasonal_32  U   -0.00980257    0.01371   -0.715  0.4748
+CSeasonal_33  U   -0.00900021    0.01375   -0.655  0.5129
+CSeasonal_34  U   -0.00283646    0.01370   -0.207  0.8361
+CSeasonal_35  U    -0.0164408    0.01372    -1.20  0.2312
+CSeasonal_36  U    -0.0162843    0.01369    -1.19  0.2348
+CSeasonal_37  U    -0.0107838    0.01362   -0.792  0.4288
+CSeasonal_38  U    0.00670549    0.01363    0.492  0.6228
+CSeasonal_39  U   -0.00207704    0.01369   -0.152  0.8795
+CSeasonal_40  U    -0.0160545    0.01374    -1.17  0.2429
+CSeasonal_41  U    -0.0178173    0.01393    -1.28  0.2014
+CSeasonal_42  U   -0.00153267    0.01392   -0.110  0.9124
+CSeasonal_43  U    0.00867012    0.01390    0.624  0.5329
+CSeasonal_44  U    0.00830167    0.01395    0.595  0.5519
+CSeasonal_45  U   -0.00699255    0.01394   -0.502  0.6160
+CSeasonal_46  U     0.0204418    0.01387     1.47  0.1409
+CSeasonal_47  U   -0.00921640    0.01385   -0.666  0.5060
+CSeasonal_48  U    0.00648590    0.01390    0.467  0.6409
+CSeasonal_49  U    -0.0117967    0.01380   -0.855  0.3931
+CSeasonal_50  U    0.00502449    0.01382    0.364  0.7163
+
+sigma = 0.0348625   RSS = 0.7863576531
+
+URF equation for: D_lnCambio
+                  Coefficient  Std.Error  t-value  t-prob
+D_brent_1          -0.0456476    0.01991    -2.29  0.0222
+D_brent_2           0.0486493    0.02054     2.37  0.0181
+D_brent_3          -0.0301821    0.02068    -1.46  0.1450
+D_brent_4         0.000401039    0.02075   0.0193  0.9846
+D_brent_5          -0.0365877    0.02076    -1.76  0.0784
+D_brent_6          0.00113264    0.02078   0.0545  0.9565
+D_brent_7          -0.0104618    0.02069   -0.506  0.6133
+D_brent_8          -0.0287120    0.02016    -1.42  0.1548
+D_lnCambio_1         0.123218    0.04137     2.98  0.0030
+D_lnCambio_2        0.0653235    0.04163     1.57  0.1171
+D_lnCambio_3        0.0517075    0.04179     1.24  0.2165
+D_lnCambio_4       -0.0279048    0.04173   -0.669  0.5039
+D_lnCambio_5       -0.0120829    0.04173   -0.290  0.7722
+D_lnCambio_6        0.0362661    0.04169    0.870  0.3847
+D_lnCambio_7       -0.0465487    0.04157    -1.12  0.2632
+D_lnCambio_8        0.0633108    0.04116     1.54  0.1245
+Constant      U   0.000398723  0.0006304    0.632  0.5273
+CSeasonal     U   0.000762562   0.006673    0.114  0.9091
+CSeasonal_1   U  -0.000988276   0.006652   -0.149  0.8819
+CSeasonal_2   U    0.00982980   0.006566     1.50  0.1348
+CSeasonal_3   U    0.00474039   0.006512    0.728  0.4669
+CSeasonal_4   U    0.00765992   0.006538     1.17  0.2418
+CSeasonal_5   U     0.0116784   0.006539     1.79  0.0746
+CSeasonal_6   U    0.00841354   0.006549     1.28  0.1994
+CSeasonal_7   U     0.0121444   0.006494     1.87  0.0619
+CSeasonal_8   U    0.00700619   0.006522     1.07  0.2831
+CSeasonal_9   U     0.0105693   0.006507     1.62  0.1048
+CSeasonal_10  U   -0.00162659   0.006532   -0.249  0.8034
+CSeasonal_11  U    0.00723407   0.006514     1.11  0.2672
+CSeasonal_12  U    0.00298967   0.006547    0.457  0.6481
+CSeasonal_13  U    0.00461826   0.006530    0.707  0.4797
+CSeasonal_14  U    0.00941724   0.006541     1.44  0.1504
+CSeasonal_15  U    0.00131998   0.006517    0.203  0.8396
+CSeasonal_16  U    0.00167683   0.006559    0.256  0.7983
+CSeasonal_17  U    0.00880112   0.006540     1.35  0.1789
+CSeasonal_18  U     0.0181249   0.006530     2.78  0.0057
+CSeasonal_19  U    0.00355821   0.006539    0.544  0.5865
+CSeasonal_20  U     0.0112826   0.006514     1.73  0.0837
+CSeasonal_21  U    0.00805333   0.006561     1.23  0.2201
+CSeasonal_22  U     0.0118171   0.006536     1.81  0.0711
+CSeasonal_23  U    0.00702284   0.006543     1.07  0.2835
+CSeasonal_24  U    0.00994819   0.006514     1.53  0.1272
+CSeasonal_25  U     0.0102142   0.006551     1.56  0.1194
+CSeasonal_26  U    0.00952836   0.006559     1.45  0.1468
+CSeasonal_27  U    -0.0125994   0.006502    -1.94  0.0531
+CSeasonal_28  U     0.0110264   0.006607     1.67  0.0956
+CSeasonal_29  U   0.000808851   0.006606    0.122  0.9026
+CSeasonal_30  U    0.00327337   0.006603    0.496  0.6202
+CSeasonal_31  U     0.0167450   0.006594     2.54  0.0113
+CSeasonal_32  U     0.0170046   0.006600     2.58  0.0102
+CSeasonal_33  U     0.0103761   0.006618     1.57  0.1174
+CSeasonal_34  U  -0.000628376   0.006596  -0.0953  0.9241
+CSeasonal_35  U     0.0149083   0.006604     2.26  0.0243
+CSeasonal_36  U    0.00710606   0.006593     1.08  0.2815
+CSeasonal_37  U    0.00853617   0.006557     1.30  0.1934
+CSeasonal_38  U   0.000262908   0.006561   0.0401  0.9680
+CSeasonal_39  U   -0.00263136   0.006591   -0.399  0.6899
+CSeasonal_40  U    0.00774850   0.006613     1.17  0.2417
+CSeasonal_41  U   0.000721197   0.006708    0.108  0.9144
+CSeasonal_42  U    0.00485408   0.006703    0.724  0.4692
+CSeasonal_43  U    0.00106683   0.006690    0.159  0.8733
+CSeasonal_44  U    0.00204847   0.006715    0.305  0.7604
+CSeasonal_45  U    0.00896309   0.006710     1.34  0.1821
+CSeasonal_46  U    0.00461578   0.006675    0.691  0.4895
+CSeasonal_47  U    0.00761325   0.006667     1.14  0.2539
+CSeasonal_48  U    0.00353313   0.006692    0.528  0.5977
+CSeasonal_49  U     0.0112758   0.006646     1.70  0.0902
+CSeasonal_50  U     0.0118450   0.006654     1.78  0.0755
+
+sigma = 0.0167839   RSS = 0.182260341
+
+log-likelihood     3402.35565  -T/2log|Omega|     5431.43776
+|Omega|          2.522531e-07  log|Y'Y/T|        -15.0335039
+R^2(LR)              0.147284  R^2(LM)             0.0754013
+no. of observations       715  no. of parameters         136
+
+F-test on regressors except unrestricted: F(32,1292) = 3.34804 [0.0000] **
+F-tests on retained regressors, F(2,646) =
+   D_brent_1       21.8078 [0.000]**   D_brent_2       4.45037 [0.012]* 
+   D_brent_3       5.12558 [0.006]**   D_brent_4       2.11463 [0.122]  
+   D_brent_5       3.55039 [0.029]*    D_brent_6     0.0100645 [0.990]  
+   D_brent_7      0.214892 [0.807]     D_brent_8       1.22458 [0.295]  
+D_lnCambio_1       5.05632 [0.007]**D_lnCambio_2       2.62227 [0.073]  
+D_lnCambio_3       1.02369 [0.360]  D_lnCambio_4       1.14577 [0.319]  
+D_lnCambio_5       1.77767 [0.170]  D_lnCambio_6      0.762068 [0.467]  
+D_lnCambio_7      0.657413 [0.519]  D_lnCambio_8       3.18059 [0.042]* 
+    Constant U    0.296206 [0.744]     CSeasonal U    0.106786 [0.899]  
+ CSeasonal_1 U    0.123841 [0.884]   CSeasonal_2 U     1.41787 [0.243]  
+ CSeasonal_3 U    0.378642 [0.685]   CSeasonal_4 U    0.732963 [0.481]  
+ CSeasonal_5 U     1.94722 [0.144]   CSeasonal_6 U     1.24373 [0.289]  
+ CSeasonal_7 U     1.94172 [0.144]   CSeasonal_8 U    0.613419 [0.542]  
+ CSeasonal_9 U     1.32643 [0.266]  CSeasonal_10 U   0.0372772 [0.963]  
+CSeasonal_11 U     1.13378 [0.322]  CSeasonal_12 U    0.104290 [0.901]  
+CSeasonal_13 U    0.251241 [0.778]  CSeasonal_14 U     1.04500 [0.352]  
+CSeasonal_15 U   0.0357315 [0.965]  CSeasonal_16 U    0.122688 [0.885]  
+CSeasonal_17 U    0.905658 [0.405]  CSeasonal_18 U     4.44216 [0.012]* 
+CSeasonal_19 U    0.412499 [0.662]  CSeasonal_20 U     1.49918 [0.224]  
+CSeasonal_21 U    0.836058 [0.434]  CSeasonal_22 U     1.73490 [0.177]  
+CSeasonal_23 U    0.628928 [0.533]  CSeasonal_24 U     1.17062 [0.311]  
+CSeasonal_25 U     1.68710 [0.186]  CSeasonal_26 U     1.26625 [0.283]  
+CSeasonal_27 U     1.87966 [0.153]  CSeasonal_28 U     1.55209 [0.213]  
+CSeasonal_29 U    0.600268 [0.549]  CSeasonal_30 U    0.138614 [0.871]  
+CSeasonal_31 U     3.68454 [0.026]* CSeasonal_32 U     3.31969 [0.037]* 
+CSeasonal_33 U     1.24124 [0.290]  CSeasonal_34 U   0.0357399 [0.965]  
+CSeasonal_35 U     2.67388 [0.070]  CSeasonal_36 U    0.978981 [0.376]  
+CSeasonal_37 U    0.926117 [0.397]  CSeasonal_38 U    0.142156 [0.868]  
+CSeasonal_39 U    0.122481 [0.885]  CSeasonal_40 U     1.03860 [0.355]  
+CSeasonal_41 U    0.865490 [0.421]  CSeasonal_42 U    0.269677 [0.764]  
+CSeasonal_43 U    0.265083 [0.767]  CSeasonal_44 U    0.311959 [0.732]  
+CSeasonal_45 U    0.894272 [0.409]  CSeasonal_46 U     1.82936 [0.161]  
+CSeasonal_47 U    0.702245 [0.496]  CSeasonal_48 U    0.362002 [0.696]  
+CSeasonal_49 U     1.49302 [0.225]  CSeasonal_50 U     2.05877 [0.128]  
+
+correlation of URF residuals (standard deviations on diagonal)
+                   D_brent   D_lnCambio
+D_brent           0.034862     -0.31658
+D_lnCambio        -0.31658     0.016784
+correlation between actual and fitted
+      D_brent   D_lnCambio
+      0.41810      0.41043
+
+Single equation statistics
+                   mean(Y)        se(Y)        sigma          R^2
+D_brent         5.4909e-05     0.036533     0.034862      0.17481
+D_lnCambio      0.00055022     0.017521     0.016784      0.16845
+
+Single-equation diagnostics using reduced-form residuals:
+                               AR 1-7            ARCH 1-7           Normality              Hetero   
+D_brent                 0.39 [0.9074]      13.02 [0.0000]**    42.49 [0.0000]**     3.88 [0.0000]** 
+D_lnCambio              0.94 [0.4780]      23.39 [0.0000]**   111.71 [0.0000]**     3.40 [0.0000]** 
+
+Vector AR 1-7 test:      F(28,1264)=   1.1945 [0.2232]  
+Vector Normality test:   Chi^2(4)  =   168.66 [0.0000]**
+Vector Hetero test:      F(249,1887)=   3.3504 [0.0000]**
+Vector RESET23 test:     F(8,1284) =   6.5941 [0.0000]**
+
+D_brent_1@D_brent            0.27323
+D_brent_2@D_brent           -0.10552
+D_brent_3@D_brent            0.13609
+D_brent_4@D_brent          -0.084398
+D_brent_5@D_brent            0.10591
+D_brent_6@D_brent         -0.0061115
+D_brent_7@D_brent          -0.010165
+D_brent_8@D_brent           0.044734
+D_lnCambio_1@D_brent        0.010322
+D_lnCambio_2@D_brent        -0.17996
+D_lnCambio_3@D_brent        0.025371
+D_lnCambio_4@D_brent       -0.093428
+D_lnCambio_5@D_brent         0.16126
+D_lnCambio_6@D_brent       -0.095915
+D_lnCambio_7@D_brent        0.051145
+D_lnCambio_8@D_brent        -0.20392
+Constant@D_brent          0.00028387
+CSeasonal@D_brent          0.0053912
+CSeasonal_1@D_brent       -0.0055810
+CSeasonal_2@D_brent        0.0035460
+CSeasonal_3@D_brent       -0.0092519
+CSeasonal_4@D_brent       -0.0010506
+CSeasonal_5@D_brent        -0.018545
+CSeasonal_6@D_brent        0.0063021
+CSeasonal_7@D_brent       3.0774e-05
+CSeasonal_8@D_brent       -0.0010935
+CSeasonal_9@D_brent       -0.0086980
+CSeasonal_10@D_brent       0.0025174
+CSeasonal_11@D_brent       -0.017833
+CSeasonal_12@D_brent      -0.0022151
+CSeasonal_13@D_brent      -0.0037538
+CSeasonal_14@D_brent      -0.0080325
+CSeasonal_15@D_brent      -0.0031126
+CSeasonal_16@D_brent      -0.0065911
+CSeasonal_17@D_brent      -0.0064994
+CSeasonal_18@D_brent       -0.025981
+CSeasonal_19@D_brent       0.0070423
+CSeasonal_20@D_brent      -0.0080800
+CSeasonal_21@D_brent       -0.010596
+CSeasonal_22@D_brent      -0.0019213
+CSeasonal_23@D_brent      -0.0088460
+CSeasonal_24@D_brent      -0.0079918
+CSeasonal_25@D_brent       -0.019284
+CSeasonal_26@D_brent       0.0021714
+CSeasonal_27@D_brent       0.0095642
+CSeasonal_28@D_brent       -0.014659
+CSeasonal_29@D_brent       -0.014715
+CSeasonal_30@D_brent      -0.0044752
+CSeasonal_31@D_brent       -0.023547
+CSeasonal_32@D_brent      -0.0098026
+CSeasonal_33@D_brent      -0.0090002
+CSeasonal_34@D_brent      -0.0028365
+CSeasonal_35@D_brent       -0.016441
+CSeasonal_36@D_brent       -0.016284
+CSeasonal_37@D_brent       -0.010784
+CSeasonal_38@D_brent       0.0067055
+CSeasonal_39@D_brent      -0.0020770
+CSeasonal_40@D_brent       -0.016055
+CSeasonal_41@D_brent       -0.017817
+CSeasonal_42@D_brent      -0.0015327
+CSeasonal_43@D_brent       0.0086701
+CSeasonal_44@D_brent       0.0083017
+CSeasonal_45@D_brent      -0.0069925
+CSeasonal_46@D_brent        0.020442
+CSeasonal_47@D_brent      -0.0092164
+CSeasonal_48@D_brent       0.0064859
+CSeasonal_49@D_brent       -0.011797
+CSeasonal_50@D_brent       0.0050245
+D_brent_1@D_lnCambio       -0.045648
+D_brent_2@D_lnCambio        0.048649
+D_brent_3@D_lnCambio       -0.030182
+D_brent_4@D_lnCambio      0.00040104
+D_brent_5@D_lnCambio       -0.036588
+D_brent_6@D_lnCambio       0.0011326
+D_brent_7@D_lnCambio       -0.010462
+D_brent_8@D_lnCambio       -0.028712
+D_lnCambio_1@D_lnCambio      0.12322
+D_lnCambio_2@D_lnCambio     0.065324
+D_lnCambio_3@D_lnCambio     0.051708
+D_lnCambio_4@D_lnCambio    -0.027905
+D_lnCambio_5@D_lnCambio    -0.012083
+D_lnCambio_6@D_lnCambio     0.036266
+D_lnCambio_7@D_lnCambio    -0.046549
+D_lnCambio_8@D_lnCambio     0.063311
+Constant@D_lnCambio       0.00039872
+CSeasonal@D_lnCambio      0.00076256
+CSeasonal_1@D_lnCambio   -0.00098828
+CSeasonal_2@D_lnCambio     0.0098298
+CSeasonal_3@D_lnCambio     0.0047404
+CSeasonal_4@D_lnCambio     0.0076599
+CSeasonal_5@D_lnCambio      0.011678
+CSeasonal_6@D_lnCambio     0.0084135
+CSeasonal_7@D_lnCambio      0.012144
+CSeasonal_8@D_lnCambio     0.0070062
+CSeasonal_9@D_lnCambio      0.010569
+CSeasonal_10@D_lnCambio   -0.0016266
+CSeasonal_11@D_lnCambio    0.0072341
+CSeasonal_12@D_lnCambio    0.0029897
+CSeasonal_13@D_lnCambio    0.0046183
+CSeasonal_14@D_lnCambio    0.0094172
+CSeasonal_15@D_lnCambio    0.0013200
+CSeasonal_16@D_lnCambio    0.0016768
+CSeasonal_17@D_lnCambio    0.0088011
+CSeasonal_18@D_lnCambio     0.018125
+CSeasonal_19@D_lnCambio    0.0035582
+CSeasonal_20@D_lnCambio     0.011283
+CSeasonal_21@D_lnCambio    0.0080533
+CSeasonal_22@D_lnCambio     0.011817
+CSeasonal_23@D_lnCambio    0.0070228
+CSeasonal_24@D_lnCambio    0.0099482
+CSeasonal_25@D_lnCambio     0.010214
+CSeasonal_26@D_lnCambio    0.0095284
+CSeasonal_27@D_lnCambio    -0.012599
+CSeasonal_28@D_lnCambio     0.011026
+CSeasonal_29@D_lnCambio   0.00080885
+CSeasonal_30@D_lnCambio    0.0032734
+CSeasonal_31@D_lnCambio     0.016745
+CSeasonal_32@D_lnCambio     0.017005
+CSeasonal_33@D_lnCambio     0.010376
+CSeasonal_34@D_lnCambio  -0.00062838
+CSeasonal_35@D_lnCambio     0.014908
+CSeasonal_36@D_lnCambio    0.0071061
+CSeasonal_37@D_lnCambio    0.0085362
+CSeasonal_38@D_lnCambio   0.00026291
+CSeasonal_39@D_lnCambio   -0.0026314
+CSeasonal_40@D_lnCambio    0.0077485
+CSeasonal_41@D_lnCambio   0.00072120
+CSeasonal_42@D_lnCambio    0.0048541
+CSeasonal_43@D_lnCambio    0.0010668
+CSeasonal_44@D_lnCambio    0.0020485
+CSeasonal_45@D_lnCambio    0.0089631
+CSeasonal_46@D_lnCambio    0.0046158
+CSeasonal_47@D_lnCambio    0.0076132
+CSeasonal_48@D_lnCambio    0.0035331
+CSeasonal_49@D_lnCambio     0.011276
+CSeasonal_50@D_lnCambio     0.011845
+Processo H iniciado
+Processo U iniciado
+Processo U finalizado
+Processo Extracao da matriz de saturacao (IIS)
+Processo AlphaBeta iniciado
+Processo B iniciado
+*** Fim da estimacao dos modelos de macrovariaveis *** 
+OMP: Warning #227: Cannot determine machine load balance - Using KMP_DYNAMIC_MODE=thread limit

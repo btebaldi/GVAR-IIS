@@ -19,7 +19,7 @@ library(stringr)
 # Configs -----------------------------------------------------------------
 
 # Nome do modelo a ser lido
-dir <- "Result 28"
+dir <- "Result 2025-04-27v5"
 
 # Caminho dos arquivos
 filepath = file.path("Ox","mat_files", "Result_Matrix", dir, "Read Me Config.txt")
@@ -44,7 +44,8 @@ mGyL.file_list <-   c(
   # "mGy_inv_X_mGyL11",
   # "mGy_inv_X_mGyL12",
   # "mGy_inv_X_mGyL13",
-  "mGy_inv_X_mL"
+  "mGy_inv_X_mL",
+  "mGy_inv"
 )
 
 # for(item in mGyL.file_list) {}
@@ -57,6 +58,7 @@ for(item in mGyL.file_list) {
   fileName <- file.path(main_dir, fileName)
   # fileName <- sprintf(fileName.mask, item)
   
+  cat(" Iniciando o processamento:", fileName, " \n")
   # Abre o aqruivo para leitura
   con <- file(fileName, open="r")
   
@@ -94,6 +96,7 @@ for(item in mGyL.file_list) {
   }
   
   file.out <- file.path(main_dir, sprintf("%s.rds", item))
+  cat("Salvando o arquivo:", file.out, "\n")
   saveRDS(M, file = file.out)
 }
 

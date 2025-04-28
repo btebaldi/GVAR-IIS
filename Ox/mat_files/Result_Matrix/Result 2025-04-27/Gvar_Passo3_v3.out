@@ -1,0 +1,1042 @@
+--------------- Ox at 19:50:30 on 27-Apr-2025 ---------------
+
+Ox 9.10 (Windows_64/Parallel) (C) J.A. Doornik, 1994-2023 (oxlang.dev)
+******************************************
+------------------------------------------
+	Configuracao de variaveis
+------------------------------------------
+
+REGIOES
+	Quantidade de lags: 8
+	Quantidade de Regioes: 110
+	Quantidade de Variaveis Dependente: 2
+Variaveis Dependentes:
+[0] = ETANOL_HIDRATADO
+[1] = GASOLINA_COMUM
+
+DATABASE
+	Macrovariaveis: ../export/database for ox/db_oil_withSesonal.in7
+	Regioes: ../export/database for ox/db_oil_withSesonal.in7
+	Database Star: ../export/database for ox/db_oil_withSesonal_Star.in7
+
+DIRETORIOS
+	W Matrix Dir: ../export/W_mat/
+	Cointeration Matrix Dir: ./mat_files/Cointegration - l8/
+	Raw Matrix Dir: ./mat_files/RawMatrix/
+	A Matrix Dir: ./mat_files/A_Matrix/
+	G Matrix Dir: ./mat_files/G_Matrix/
+	Result Matrix Dir: ./mat_files/Result_Matrix/
+
+WEIGHT MATRIX
+	Matrix de Pesos: ../export/W_mat/PIB_PC_1.mat
+
+Configuracoes
+	is_IIS_ON: 0
+	IIS_pvalue: 1e-06
+	is_DUMMY_ON: 1
+	type_DUMMY: U
+******************************************
+Saving G0 matrix
+Saving G1 matrix
+Saving G2 matrix
+Saving G3 matrix
+Saving G4 matrix
+Saving G5 matrix
+Saving G6 matrix
+Saving G7 matrix
+Saving G8 matrix
+Realizando processo de stacking das matrizes U (Cosntantes e Seasons)
+Saving U_Stacked (region 1)
+Saving U_Stacked (region 2)
+Saving U_Stacked (region 3)
+Saving U_Stacked (region 4)
+Saving U_Stacked (region 5)
+Saving U_Stacked (region 6)
+Saving U_Stacked (region 7)
+Saving U_Stacked (region 8)
+Saving U_Stacked (region 9)
+Saving U_Stacked (region 10)
+Saving U_Stacked (region 11)
+Saving U_Stacked (region 12)
+Saving U_Stacked (region 13)
+Saving U_Stacked (region 14)
+Saving U_Stacked (region 15)
+Saving U_Stacked (region 16)
+Saving U_Stacked (region 17)
+Saving U_Stacked (region 18)
+Saving U_Stacked (region 19)
+Saving U_Stacked (region 20)
+Saving U_Stacked (region 21)
+Saving U_Stacked (region 22)
+Saving U_Stacked (region 23)
+Saving U_Stacked (region 24)
+Saving U_Stacked (region 25)
+Saving U_Stacked (region 26)
+Saving U_Stacked (region 27)
+Saving U_Stacked (region 28)
+Saving U_Stacked (region 29)
+Saving U_Stacked (region 30)
+Saving U_Stacked (region 31)
+Saving U_Stacked (region 32)
+Saving U_Stacked (region 33)
+Saving U_Stacked (region 34)
+Saving U_Stacked (region 35)
+Saving U_Stacked (region 36)
+Saving U_Stacked (region 37)
+Saving U_Stacked (region 38)
+Saving U_Stacked (region 39)
+Saving U_Stacked (region 40)
+Saving U_Stacked (region 41)
+Saving U_Stacked (region 42)
+Saving U_Stacked (region 43)
+Saving U_Stacked (region 44)
+Saving U_Stacked (region 45)
+Saving U_Stacked (region 46)
+Saving U_Stacked (region 47)
+Saving U_Stacked (region 48)
+Saving U_Stacked (region 49)
+Saving U_Stacked (region 50)
+Saving U_Stacked (region 51)
+Saving U_Stacked (region 52)
+Saving U_Stacked (region 53)
+Saving U_Stacked (region 54)
+Saving U_Stacked (region 55)
+Saving U_Stacked (region 56)
+Saving U_Stacked (region 57)
+Saving U_Stacked (region 58)
+Saving U_Stacked (region 59)
+Saving U_Stacked (region 60)
+Saving U_Stacked (region 61)
+Saving U_Stacked (region 62)
+Saving U_Stacked (region 63)
+Saving U_Stacked (region 64)
+Saving U_Stacked (region 65)
+Saving U_Stacked (region 66)
+Saving U_Stacked (region 67)
+Saving U_Stacked (region 68)
+Saving U_Stacked (region 69)
+Saving U_Stacked (region 70)
+Saving U_Stacked (region 71)
+Saving U_Stacked (region 72)
+Saving U_Stacked (region 73)
+Saving U_Stacked (region 74)
+Saving U_Stacked (region 75)
+Saving U_Stacked (region 76)
+Saving U_Stacked (region 77)
+Saving U_Stacked (region 78)
+Saving U_Stacked (region 79)
+Saving U_Stacked (region 80)
+Saving U_Stacked (region 81)
+Saving U_Stacked (region 82)
+Saving U_Stacked (region 83)
+Saving U_Stacked (region 84)
+Saving U_Stacked (region 85)
+Saving U_Stacked (region 86)
+Saving U_Stacked (region 87)
+Saving U_Stacked (region 88)
+Saving U_Stacked (region 89)
+Saving U_Stacked (region 90)
+Saving U_Stacked (region 91)
+Saving U_Stacked (region 92)
+Saving U_Stacked (region 93)
+Saving U_Stacked (region 94)
+Saving U_Stacked (region 95)
+Saving U_Stacked (region 96)
+Saving U_Stacked (region 97)
+Saving U_Stacked (region 98)
+Saving U_Stacked (region 99)
+Saving U_Stacked (region 100)
+Saving U_Stacked (region 101)
+Saving U_Stacked (region 102)
+Saving U_Stacked (region 103)
+Saving U_Stacked (region 104)
+Saving U_Stacked (region 105)
+Saving U_Stacked (region 106)
+Saving U_Stacked (region 107)
+Saving U_Stacked (region 108)
+Saving U_Stacked (region 109)
+Saving U_Stacked (region 110)
+Realizando processo de stacking das matrizes Alpha
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 1)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 2)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 3)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 4)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 5)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 6)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 7)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 8)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 9)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 10)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 11)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 12)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 13)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 14)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 15)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 16)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 17)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 18)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 19)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 20)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 21)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 22)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 23)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 24)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 25)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 26)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 27)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 28)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 29)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 30)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 31)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 32)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 33)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 34)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 35)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 36)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 37)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 38)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 39)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 40)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 41)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 42)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 43)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 44)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 45)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 46)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 47)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 48)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 49)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 50)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 51)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 52)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 53)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 54)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 55)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 56)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 57)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 58)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 59)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 60)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 61)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 62)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 63)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 64)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 65)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 66)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 67)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 68)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 69)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 70)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 71)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 72)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 73)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 74)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 75)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 76)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 77)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 78)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 79)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 80)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 81)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 82)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 83)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 84)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 85)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 86)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 87)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 88)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 89)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 90)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 91)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 92)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 93)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 94)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 95)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 96)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 97)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 98)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 99)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 100)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 101)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 102)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 103)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 104)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 105)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 106)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 107)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 108)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 109)
+Regularizacao do beta para operacionalizacao
+primeira passagem, inicializo o Aplha0 e AplhaL
+2 x 2
+2 x 4
+4 x 220
+Saving G_alpha (region 110)
+Realizando processo de stacking das matrizes IIS
+Saving IIS (region 1)
+Saving IIS (region 2)
+Saving IIS (region 3)
+Saving IIS (region 4)
+Saving IIS (region 5)
+Saving IIS (region 6)
+Saving IIS (region 7)
+Saving IIS (region 8)
+Saving IIS (region 9)
+Saving IIS (region 10)
+Saving IIS (region 11)
+Saving IIS (region 12)
+Saving IIS (region 13)
+Saving IIS (region 14)
+Saving IIS (region 15)
+Saving IIS (region 16)
+Saving IIS (region 17)
+Saving IIS (region 18)
+Saving IIS (region 19)
+Saving IIS (region 20)
+Saving IIS (region 21)
+Saving IIS (region 22)
+Saving IIS (region 23)
+Saving IIS (region 24)
+Saving IIS (region 25)
+Saving IIS (region 26)
+Saving IIS (region 27)
+Saving IIS (region 28)
+Saving IIS (region 29)
+Saving IIS (region 30)
+Saving IIS (region 31)
+Saving IIS (region 32)
+Saving IIS (region 33)
+Saving IIS (region 34)
+Saving IIS (region 35)
+Saving IIS (region 36)
+Saving IIS (region 37)
+Saving IIS (region 38)
+Saving IIS (region 39)
+Saving IIS (region 40)
+Saving IIS (region 41)
+Saving IIS (region 42)
+Saving IIS (region 43)
+Saving IIS (region 44)
+Saving IIS (region 45)
+Saving IIS (region 46)
+Saving IIS (region 47)
+Saving IIS (region 48)
+Saving IIS (region 49)
+Saving IIS (region 50)
+Saving IIS (region 51)
+Saving IIS (region 52)
+Saving IIS (region 53)
+Saving IIS (region 54)
+Saving IIS (region 55)
+Saving IIS (region 56)
+Saving IIS (region 57)
+Saving IIS (region 58)
+Saving IIS (region 59)
+Saving IIS (region 60)
+Saving IIS (region 61)
+Saving IIS (region 62)
+Saving IIS (region 63)
+Saving IIS (region 64)
+Saving IIS (region 65)
+Saving IIS (region 66)
+Saving IIS (region 67)
+Saving IIS (region 68)
+Saving IIS (region 69)
+Saving IIS (region 70)
+Saving IIS (region 71)
+Saving IIS (region 72)
+Saving IIS (region 73)
+Saving IIS (region 74)
+Saving IIS (region 75)
+Saving IIS (region 76)
+Saving IIS (region 77)
+Saving IIS (region 78)
+Saving IIS (region 79)
+Saving IIS (region 80)
+Saving IIS (region 81)
+Saving IIS (region 82)
+Saving IIS (region 83)
+Saving IIS (region 84)
+Saving IIS (region 85)
+Saving IIS (region 86)
+Saving IIS (region 87)
+Saving IIS (region 88)
+Saving IIS (region 89)
+Saving IIS (region 90)
+Saving IIS (region 91)
+Saving IIS (region 92)
+Saving IIS (region 93)
+Saving IIS (region 94)
+Saving IIS (region 95)
+Saving IIS (region 96)
+Saving IIS (region 97)
+Saving IIS (region 98)
+Saving IIS (region 99)
+Saving IIS (region 100)
+Saving IIS (region 101)
+Saving IIS (region 102)
+Saving IIS (region 103)
+Saving IIS (region 104)
+Saving IIS (region 105)
+Saving IIS (region 106)
+Saving IIS (region 107)
+Saving IIS (region 108)
+Saving IIS (region 109)
+Saving IIS (region 110)
+Realizando processo de stacking da matrizes D
+Saving D_Stacked (region 1)
+Saving D_Stacked (region 2)
+Saving D_Stacked (region 3)
+Saving D_Stacked (region 4)
+Saving D_Stacked (region 5)
+Saving D_Stacked (region 6)
+Saving D_Stacked (region 7)
+Saving D_Stacked (region 8)
+Saving D_Stacked (region 9)
+Saving D_Stacked (region 10)
+Saving D_Stacked (region 11)
+Saving D_Stacked (region 12)
+Saving D_Stacked (region 13)
+Saving D_Stacked (region 14)
+Saving D_Stacked (region 15)
+Saving D_Stacked (region 16)
+Saving D_Stacked (region 17)
+Saving D_Stacked (region 18)
+Saving D_Stacked (region 19)
+Saving D_Stacked (region 20)
+Saving D_Stacked (region 21)
+Saving D_Stacked (region 22)
+Saving D_Stacked (region 23)
+Saving D_Stacked (region 24)
+Saving D_Stacked (region 25)
+Saving D_Stacked (region 26)
+Saving D_Stacked (region 27)
+Saving D_Stacked (region 28)
+Saving D_Stacked (region 29)
+Saving D_Stacked (region 30)
+Saving D_Stacked (region 31)
+Saving D_Stacked (region 32)
+Saving D_Stacked (region 33)
+Saving D_Stacked (region 34)
+Saving D_Stacked (region 35)
+Saving D_Stacked (region 36)
+Saving D_Stacked (region 37)
+Saving D_Stacked (region 38)
+Saving D_Stacked (region 39)
+Saving D_Stacked (region 40)
+Saving D_Stacked (region 41)
+Saving D_Stacked (region 42)
+Saving D_Stacked (region 43)
+Saving D_Stacked (region 44)
+Saving D_Stacked (region 45)
+Saving D_Stacked (region 46)
+Saving D_Stacked (region 47)
+Saving D_Stacked (region 48)
+Saving D_Stacked (region 49)
+Saving D_Stacked (region 50)
+Saving D_Stacked (region 51)
+Saving D_Stacked (region 52)
+Saving D_Stacked (region 53)
+Saving D_Stacked (region 54)
+Saving D_Stacked (region 55)
+Saving D_Stacked (region 56)
+Saving D_Stacked (region 57)
+Saving D_Stacked (region 58)
+Saving D_Stacked (region 59)
+Saving D_Stacked (region 60)
+Saving D_Stacked (region 61)
+Saving D_Stacked (region 62)
+Saving D_Stacked (region 63)
+Saving D_Stacked (region 64)
+Saving D_Stacked (region 65)
+Saving D_Stacked (region 66)
+Saving D_Stacked (region 67)
+Saving D_Stacked (region 68)
+Saving D_Stacked (region 69)
+Saving D_Stacked (region 70)
+Saving D_Stacked (region 71)
+Saving D_Stacked (region 72)
+Saving D_Stacked (region 73)
+Saving D_Stacked (region 74)
+Saving D_Stacked (region 75)
+Saving D_Stacked (region 76)
+Saving D_Stacked (region 77)
+Saving D_Stacked (region 78)
+Saving D_Stacked (region 79)
+Saving D_Stacked (region 80)
+Saving D_Stacked (region 81)
+Saving D_Stacked (region 82)
+Saving D_Stacked (region 83)
+Saving D_Stacked (region 84)
+Saving D_Stacked (region 85)
+Saving D_Stacked (region 86)
+Saving D_Stacked (region 87)
+Saving D_Stacked (region 88)
+Saving D_Stacked (region 89)
+Saving D_Stacked (region 90)
+Saving D_Stacked (region 91)
+Saving D_Stacked (region 92)
+Saving D_Stacked (region 93)
+Saving D_Stacked (region 94)
+Saving D_Stacked (region 95)
+Saving D_Stacked (region 96)
+Saving D_Stacked (region 97)
+Saving D_Stacked (region 98)
+Saving D_Stacked (region 99)
+Saving D_Stacked (region 100)
+Saving D_Stacked (region 101)
+Saving D_Stacked (region 102)
+Saving D_Stacked (region 103)
+Saving D_Stacked (region 104)
+Saving D_Stacked (region 105)
+Saving D_Stacked (region 106)
+Saving D_Stacked (region 107)
+Saving D_Stacked (region 108)
+Saving D_Stacked (region 109)
+Saving D_Stacked (region 110)
+Processo finalizado.

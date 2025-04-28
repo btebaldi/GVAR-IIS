@@ -26,7 +26,7 @@ EstimateRank(const mRankMatrix, const col){
         iRank = mRankMatrix[irow][1];
         // println("myiRank: ", iRank);
         // println("myValue: ", mRankMatrix[irow][col]);
-		if(mRankMatrix[irow][col] > 0.05){
+		if(mRankMatrix[irow][col] > 0.01){
 			break;
 		} else {
 			iRank = iRank + 1;
@@ -199,8 +199,9 @@ main() {
         // }
 
         if(iRank == 0){
-            println("RANK ZERO DETECTADO, MUDANDO PARA RANK=1");
-            iRank=1;
+            println("RANK ZERO DETECTADO");
+//			println("MUDANDO PARA RANK=1");
+//            iRank=1;
         }
 
         decl mBeta;
@@ -212,7 +213,7 @@ main() {
         if(iRank > 6){
             //  salva a estimacao do beta PARA AS REGIOES COM MAIS DE 3 VETORES DE COINTEGRACAO
             modelCats.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Dominant3_CoInt_R", iCont, ".mat")), mBeta, iRank);
-        } else {
+        } else if (iRank > 1) {
 			//  Restima o modelo com os dados de cointegracao.
             println("RANK TOTAL: ",iRank);
             modelCats.I1Rank(iRank);
@@ -244,8 +245,11 @@ main() {
             // println("a", modelCats.GetAlpha());
 
             modelCats.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Weak2_CoInt_R", iCont, ".mat")), mBeta, iRank);
-        }
+        } else {
+			modelCats.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Weak2_CoInt_R", iCont, ".mat")), mBeta*0, iRank);
 		}
+		
+		} // fim 1=1
         // Guarda o valor do Beta
         // mBeta = model.GetBeta();
 

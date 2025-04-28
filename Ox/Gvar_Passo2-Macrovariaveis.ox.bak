@@ -68,8 +68,8 @@ ProcessoH(const asParamNames, const vParamValues, const iQtdLags, const varMacro
 		} // Fim da contagem de lags/colunas
 	} // Fim da contagem de linhas
 
-	debug_ColsNames = debug_ColsNames[1:];
-	print( "%r", varMacro, "%c", debug_ColsNames, "%cf", mRet);
+//	debug_ColsNames = debug_ColsNames[1:];
+//	print( "%r", varMacro, "%c", debug_ColsNames, "%cf", mRet);
 
 	return mRet;
 }
@@ -416,7 +416,7 @@ main()
 		println("Processo IIS desligado para esta regiao");
     }
 	
-	model.AutometricsSet("print", 1);
+	model.AutometricsSet("print", -1);
 		
 	// determina o metodo de estimacao.
 	model.SetMethod(M_OLS);
@@ -435,7 +435,7 @@ main()
 	// inicializa um vetor com o valor dos parametros
 	vParamValues = model.GetPar();
 
-	println( "%r", asParamNames, "%cf", vParamValues);
+	//println( "%r", asParamNames, "%cf", vParamValues);
 
 	// A FAZER:
 	//(1) Leitura dos valores de H

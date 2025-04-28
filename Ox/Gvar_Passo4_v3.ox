@@ -54,6 +54,8 @@ main()
 	
 	savemat(sprint(txMatPathResult_Matrix, "mGy", ".mat"), mGy);
 	mGy_inv = invert(mGy);
+	println("Salvando matriz mGy_inv");
+	savemat(sprint(txMatPathResult_Matrix, "mGy_inv.mat"), mGy_inv);
 	
 	// Salva as matrizes de resultado
 	println("Salvando matrizes stacked (Alpha, IIS, U, D)");

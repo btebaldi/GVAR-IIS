@@ -1,0 +1,134 @@
+--------------- Ox at 19:50:43 on 27-Apr-2025 ---------------
+
+Ox 9.10 (Windows_64/Parallel) (C) J.A. Doornik, 1994-2023 (oxlang.dev)
+******************************************
+------------------------------------------
+	Configuracao de variaveis
+------------------------------------------
+
+REGIOES
+	Quantidade de lags: 8
+	Quantidade de Regioes: 110
+	Quantidade de Variaveis Dependente: 2
+Variaveis Dependentes:
+[0] = ETANOL_HIDRATADO
+[1] = GASOLINA_COMUM
+
+DATABASE
+	Macrovariaveis: ../export/database for ox/db_oil_withSesonal.in7
+	Regioes: ../export/database for ox/db_oil_withSesonal.in7
+	Database Star: ../export/database for ox/db_oil_withSesonal_Star.in7
+
+DIRETORIOS
+	W Matrix Dir: ../export/W_mat/
+	Cointeration Matrix Dir: ./mat_files/Cointegration - l8/
+	Raw Matrix Dir: ./mat_files/RawMatrix/
+	A Matrix Dir: ./mat_files/A_Matrix/
+	G Matrix Dir: ./mat_files/G_Matrix/
+	Result Matrix Dir: ./mat_files/Result_Matrix/
+
+WEIGHT MATRIX
+	Matrix de Pesos: ../export/W_mat/PIB_PC_1.mat
+
+Configuracoes
+	is_IIS_ON: 0
+	IIS_pvalue: 1e-06
+	is_DUMMY_ON: 1
+	type_DUMMY: U
+******************************************
+GVAR Passo 4 Inicializado
+Carregando matriz G0
+Carregando matrizes stacked (Alpha, IIS, U, D)
+Matrix Alpha_Stacked.mat carregada
+Matrix IIS_Stacked.mat carregada
+Matrix U_Staked.mat carregada
+Matrix D_Staked.mat carregada
+Matrix H_w.mat carregada
+Matrix B_w.mat carregada
+Matrix W_w.mat carregada
+Matrix IIS_w.mat carregada
+Matrix U_w.mat carregada
+Matrix AlphaBeta_w.mat carregada
+Salvando matriz mGy_inv
+Salvando matrizes stacked (Alpha, IIS, U, D)
+Carregando matrizes stacked (G1)
+iQtdVarMacro 2
+Costruindo matriz D_{stk; l} (lag:1)
+Size mHw_lag:2 x 2
+Size mDL_stk:220 x 2
+Size mBWw:2 x 220
+Size mGL:220 x 220
+Size mGy_inv:222 x 222
+Salvando o resultado mGy_inv * mGyL
+Carregando matrizes stacked (G2)
+iQtdVarMacro 2
+Costruindo matriz D_{stk; l} (lag:2)
+Size mHw_lag:2 x 2
+Size mDL_stk:220 x 2
+Size mBWw:2 x 220
+Size mGL:220 x 220
+Size mGy_inv:222 x 222
+Salvando o resultado mGy_inv * mGyL
+Carregando matrizes stacked (G3)
+iQtdVarMacro 2
+Costruindo matriz D_{stk; l} (lag:3)
+Size mHw_lag:2 x 2
+Size mDL_stk:220 x 2
+Size mBWw:2 x 220
+Size mGL:220 x 220
+Size mGy_inv:222 x 222
+Salvando o resultado mGy_inv * mGyL
+Carregando matrizes stacked (G4)
+iQtdVarMacro 2
+Costruindo matriz D_{stk; l} (lag:4)
+Size mHw_lag:2 x 2
+Size mDL_stk:220 x 2
+Size mBWw:2 x 220
+Size mGL:220 x 220
+Size mGy_inv:222 x 222
+Salvando o resultado mGy_inv * mGyL
+Carregando matrizes stacked (G5)
+iQtdVarMacro 2
+Costruindo matriz D_{stk; l} (lag:5)
+Size mHw_lag:2 x 2
+Size mDL_stk:220 x 2
+Size mBWw:2 x 220
+Size mGL:220 x 220
+Size mGy_inv:222 x 222
+Salvando o resultado mGy_inv * mGyL
+Carregando matrizes stacked (G6)
+iQtdVarMacro 2
+Costruindo matriz D_{stk; l} (lag:6)
+Size mHw_lag:2 x 2
+Size mDL_stk:220 x 2
+Size mBWw:2 x 220
+Size mGL:220 x 220
+Size mGy_inv:222 x 222
+Salvando o resultado mGy_inv * mGyL
+Carregando matrizes stacked (G7)
+iQtdVarMacro 2
+Costruindo matriz D_{stk; l} (lag:7)
+Size mHw_lag:2 x 2
+Size mDL_stk:220 x 2
+Size mBWw:2 x 220
+Size mGL:220 x 220
+Size mGy_inv:222 x 222
+Salvando o resultado mGy_inv * mGyL
+Carregando matrizes stacked (G8)
+iQtdVarMacro 2
+Costruindo matriz D_{stk; l} (lag:8)
+Size mHw_lag:2 x 2
+Size mDL_stk:220 x 2
+Size mBWw:2 x 220
+Size mGL:220 x 220
+Size mGy_inv:222 x 222
+Salvando o resultado mGy_inv * mGyL
+Size mU_w:2 x 52
+Size mU_Stacked:220 x 52
+Size mIIS_w:2 x 896
+Size mIIS_Stacked:220 x 896
+Salvando o resultado mGy_inv * mC
+Salvando o resultado mGy_inv * mL
+***************************************************
+GVAR Passo 4 Finalizado
+OMP: Warning #227: Cannot determine machine load balance - Using KMP_DYNAMIC_MODE=thread limit

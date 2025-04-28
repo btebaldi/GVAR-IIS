@@ -294,12 +294,13 @@ main() {
 	// Carrega a informação de qual o rank de cada região 
 	decl mRankRegions;
 	println("Lista de ranks das regioes: ", sprint("./mat_files/", "rankOfRegions.mat"));
-    mRankRegions = loadmat(sprint("./mat_files/", "rankOfRegions.mat"));
+    //mRankRegions = loadmat(sprint("./mat_files/", "rankOfRegions.mat"));
     // println(mRankRegions);
 		
     for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
-		println("Rank: ", mRankRegions[iCont-1][0]);
+	// apagar
+		//println("Rank: ", mRankRegions[iCont-1][0]);
 
 		//println("mRankRegions has ", rows(mRankRegions), " rows and ", columns(mRankRegions), " cols");
 		// continue;
@@ -390,8 +391,8 @@ main() {
 //	        println("\tAdicionando variavel ", aMacroVarNames[iContador]);
 //			mData = mData ~ model.GetVar(aMacroVarNames[iContador]);
 //		}
-		println("%c", {"ETA", "GAS", "ETA*", "GAS*", "brent", "FX"}, "%r", {"T_1", "T_2", "T_3", "T_4"}, mData[0:4][]);
-						break;
+//		println("%c", {"ETA", "GAS", "ETA*", "GAS*", "brent", "FX"}, "%r", {"T_1", "T_2", "T_3", "T_4"}, mData[0:5][]);
+
 //		break;
         decl asBetaZ;
         for(decl i=1; i<=rows(beta); i++){
@@ -499,9 +500,8 @@ main() {
 	    }
 	
 		// Adiciona a variavel "betaZ" com um lag apenas (representação da matriz de longo prazo)
-		if(mRankRegions[iCont-1][0] > 0){
 			model.Select("X", asBetaZ);
-		}
+
 
 			//println("mRankRegions has ", rows(mRankRegions), " rows and ", columns(mRankRegions), " cols");
 		// continue;
